@@ -43,6 +43,9 @@ Specifically to “discussions about your stress profiles, articulate your learn
 
 
 
+
+
+
 **Daily Check In - 1/12/2023**
 
 |**Will**    | Notes      |
@@ -72,6 +75,11 @@ Specifically to “discussions about your stress profiles, articulate your learn
 |Bad Vibes  	|            |
 |Challenges 	|            |
 |Requests	   |            |
+
+
+
+
+
 
 
 **Daily Check In - 2/12/2023**
@@ -105,6 +113,11 @@ Specifically to “discussions about your stress profiles, articulate your learn
 |Requests	   |            |
 
 
+
+
+
+
+
 **Daily Check In - 3/12/2023**
 
 |**Will**    | Notes      |
@@ -134,6 +147,11 @@ Specifically to “discussions about your stress profiles, articulate your learn
 |Bad Vibes  	|            |
 |Challenges 	|            |
 |Requests	   |            |
+
+
+
+
+
 
 
 **Daily Check In - 4/12/2023**
@@ -167,6 +185,11 @@ Specifically to “discussions about your stress profiles, articulate your learn
 |Requests	   |            |
 
 
+
+
+
+
+
 **Daily Check In - 5/12/2023**
 
 |**Will**    | Notes      |
@@ -198,6 +221,11 @@ Specifically to “discussions about your stress profiles, articulate your learn
 |Requests	   |            |
 
 
+
+
+
+
+
 **Daily Check In - 6/12/2023**
 
 |**Will**    | Notes      |
@@ -227,6 +255,11 @@ Specifically to “discussions about your stress profiles, articulate your learn
 |Bad Vibes  	|            |
 |Challenges 	|            |
 |Requests	   |            |
+
+
+
+
+
 
 
 **Daily Check In - 7/12/2023**
