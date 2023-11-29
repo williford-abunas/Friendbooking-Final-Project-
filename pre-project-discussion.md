@@ -34,7 +34,7 @@ Expectation setting and agreements (what do we each want out of this time, what 
 ### Ton 
 ### Andrew 
 
-### agile rituals
+### Agile rituals
 - Following kanban tickets
 - Pairing; switching pairs depending on tickets for efficiency
 - 
