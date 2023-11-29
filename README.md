@@ -71,12 +71,42 @@ As a responsible adult striving in a busy society, finding time to connect with 
 - We agree to speak up/have a conversation if we are stuck or in a tough spot and seek help if we are stuck after 20 minutes of not getting something.
 - Communicate at each standup about how we all are so we know how everyone is and if they need help with anything, whether personal or technical.
 
-### How will we work and what roles and what agile rituals will we use?
+### Roles:
 
   #### We decided to keep the Scrum Facilitator, Git Keeper and Vibes Watcher roles. These roles are not strictly exclusive to individuals but a way to organize workflow.
 - Scrum Facilitator = Ming, Will happy to assist
 - Git Keeper = Will, Ming happy to assist
 - Vibes Watcher = Matt, James
 - Product Owner = Equal rights.
+
+  ### What might a day look like? What agile rituals will happen? When during the day will we do the hard tech? Will we go outside as a team?
+
+- A typical day for this project will involve a standup first thing in the morning, this allows us to all get on the same page regarding what we are doing for the day and the direction we want to head in as a group. We will then have another standup before lunch to get another update on where we are as a team, then all team members step away from their computers and go for lunch. After lunch is more coding and then a final standup for the day just prior to closing circle (or can be after closing circle if we plan to stay longer).
+
+- We will tackle the hard tech earlier in the morning/day. We feel this is the best time for this as this is the time when everyone in the team is most refreshed and operating at their peak efficiency. If possible we would like to avoid doing to much hard tech late in the day due to the fact come late in the day everyone is starting to feel a bit more tired and low on energy, which isn't a good environment for tackling hard code.
+
+- We are flexable with how often we will go outside as a team, but we would like to aim for at least 2-3 times a day. Going outside gives us the chance to step away from the computer for a little bit and have a little rest. It's also a chance to get some fresh air and if people are starting to feel a bit tired/drowsy, a bit of fresh air can sometimes help a lot in waking someone up.
   
-  ##### For the agile, we decided to keep doing the Kanban both digitally and physically
+  ##### For the agile, we decided to keep doing the Kanban both digitally and physically.
+
+---
+## Documentation
+
+### Workflow:
+- Use the KANBAN to assign yourself a task, post comments in the tickets to describe what needs to be done/what you are working on.
+- Move the tickets along the KANBAN as you progress.
+- When you're ready to commit new changes, first commit to your branch create a pull request to dev. Tell Git Keeper when that's done and it will be finalized with the team.
+- When your changes are committed to the dev branch by Git Keeper and he/she will make sure to communicate to everyone to pull the latest changes from dev. 
+
+### Git Flow:
+- **Main Branch** : We can merge into this branch once the code in Dev branch have been reviewed.
+- **Dev Branch** : Integration branch for ongoing work where all the feature branches merge together and resolve conflicts.
+- **Feature Branches** : Create a feature branch off an updated dev branch and name it on the "feature" that we will be working on. Once this feature is completed, create a pull request to merge into Dev branch and notify the Git Keeper for review. Finally, delete the merged and completed feature branch and repeat the process.
+
+### Tech Stack:
+- React
+- ReactQuery
+- Express
+- Knex.js
+- Auth0
+- External API (Stretch)
