@@ -115,9 +115,10 @@ As a responsible adult striving in a busy society, finding time to connect with 
 ## MVP:
 
 ### Basic sign in as a user:
-- User sign in and get directed to user component.
+- User sign in(auth0) and get directed to user component.
 - User will be able to look at owners calendar (weekly).
 - User should be able to pick a day (Showing only a week timeframe).
+
 
 *Because it can be challenging to work with dates/times and we haven't really done that before, we will try and make our MVP attainable, this will have to be reviewed at each standup to see how we are tracking in regards to this *
 
