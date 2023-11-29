@@ -10,7 +10,26 @@ As a responsible adult striving in a busy society, finding time to connect with 
 - Checking how is everyone feeling.
 - Announcements from team members.
 
-### Wellbeing guide for stresses and needs:
+### Stress profiles:
+1. What does it look like?
+- Losing concentration and losing sight of your goal. (Will)
+- Rushing with no aim. (Matt)
+- Get agitated easily. (Ming)
+- Completely zone out and distance away from fellows. (James)
+
+2. What causes them?
+- Stuff not going right. (James)
+- Thinking we are not good enough and time pressure. (Matt)
+- Information overload. (Will)
+- Fatigue and not understanding the scopes.(Ming)
+
+3. What to do to become unstressed?
+- Time alone and fresh air. (Matt)
+- Mini breaks and coffees. (Will)
+- Take a break and come back with empty mind with better focus. (James)
+- Naps and enough food. (Ming)
+
+#### Wellbeing guide for stresses and needs:
 -  Every time we have a standup we will have a wellbeing check-in to see how everyone is and this will be in a formal vibe file.
 - Whenever anyone is stressed we have agreed that we will do one of the following: Chill time, break, fresh air, sometime to be by yourself (solitary), reassurance from others with what we are working on and positively.
 - Getting enough sleep at the correct times; but if we aren't able to for some reason and we are up until 4am for instance, Won't be in at the usual time but happy to compensate by staying a bit later this evening to catch up on the work we've missed  (communication which we have agreed we are happy to have open at all times).
@@ -58,5 +77,6 @@ As a responsible adult striving in a busy society, finding time to connect with 
 - Scrum Facilitator = Ming, Will happy to assist
 - Git Keeper = Will, Ming happy to assist
 - Vibes Watcher = Matt, James
+- Product Owner = Equal rights.
   
   ##### For the agile, we decided to keep doing the Kanban both digitally and physically
