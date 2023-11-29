@@ -110,3 +110,32 @@ As a responsible adult striving in a busy society, finding time to connect with 
 - Knex.js
 - Auth0
 - External API (Stretch)
+
+---
+## MVP:
+
+### Basic sign in as a user:
+- User sign in and get directed to user component.
+- User will be able to look at owners calendar (weekly).
+- User should be able to pick a day (Showing only a week timeframe).
+- User should be able to pick a timeslot to make appointment. (Hardcoded)
+- User should see confirmation that it has been accepted.
+
+*Because it can be challenging to work with dates/times and we haven't really done that before, we will try and make our MVP attainable, this will have to be reviewed at each standup to see how we are tracking in regards to this *
+
+## Stretch:
+
+### Basic sign in as an owner:
+- Owner sign in and get directed to owner component.
+- Owner should be able to add their time availability.
+- Owner should be able to see the appointment details requested by users.
+- Owner should be able to block out the time that has been requested and accepted.
+
+---
+## User stories (As a user) : 
+- I want to be able to sign in.
+- I want to be able to view the owners calendar.
+- I want to be able to view available timeslots during the week and select one.
+- I want to add a description of the hangout.
+- I want to be able to edit/remove/delete an input I've made.
+- I want confirmation its been submitted.
