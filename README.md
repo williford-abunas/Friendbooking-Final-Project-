@@ -122,6 +122,7 @@ As a responsible adult striving in a busy society, finding time to connect with 
 *Because it can be challenging to work with dates/times and we haven't really done that before, we will try and make our MVP attainable, this will have to be reviewed at each standup to see how we are tracking in regards to this *
 
 ## Stretch:
+### Basic sign in as a user:
 - User should be able to pick a timeslot to make appointment. (Hardcoded)
 - User should see confirmation that it has been accepted.
 
