@@ -1,25 +1,25 @@
-// import { IfAuthenticated, IfNotAuthenticated } from './Authenticated.tsx'
+import { IfAuthenticated, IfNotAuthenticated } from './Authenticated.tsx'
 // import { NavGroup, NavButton } from './Styled.tsx'
-// import { useAuth0 } from '@auth0/auth0-react'
+import { useAuth0 } from '@auth0/auth0-react'
 import { Link } from 'react-router-dom'
 
 export default function Nav() {
-  // const { user, logout, loginWithRedirect } = useAuth0()
+  const { user, logout, loginWithRedirect } = useAuth0()
 
-  // const handleSignOut = () => {
-  //   logout()
-  //   console.log('sign out')
-  // }
+  const handleSignOut = () => {
+    logout()
+    console.log('sign out')
+  }
 
-  // const handleSignIn = () => {
-  //   loginWithRedirect()
-  //   console.log('sign in')
-  // }
+  const handleSignIn = () => {
+    loginWithRedirect()
+    console.log('sign in')
+  }
 
   return (
     <>
       <nav>NAV BAR</nav>
-      {/* <nav>
+      <nav>
         <IfAuthenticated>
           <button onClick={handleSignOut}>Sign out</button>
           {user && <p>Signed in as: {user?.nickname}</p>}
@@ -27,10 +27,15 @@ export default function Nav() {
         <IfNotAuthenticated>
           <button onClick={handleSignIn}>Sign in</button>
         </IfNotAuthenticated>
-      </nav> */}
+      </nav>
       <button>
         <Link to={'/'}>Home</Link>
       </button>
+      <Link to={'/user'}>User</Link>
+      <br />
+      <Link to={'/owner'}>Owner</Link>
+      <br />
+      <Link to={'/login'}>Log In</Link>
     </>
   )
 }
