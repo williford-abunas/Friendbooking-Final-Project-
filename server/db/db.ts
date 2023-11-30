@@ -15,14 +15,14 @@ export async function getUserByIdDb(id: number): Promise<User> {
 
 //get all appointments
 export async function getAllAppointmentDb(): Promise<Appointment[]> {
-  return db('appointments').select('*')
+  return db('appointment').select('*')
 }
 
 //get appointments by user id
 export async function getAppointmentForUserDb(
   userId: number
 ): Promise<Appointment[]> {
-  return db('appointments')
+  return db('appointment')
     .select(
       'id',
       'title',
@@ -37,9 +37,7 @@ export async function getAppointmentForUserDb(
 //add user
 export async function addUserDb(user: User): Promise<User> {
   const { username, role } = user
-  const [result] = await db('user')
-    .insert({ username, role })
-    .returning([username, role])
+  const [result] = await db('users').insert({ username, role }).returning('*')
   return result
 }
 
@@ -47,23 +45,15 @@ export async function addUserDb(user: User): Promise<User> {
 export async function addAppointment(
   appointment: Appointment
 ): Promise<Appointment> {
-  const { title, description, startTime, endTime, userId } = appointment
+  const { title, description, startTime, endTime } = appointment
   const [result] = await db('appointment')
     .insert({
       title,
       description,
       start_time: startTime,
       end_time: endTime,
-      user_id: userId,
     })
-    .returning([
-      'id',
-      'title',
-      'description',
-      'start_time',
-      'end_time',
-      'user_id',
-    ])
+    .returning(['id', 'title', 'description', 'start_time', 'end_time'])
   return result
 }
 
