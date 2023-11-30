@@ -19,7 +19,7 @@ root.render(
   <Auth0Provider
     domain="friend-booking.au.auth0.com"
     clientId="As8sS1pWDsqKZEHhcVkshlu45jxL0v9X"
-    redirectUri="http://localhost:5173/owner"
+    redirectUri="http://localhost:5173/user"
     audience="https://friendbooking/api"
   >
     <QueryClientProvider client={queryClient}>
