@@ -112,6 +112,9 @@ As a responsible adult striving in a busy society, finding time to connect with 
 - External API (Stretch)
 
 ---
+## Wireframes
+Follow the link [wireframes](https://www.figma.com/file/pbvQByWfY2J6lKwcSYqieB/Untitled?type=design&mode=design&t=AJ2tfWhayLhUOKFw-1) to view on the wireframe.
+
 ## MVP:
 
 ### Basic sign in as a user:
