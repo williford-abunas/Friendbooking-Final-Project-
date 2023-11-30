@@ -130,3 +130,14 @@ button {
   font-size: 15px;
   font-weight: bolder;
 }
+
+/* USER PAGE */
+
+.day-container {
+  display: flex;
+  flex-direction: column;
+}
+
+#userViewDays {
+  width: 300px;
+}

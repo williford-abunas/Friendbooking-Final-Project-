@@ -40,7 +40,9 @@ export default function Users() {
       </div>
       {DaysOfWeek.map((day, index) => (
         <div key={index} className="day-container">
-          <button onClick={() => handleDayClick(day)}>{day}</button>
+          <button id="userViewDays" onClick={() => handleDayClick(day)}>
+            {day}
+          </button>
           {selectedDay === day && <TimeSlotsDropdown />}
         </div>
       ))}
