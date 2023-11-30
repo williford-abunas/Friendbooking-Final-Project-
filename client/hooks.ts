@@ -3,43 +3,43 @@
 
 // import * as API from './api.ts'
 
-export function useFriendBooking() {
-  const query = useQuery({
-    queryKey: ['friends-booking'],
-    queryFn: API.getFriendBookings,
-  })
+// export function useFriendBooking() {
+//   const query = useQuery({
+//     queryKey: ['friends-booking'],
+//     queryFn: API.getFriendBookings,
+//   })
 
-  return {
-    ...query,
-    update: useUpdateFriendBooking(),
-    delete: useDeleteFriendBooking(),
-    add: useAddFriendBooking(),
-  }
-}
-
-export function useFriendBookingMutation<TData = unknown, TVariables = unknown>(
-  mutationFn: MutationFunction<TData, TVariables>
-) {
-  const queryClient = useQueryClient()
-
-  const mutation = useMutation({
-    mutationFn,
-    onSuccess: () => {
-      queryClient.invalidateQueries(['Friend Booking'])
-    },
-  })
-
-//   return mutation
+//   return {
+//     ...query,
+//     update: useUpdateFriendBooking(),
+//     delete: useDeleteFriendBooking(),
+//     add: useAddFriendBooking(),
+//   }
 // }
 
-export function useUpdateFriendBooking() {
-  return useFriendBookingMutation(API.updateFriendBooking)
-}
+// export function useFriendBookingMutation<TData = unknown, TVariables = unknown>(
+//   mutationFn: MutationFunction<TData, TVariables>
+// ) {
+//   const queryClient = useQueryClient()
 
-export function useDeleteFriendBooking() {
-  return useFriendBookingMutation(API.deleteFriendBooking)
-}
+//   const mutation = useMutation({
+//     mutationFn,
+//     onSuccess: () => {
+//       queryClient.invalidateQueries(['Friend Booking'])
+//     },
+//   })
 
-export function useAddFriendBooking() {
-  return useFriendBookingMutation(API.addFriendBooking)
-}
+// //   return mutation
+// // }
+
+// export function useUpdateFriendBooking() {
+//   return useFriendBookingMutation(API.updateFriendBooking)
+// }
+
+// export function useDeleteFriendBooking() {
+//   return useFriendBookingMutation(API.deleteFriendBooking)
+// }
+
+// export function useAddFriendBooking() {
+//   return useFriendBookingMutation(API.addFriendBooking)
+// }
