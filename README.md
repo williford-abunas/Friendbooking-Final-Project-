@@ -141,3 +141,31 @@ As a responsible adult striving in a busy society, finding time to connect with 
 - I want to add a description of the hangout.
 - I want to be able to edit/remove/delete an input I've made.
 - I want confirmation its been submitted.
+
+---
+## Setup
+
+Run the following commands in your terminal:
+
+```sh
+npm install
+npm run knex migrate:latest
+npm run knex seed:run
+cp .env.example .env
+```
+
+To run in development:
+```sh
+npm run dev
+```
+
+To run in production:
+```sh
+npm start
+```
+
+---
+## Deployment
+
+Follow the [Dokku Guide](https://github.com/mako-2023/dokku-guide/blob/main/guides/5-Deploying-a-full-stack-application.md) to deploy your site.
+
