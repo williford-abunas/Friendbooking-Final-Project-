@@ -6,6 +6,8 @@
     "target": "es2016" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */,
     "jsx": "react-jsx" /* Specify what JSX code is generated. */,
 
+    "types": ["react-router-dom"],
+
     /* Modules */
     "module": "ES2020" /* Specify what module code is generated. */,
     "moduleResolution": "bundler",
@@ -19,6 +21,6 @@
     "allowJs": true,
     "strict": true /* Enable all strict
     "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */,
-    "noEmit": true,
+    "noEmit": true
   }
 }
