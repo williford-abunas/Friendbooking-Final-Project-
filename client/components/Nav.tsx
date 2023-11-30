@@ -1,10 +1,14 @@
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated.tsx'
 // import { NavGroup, NavButton } from './Styled.tsx'
 import { useAuth0 } from '@auth0/auth0-react'
-import { Link } from 'react-router-dom'
+
+import { Link, useNavigate } from 'react-router-dom'
 
 export default function Nav() {
   const { user, logout, loginWithRedirect } = useAuth0()
+  const navigate = useNavigate()
+
+
 
   const handleSignOut = () => {
     logout()
@@ -13,13 +17,25 @@ export default function Nav() {
 
   const handleSignIn = () => {
     loginWithRedirect()
-    console.log('sign in')
+
+      .then(() => {
+        setTimeout(() => {
+          navigate('/owner')
+        }, 1000)
+      })
+      .catch((error) => {
+        console.error('Error logging in', error)
+      })
+
+    // console.log('sign in')
+
+
   }
 
   return (
     <>
-      <nav>NAV BAR</nav>
       <nav>
+        NAV BAR
         <IfAuthenticated>
           <button onClick={handleSignOut}>Sign out</button>
           {user && <p>Signed in as: {user?.nickname}</p>}
