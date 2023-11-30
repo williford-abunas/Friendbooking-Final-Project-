@@ -34,6 +34,15 @@ export async function getAppointmentForUserDb(
     .returning('*')
 }
 
+//add user
+export async function addUserDb(user: User): Promise<User> {
+  const { username, role } = user
+  const [result] = await db('user')
+    .insert({ username, role })
+    .returning([username, role])
+  return result
+}
+
 //add appointment
 export async function addAppointment(
   appointment: Appointment
