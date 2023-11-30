@@ -16,14 +16,14 @@ root.render(
    *
    * TODO: replace the empty strings below with your own domain, clientId, and audience
    */
-  <Auth0Provider
-    domain=""
-    clientId=""
-    redirectUri={window.location.origin}
-    audience=""
-  >
-    <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
-    </QueryClientProvider>
-  </Auth0Provider>
+  // <Auth0Provider
+  //   domain=""
+  //   clientId=""
+  //   redirectUri={window.location.origin}
+  //   audience=""
+  // >
+  <QueryClientProvider client={queryClient}>
+    <RouterProvider router={router} />
+  </QueryClientProvider>
+  // {/* </Auth0Provider> */}
 )
