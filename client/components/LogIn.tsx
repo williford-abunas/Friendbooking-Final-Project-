@@ -21,7 +21,9 @@ export default function LogIn() {
 
   return (
     <>
-      <h1>WELCOME TO FRIEND-BOOKING-APP!</h1>
+      <div className="h1Headers">
+        <h1>WELCOME TO FRIEND-BOOKING-APP!</h1>
+      </div>
 
       <form onSubmit={handleSubmit}>
         <label htmlFor="username">Username:</label>

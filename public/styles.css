@@ -1,0 +1,171 @@
+/* styles.css */
+
+/* MAIN */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  text-align: center;
+  color: #333;
+}
+
+h1 {
+  color: #333;
+}
+
+p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.styled-box {
+  width: 300px;
+  margin: 0 auto;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+
+nav {
+  background-color: #15fd40;
+  padding: 30px;
+  margin: -8px;
+}
+
+footer {
+  background-color: #15fd40;
+  padding: 30px;
+  margin-top: 25%;
+  margin-left: -8px;
+  margin-right: -8px;
+  margin-bottom: -8px;
+}
+
+button:hover {
+  background-color: gray;
+}
+
+button {
+  background-color: lightgray;
+  cursor: pointer;
+}
+
+/* HOMEPAGE */
+.h1Headers {
+  margin: 100px;
+}
+
+.logInBox {
+  background-color: #15fd40;
+  padding: 40px;
+  font-size: 20px;
+  font-weight: bolder;
+  width: max-content;
+  margin: 0 auto;
+}
+
+.logInBox button {
+  margin-top: 20px;
+  padding: 10px 30px;
+}
+
+/* APPOINTMENT FORM */
+
+#appointmentBox {
+  background-color: #15fd40;
+  padding: 60px 100px;
+  width: fit-content;
+  margin: 0 auto;
+  border: black solid 3px;
+}
+
+#dayTime {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+
+#dayTime p {
+  margin: 0;
+}
+
+#titleDescription {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  margin: 0 auto;
+}
+
+#titleDescription input {
+  margin-bottom: 15px;
+}
+
+#titleDescription textarea {
+  margin-bottom: 15px;
+}
+
+#description {
+  width: 500px;
+  min-height: 150px;
+  resize: vertical;
+}
+
+#startEnd {
+  display: flex;
+  flex-direction: row;
+  width: 500px;
+}
+
+#startEnd input {
+  width: 150px;
+}
+
+#endTime {
+  margin-left: 14px;
+}
+
+.appointmentForm button {
+  margin-top: 30px;
+  padding: 10px;
+  font-size: 15px;
+  font-weight: bolder;
+}
+
+/* USER PAGE */
+
+#dayContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 0px auto;
+  align-items: center;
+}
+
+#userViewDays {
+  width: 300px;
+  background-color: #28c1c1;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 39px;
+  letter-spacing: 0em;
+  margin-bottom: 15px;
+  padding: 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#userViewDays:hover {
+  background-color: lightblue;
+}
+
+#dropdownTimeSlot {
+  margin-bottom: 15px;
+}
+
+#timeSlotButton {
+  margin: 10px;
+  font-size: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 3px;
+}
