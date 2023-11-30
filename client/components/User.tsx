@@ -34,7 +34,7 @@ const Users: React.FC = () => {
       <div className="time-slots-dropdown">
         {timeSlots.map((slot, index) => (
           <Link key={index} to={`/form/${selectedDay}/${slot}`}>
-            {slot}
+            <button>{slot}</button>
           </Link>
         ))}
       </div>
@@ -48,7 +48,9 @@ const Users: React.FC = () => {
 
   return (
     <>
-      <h1>OWNER WEEKLY CALENDAR!</h1>
+      <div className="h1Headers">
+        <h1>OWNER WEEKLY CALENDAR!</h1>
+      </div>
       {DaysOfWeek.map((day, index) => (
         <div key={index} className="day-container">
           <button onClick={() => handleDayClick(day)}>{day}</button>
