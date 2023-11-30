@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+// import { Appointment } from '../../models/Appointment'
+// import { useQuery } from '@tanstack/react-query'
 
 const DaysOfWeek = [
   'Monday',
@@ -11,7 +13,7 @@ const DaysOfWeek = [
   'Sunday',
 ]
 
-export default function Users() {
+export default function User() {
   const [selectedDay, setSelectedDay] = useState<string | null>(null)
 
   const handleDayClick = (day: string) => {
