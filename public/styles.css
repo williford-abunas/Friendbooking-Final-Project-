@@ -130,3 +130,37 @@ button {
   font-size: 15px;
   font-weight: bolder;
 }
+
+/* USER PAGE */
+
+#dayContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 0px auto;
+  align-items: center;
+}
+
+#userViewDays {
+  width: 300px;
+  background-color: #28c1c1;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 39px;
+  letter-spacing: 0em;
+  margin-bottom: 15px;
+  padding: 20px;
+  border: none;
+  border-radius: 5px;
+}
+
+#dropdownTimeSlot {
+  margin-bottom: 15px;
+}
+
+#timeSlotButton {
+  margin: 10px;
+  font-size: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 3px;
+}

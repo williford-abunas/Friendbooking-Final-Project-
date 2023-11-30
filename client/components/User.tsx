@@ -1,6 +1,6 @@
-import React from 'react';
-import { useAuth0 } from '@auth0/auth0-react';
-import { Link } from 'react-router-dom';
+import { useAuth0 } from '@auth0/auth0-react'
+import { Link } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 
 const DaysOfWeek = [
   'Monday',
@@ -10,40 +10,39 @@ const DaysOfWeek = [
   'Friday',
   'Saturday',
   'Sunday',
-];
+]
+export default function Users() {
+  const { isAuthenticated, loginWithRedirect, isLoading } = useAuth0()
+  const [selectedDay, setSelectedDay] = useState<string | null>(null)
 
-const Users: React.FC = () => {
-  const { isAuthenticated, loginWithRedirect, isLoading } = useAuth0();
-  const [selectedDay, setSelectedDay] = React.useState<string | null>(null);
-
-  React.useEffect(() => {
+  useEffect(() => {
     // Check authentication status and redirect if not authenticated
     if (!isLoading && !isAuthenticated) {
-      loginWithRedirect();
+      loginWithRedirect()
     }
-  }, [isLoading, isAuthenticated, loginWithRedirect]);
+  }, [isLoading, isAuthenticated, loginWithRedirect])
 
   const handleDayClick = (day: string) => {
-    setSelectedDay((prevDay) => (prevDay === day ? null : day));
-  };
+    setSelectedDay((prevDay) => (prevDay === day ? null : day))
+  }
 
   function TimeSlotsDropdown() {
-    const timeSlots = ['10:00AM', '11:00AM', '12:00PM', '1:00PM', '2:00PM'];
+    const timeSlots = ['10:00AM', '11:00AM', '12:00PM', '1:00PM', '2:00PM']
 
     return (
-      <div className="time-slots-dropdown">
+      <div>
         {timeSlots.map((slot, index) => (
           <Link key={index} to={`/form/${selectedDay}/${slot}`}>
-            <button>{slot}</button>
+            <button id="timeSlotButton">{slot}</button>
           </Link>
         ))}
       </div>
-    );
+    )
   }
 
   // Render nothing if not authenticated or if still loading
   if (!isAuthenticated || isLoading) {
-    return null;
+    return null
   }
 
   return (
@@ -52,13 +51,15 @@ const Users: React.FC = () => {
         <h1>OWNER WEEKLY CALENDAR!</h1>
       </div>
       {DaysOfWeek.map((day, index) => (
-        <div key={index} className="day-container">
-          <button onClick={() => handleDayClick(day)}>{day}</button>
-          {selectedDay === day && <TimeSlotsDropdown />}
+        <div id="dayContainer" key={index}>
+          <button id="userViewDays" onClick={() => handleDayClick(day)}>
+            {day}
+          </button>
+          <div id="dropdownTimeSlot">
+            {selectedDay === day && <TimeSlotsDropdown />}
+          </div>
         </div>
       ))}
     </>
-  );
-};
-
-export default Users;
+  )
+}
