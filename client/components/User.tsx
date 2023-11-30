@@ -25,7 +25,6 @@ export default function Users() {
     return (
       <div className="time-slots-dropdown">
         {timeSlots.map((slot, index) => (
-          // Use Link or button based on your navigation needs
           <Link key={index} to={`/form/${selectedDay}/${slot}`}>
             <button>{slot}</button>
           </Link>
