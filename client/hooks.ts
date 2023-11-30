@@ -1,7 +1,7 @@
-import { MutationFunction, useQuery } from '@tanstack/react-query'
-import { useMutation, useQueryClient } from '@tanstack/react-query'
+// import { MutationFunction, useQuery } from '@tanstack/react-query'
+// import { useMutation, useQueryClient } from '@tanstack/react-query'
 
-import * as API from './api.ts'
+// import * as API from './api.ts'
 
 export function useFriendBooking() {
   const query = useQuery({
@@ -29,8 +29,8 @@ export function useFriendBookingMutation<TData = unknown, TVariables = unknown>(
     },
   })
 
-  return mutation
-}
+//   return mutation
+// }
 
 export function useUpdateFriendBooking() {
   return useFriendBookingMutation(API.updateFriendBooking)
