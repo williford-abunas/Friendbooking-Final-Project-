@@ -1,6 +1,9 @@
 import { useAuth0 } from '@auth0/auth0-react'
 import { Link } from 'react-router-dom'
+// import { Appointment } from '../../models/Appointment'
+// import { useQuery } from '@tanstack/react-query'
 import { useEffect, useState } from 'react'
+
 
 const DaysOfWeek = [
   'Monday',
@@ -11,8 +14,10 @@ const DaysOfWeek = [
   'Saturday',
   'Sunday',
 ]
+
 export default function Users() {
   const { isAuthenticated, loginWithRedirect, isLoading } = useAuth0()
+
   const [selectedDay, setSelectedDay] = useState<string | null>(null)
 
   useEffect(() => {
