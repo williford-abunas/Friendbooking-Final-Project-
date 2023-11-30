@@ -1,14 +1,14 @@
 import { useState } from 'react'
 import { useParams } from 'react-router-dom'
 
-interface RouteParams {
-  day: string
-  timeSlot: string
-}
-
 export default function AppointmentForm() {
-  const { day, timeSlot } = useParams<RouteParams>()
-  const [formData, setFormData] = useState({ title: '', description: '' })
+  const { day, timeSlot } = useParams()
+  const [formData, setFormData] = useState({
+    title: '',
+    description: '',
+    startTime: '',
+    endTime: '',
+  })
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
@@ -25,31 +25,67 @@ export default function AppointmentForm() {
 
   return (
     <>
-      <h1>APPOINTMENT FORM</h1>
-      <p>Day: {day}</p>
-      <p>Time Slot: {timeSlot}</p>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="title">Title:</label>
-        <input
-          type="text"
-          id="title"
-          name="title"
-          value={formData.title}
-          onChange={handleChange}
-          required
-        />
+      <div className="h1Headers">
+        <h1>APPOINTMENT FORM!</h1>
+      </div>
+      <div id="appointmentBox">
+        <div id="dayTime">
+          <p>
+            <strong>Day:</strong> {day}
+          </p>
+          <p>
+            <strong>Time Slot:</strong> {timeSlot}
+          </p>
+        </div>
+        <form className="appointmentForm" onSubmit={handleSubmit}>
+          <div id="titleDescription">
+            <label htmlFor="title">
+              <strong>Title:</strong>
+            </label>
+            <input
+              type="text"
+              id="title"
+              name="title"
+              value={formData.title}
+              onChange={handleChange}
+              required
+            />
 
-        <label htmlFor="description">Description:</label>
-        <textarea
-          id="description"
-          name="description"
-          value={formData.description}
-          onChange={handleChange}
-          required
-        />
+            <label htmlFor="description">
+              <strong>Description:</strong>
+            </label>
+            <textarea
+              id="description"
+              name="description"
+              value={formData.description}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div id="startEnd">
+            <label id="startTime" htmlFor="startTime">
+              Start Time:
+            </label>
+            <input
+              name="startTime"
+              value={formData.startTime}
+              onChange={handleChange}
+              required
+            />
 
-        <button type="submit">Submit Appointment</button>
-      </form>
+            <label id="endTime" htmlFor="endTime">
+              End Time:
+            </label>
+            <input
+              name="endTime"
+              value={formData.endTime}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <button type="submit">Submit Appointment</button>
+        </form>
+      </div>
     </>
   )
 }

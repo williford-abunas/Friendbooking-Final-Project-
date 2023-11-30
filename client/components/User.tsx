@@ -27,7 +27,7 @@ export default function Users() {
         {timeSlots.map((slot, index) => (
           // Use Link or button based on your navigation needs
           <Link key={index} to={`/form/${selectedDay}/${slot}`}>
-            {slot}
+            <button>{slot}</button>
           </Link>
         ))}
       </div>
@@ -36,7 +36,9 @@ export default function Users() {
 
   return (
     <>
-      <h1>OWNER WEEKLY CALENDAR!</h1>
+      <div className="h1Headers">
+        <h1>OWNER WEEKLY CALENDAR!</h1>
+      </div>
       {DaysOfWeek.map((day, index) => (
         <div key={index} className="day-container">
           <button onClick={() => handleDayClick(day)}>{day}</button>

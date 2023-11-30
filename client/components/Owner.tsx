@@ -1,7 +1,9 @@
 export default function Owner() {
   return (
     <>
-      <h1>THIS IS OWNER PAGE!</h1>
+      <div className="h1Headers">
+        <h1>THIS IS OWNER PAGE!</h1>
+      </div>
     </>
   )
 }
