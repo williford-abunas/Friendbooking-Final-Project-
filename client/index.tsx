@@ -16,14 +16,14 @@ root.render(
    *
    * TODO: replace the empty strings below with your own domain, clientId, and audience
    */
-  // <Auth0Provider
-  //   domain=""
-  //   clientId=""
-  //   redirectUri={window.location.origin}
-  //   audience=""
-  // >
-  <QueryClientProvider client={queryClient}>
-    <RouterProvider router={router} />
-  </QueryClientProvider>
-  // {/* </Auth0Provider> */}
+  <Auth0Provider
+    domain="friend-booking.au.auth0.com"
+    clientId="As8sS1pWDsqKZEHhcVkshlu45jxL0v9X"
+    redirectUri={window.location.origin}
+    audience="https://friendbooking/api"
+  >
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+    </QueryClientProvider>
+  </Auth0Provider>
 )
