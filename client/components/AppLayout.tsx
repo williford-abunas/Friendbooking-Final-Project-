@@ -7,7 +7,7 @@ export default function AppLayout() {
     <>
       <Nav />
       <main>
-        <Outlet />
+        {/* <Outlet /> */}
       </main>
     </>
   )

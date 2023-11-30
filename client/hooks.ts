@@ -3,21 +3,21 @@ import { useMutation, useQueryClient } from '@tanstack/react-query'
 
 import * as API from './api.ts'
 
-export function useFruits() {
+export function useFriendBooking() {
   const query = useQuery({
-    queryKey: ['fruits'],
-    queryFn: API.getFruits,
+    queryKey: ['friends-booking'],
+    queryFn: API.getFriendBookings,
   })
 
   return {
     ...query,
-    update: useUpdateFruit(),
-    delete: useDeleteFruit(),
-    add: useAddFruit(),
+    update: useUpdateFriendBooking(),
+    delete: useDeleteFriendBooking(),
+    add: useAddFriendBooking(),
   }
 }
 
-export function useFruitMutation<TData = unknown, TVariables = unknown>(
+export function useFriendBookingMutation<TData = unknown, TVariables = unknown>(
   mutationFn: MutationFunction<TData, TVariables>
 ) {
   const queryClient = useQueryClient()
@@ -25,21 +25,21 @@ export function useFruitMutation<TData = unknown, TVariables = unknown>(
   const mutation = useMutation({
     mutationFn,
     onSuccess: () => {
-      queryClient.invalidateQueries(['fruits'])
+      queryClient.invalidateQueries(['Friend Booking'])
     },
   })
 
   return mutation
 }
 
-export function useUpdateFruit() {
-  return useFruitMutation(API.updateFruit)
+export function useUpdateFriendBooking() {
+  return useFriendBookingMutation(API.updateFriendBooking)
 }
 
-export function useDeleteFruit() {
-  return useFruitMutation(API.deleteFruit)
+export function useDeleteFriendBooking() {
+  return useFriendBookingMutation(API.deleteFriendBooking)
 }
 
-export function useAddFruit() {
-  return useFruitMutation(API.addFruit)
+export function useAddFriendBooking() {
+  return useFriendBookingMutation(API.addFriendBooking)
 }

@@ -1,10 +1,11 @@
 import { Fruit, FruitData } from '../../models/fruit.ts'
+// import { } from '../../models/.ts'
 
 import { useState } from 'react'
 import SelectedFruitForm from './SelectedFruit.tsx'
 import AddFruitForm from './AddFruit.tsx'
 import { ErrorMessage } from './Styled.tsx'
-import { useFruits } from '../hooks.ts'
+import { useFriendBooking } from '../hooks.ts'
 
 type FormState =
   | {
@@ -22,7 +23,7 @@ function Fruits() {
     selectedFruit: null,
     show: 'none',
   })
-  const fruits = useFruits()
+  const fruits = useFriendBooking()
 
   const handleMutationSuccess = () => {
     handleCloseForm()
