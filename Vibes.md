@@ -15,31 +15,31 @@ Specifically to “discussions about your stress profiles, articulate your learn
 
 |**Will**    | Notes      |
 |------------|------------|
-|Good Vibes 	|            |
-|Bad Vibes  	|            |
-|Challenges 	|            |
-|Requests	   |            |
+|Good Vibes 	|Yes good vibes            |
+|Bad Vibes  	|No bad vibes            |
+|Challenges 	|Talking about potentially conflicting personalities|
+|Requests	   |N/A            |
 
 |**Matt** | Notes      |
 |------------|------------|
-|Good Vibes 	|            |
-|Bad Vibes  	|            |
-|Challenges 	|            |
-|Requests	   |            |
+|Good Vibes 	|Feel pretty good            |
+|Bad Vibes  	|A bit flustered this morning            |
+|Challenges 	|N/A            |
+|Requests	   |If there is an issue, just speak up and talk about it. Let's continue to work towards the end goal.            |
 
 |**Ming** | Notes      |
 |------------|------------|
-|Good Vibes 	|            |
-|Bad Vibes  	|            |
-|Challenges 	|            |
-|Requests	   |            |
+|Good Vibes 	|Feeling really good now that everything is approved. Feels the team worked really well together and documentation is tidy!            |
+|Bad Vibes  	|No bad vibes            |
+|Challenges 	|Trying to fight the fatigue and get my brain to not be so tense.            |
+|Requests	   |Have everyone in the group treat the product as their own, not just mine since I was the one that came up with the idea. Keep the good vibes.|
 
 |**James** | Notes      |
 |------------|------------|
-|Good Vibes 	|            |
-|Bad Vibes  	|            |
-|Challenges 	|            |
-|Requests	   |            |
+|Good Vibes 	|Happy to be approved and super happy with the team that we got!            |
+|Bad Vibes  	|Feeling a bit nervous about the code.            |
+|Challenges 	|The upcoming coding            |
+|Requests	   |Keep the vibes up, everyone keeps communicating and just enjoy the process as it is our final time.            |
 
 
 
