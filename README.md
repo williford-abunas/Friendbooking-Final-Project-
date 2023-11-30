@@ -113,7 +113,7 @@ As a responsible adult striving in a busy society, finding time to connect with 
 
 ---
 ## Wireframes
-Follow the link [wireframes](https://www.figma.com/file/pbvQByWfY2J6lKwcSYqieB/Untitled?type=design&mode=design&t=AJ2tfWhayLhUOKFw-1) to view on the wireframe.
+Follow the link [wireframes](https://www.figma.com/file/4qq5psoJsT7z3iRZe7P5xz/Untitled?type=design&node-id=3%3A104&mode=design&t=xoAq4HTCFFHxxfTZ-1) to view on the wireframe.
 
 ## MVP:
 
