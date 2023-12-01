@@ -2,23 +2,23 @@ import { IfAuthenticated } from './Authenticated'
 import { useAuth0 } from '@auth0/auth0-react'
 import { Link } from 'react-router-dom'
 
-export default function UserSignOut() {
+export default function OwnerSignOut() {
   const { logout } = useAuth0()
 
   const handleSignOut = () => {
     logout()
-    console.log('User signing out.')
+    console.log('Owner signing out.')
   }
 
   return (
     <>
-      <div className="userAuthDiv">
+      <div className="ownerAuthDiv">
         <IfAuthenticated>
-          <button onClick={handleSignOut}>User Sign out</button>
+          <button onClick={handleSignOut}>Owner Sign out</button>
         </IfAuthenticated>
         <IfAuthenticated>
           <button>
-            <Link to={'/user/dashboard'}>User Dashoard</Link>
+            <Link to={'/owner/dashboard'}>Owner Dashoard</Link>
           </button>
         </IfAuthenticated>
       </div>
