@@ -24,7 +24,6 @@ export default function AppointmentForm() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     navigate('/form/confirmation', { state: { formData } })
-    // Add your logic to handle the form submission (e.g., save the appointment).
     console.log('Form submitted with data:', formData)
   }
 
