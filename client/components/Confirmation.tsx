@@ -37,31 +37,3 @@ export default function Confirmation() {
     </>
   )
 }
-
-//   return (
-//     <>
-//       <div className="h1Headers">
-//         <h1>CONFIRMATION PAGE!</h1>
-//       </div>
-//       <div id="confirmationBox">
-//         <p>
-//           <strong>Day:</strong> {formData.day}
-//         </p>
-//         <p>
-//           <strong>Time Slot:</strong> {formData.timeSlot}
-//         </p>
-//         <p>
-//           <strong>Title:</strong> {formData.title}
-//         </p>
-//         <p>
-//           <strong>Description:</strong> {formData.description}
-//         </p>
-//         <p>
-//           <strong>Start Time:</strong> {formData.startTime}
-//         </p>
-//         <p>
-//           <strong>End Time:</strong> {formData.endTime}
-//         </p>
-//       </div>
-//     </>
-//  )
