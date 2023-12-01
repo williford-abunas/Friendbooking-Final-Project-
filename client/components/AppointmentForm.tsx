@@ -1,15 +1,18 @@
 import { useState } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams, useNavigate, useLocation } from 'react-router-dom'
 
 export default function AppointmentForm() {
   const navigate = useNavigate()
+  const location = useLocation()
   const { day, timeSlot } = useParams()
-  const [formData, setFormData] = useState({
-    title: '',
-    description: '',
-    startTime: '',
-    endTime: '',
-  })
+  const [formData, setFormData] = useState(
+    location.state?.formData || {
+      title: '',
+      description: '',
+      startTime: '',
+      endTime: '',
+    }
+  )
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
@@ -20,7 +23,7 @@ export default function AppointmentForm() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    navigate('/form/confirmation')
+    navigate('/form/confirmation', { state: { formData } })
     // Add your logic to handle the form submission (e.g., save the appointment).
     console.log('Form submitted with data:', formData)
   }
