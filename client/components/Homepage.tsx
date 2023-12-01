@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 export default function Homepage() {
   return (
     <>
@@ -5,9 +7,16 @@ export default function Homepage() {
         <h1>WELCOME TO FRIEND-BOOKING-APP!</h1>
       </div>
       <div className="logInBox">
-        Are you an owner or a user?
+        <h2>Log in as:</h2>
         <div>
-          <button>Log In</button>
+          <div id="logInButtons">
+            <Link to={'/owner'}>
+              <button id="ownerLogInButton">Owner</button>
+            </Link>
+            <Link to={'/user'}>
+              <button id="userLogInButton">User</button>
+            </Link>
+          </div>
         </div>
       </div>
     </>

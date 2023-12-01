@@ -1,12 +1,12 @@
 import { Outlet } from 'react-router-dom'
 import Footer from './Footer.tsx'
-import Nav from './Nav.tsx'
+import Header from './Header.tsx'
 
 export default function AppLayout() {
   return (
     <>
       <main>
-        <Nav />
+        <Header />
         <Outlet />
         <Footer />
       </main>

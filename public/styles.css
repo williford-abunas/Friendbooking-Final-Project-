@@ -26,12 +26,6 @@ p {
   border: 1px solid #ddd;
 }
 
-nav {
-  background-color: #15fd40;
-  padding: 30px;
-  margin: -8px;
-}
-
 footer {
   background-color: #15fd40;
   padding: 30px;
@@ -50,6 +44,16 @@ button {
   cursor: pointer;
 }
 
+/* NAV BAR */
+
+nav {
+  background-color: #15fd40;
+  padding: 30px;
+  margin: -8px;
+  display: flex;
+  flex-direction: row;
+}
+
 /* HOMEPAGE */
 .h1Headers {
   margin: 100px;
@@ -57,16 +61,28 @@ button {
 
 .logInBox {
   background-color: #15fd40;
-  padding: 40px;
+  padding: 20px 70px 40px 70px;
   font-size: 20px;
   font-weight: bolder;
   width: max-content;
   margin: 0 auto;
 }
 
-.logInBox button {
+.logInBox h2 {
+  display: flex;
+  align-items: flex-start;
+}
+
+#logInButtons button {
   margin-top: 20px;
   padding: 10px 30px;
+  font-size: 20px;
+  font-weight: bolder;
+  max-width: fit-content;
+}
+
+#ownerLogInButton {
+  margin-right: 50px;
 }
 
 /* APPOINTMENT FORM */
