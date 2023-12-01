@@ -12,9 +12,9 @@ export default function UserSignIn() {
 
   return (
     <>
-      <div className="userAuthDiv">
+      <div className="ownerAuthDiv">
         <IfNotAuthenticated>
-          <button onClick={handleSignIn}>User Sign in</button>
+          <button onClick={handleSignIn}>Owner Sign in</button>
         </IfNotAuthenticated>
       </div>
     </>

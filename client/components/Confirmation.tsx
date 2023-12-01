@@ -5,7 +5,7 @@ export default function Confirmation() {
   const location = useLocation()
   const formData = location.state?.formData
 
-  const handleReturnClick = (e) => {
+  const handleReturnClick = (e: { preventDefault: () => void }) => {
     e.preventDefault()
     navigate('/user')
     console.log('Form submitted with data:')
@@ -21,17 +21,17 @@ export default function Confirmation() {
   return (
     <>
       <div className="confirmation-container">
+        <h1 className="confirmation-title">
+          SUCCESS! Your friend wants to catchup!
+        </h1>
         <ul className="confirmation-list">
-          <h1 className="confirmation-title">
-            SUCCESS! Your friend wants to catchup!
-          </h1>
           <li>Title: {formData.title}</li>
           <li>Description: {formData.description}</li>
           <li>Start Time: {formData.startTime}</li>
           <li>End Time: {formData.endTime}</li>
         </ul>
         <button className="calendar-return" onClick={handleReturnClick}>
-          Return to Owners calendar
+          Return to Owner's Calendar
         </button>
       </div>
     </>
