@@ -169,3 +169,31 @@ button {
   padding-bottom: 10px;
   border-radius: 3px;
 }
+
+/* CONFIRMATION PAGE */
+.confirmation-container {
+  width: 600px;
+  margin: 0 auto;
+  margin-top: 10rem;
+  padding: 10px;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  background-color: #15fd40;
+  border: 1px solid #ddd;
+}
+
+.confirmation-title {
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.confirmation-list {
+  list-style-type: none;
+  text-align: left;
+  font-size: 1.1rem;
+}
+
+.calendar-return {
+  padding: 1rem;
+  font-size: 1rem;
+}
