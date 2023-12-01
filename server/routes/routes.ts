@@ -14,6 +14,18 @@ router.get('/', async (req, res): Promise<void> => {
   }
 })
 
+//GET api/v1/friendbooking
+router.get('/:id', async (req, res): Promise<void> => {
+  try {
+    const id = Number(req.params.id)
+    const singleUser = await db.getUserByIdDb(id)
+    res.json(singleUser)
+  } catch (error) {
+    console.error(error)
+    res.status(500).json('Error getting user by ID')
+  }
+})
+
 //POST api/v1/friendbooking
 router.post('/', async (req, res): Promise<void> => {
   try {
