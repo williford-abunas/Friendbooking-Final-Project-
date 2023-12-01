@@ -1,6 +1,5 @@
 import express from 'express'
 import * as db from '../db/db.ts'
-import { User } from '@auth0/auth0-react'
 
 const router = express.Router()
 
@@ -12,18 +11,6 @@ router.get('/', async (req, res): Promise<void> => {
   } catch (error) {
     console.error(error)
     res.status(500).json('Error getting user')
-  }
-})
-
-//GET api/v1/friendbooking
-router.get('/:id', async (req, res): Promise<void> => {
-  try {
-    const id = Number(req.params.id)
-    const singleUser = await db.getUserByIdDb(id)
-    res.json(singleUser)
-  } catch (error) {
-    console.error(error)
-    res.status(500).json('Error getting user by ID')
   }
 })
 
@@ -39,7 +26,7 @@ router.post('/', async (req, res): Promise<void> => {
   }
 })
 
-//POST api/v1/friendbooking/:userId/appointment
+// POST api/v1/friendbooking/:userId/appointment
 router.post('/:userId/appointment', async (req, res): Promise<void> => {
   try {
     const appointment = req.body

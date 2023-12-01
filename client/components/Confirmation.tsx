@@ -25,10 +25,18 @@ export default function Confirmation() {
           SUCCESS! Your friend wants to catchup!
         </h1>
         <ul className="confirmation-list">
-          <li>Title: {formData.title}</li>
-          <li>Description: {formData.description}</li>
-          <li>Start Time: {formData.startTime}</li>
-          <li>End Time: {formData.endTime}</li>
+          <li>
+            <strong>Title:</strong> {formData.title}
+          </li>
+          <li>
+            <strong>Description:</strong> {formData.description}
+          </li>
+          <li>
+            <strong>Start Time:</strong> {formData.startTime}
+          </li>
+          <li>
+            <strong>End Time:</strong> {formData.endTime}
+          </li>
         </ul>
         <button className="calendar-return" onClick={handleReturnClick}>
           Return to Owner's Calendar
