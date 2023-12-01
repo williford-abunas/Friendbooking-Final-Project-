@@ -1,15 +1,24 @@
 /* styles.css */
 
 /* MAIN */
+html {
+  background-image: url('./img/wc1801933-wallpaper-nature-full-size-desktop-2017.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-color: rgba(255, 255, 255, 0.5);
+  height: 100%;
+}
+
 body {
   font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
   text-align: center;
   color: #333;
 }
 
 h1 {
-  color: #333;
+  color: #fff;
+  font-size: 70px;
 }
 
 p {
@@ -44,12 +53,16 @@ button {
   cursor: pointer;
 }
 
-/* NAV BAR */
-
-nav {
+/* Header  */
+header {
   background-color: #15fd40;
   padding: 30px;
   margin: -8px;
+}
+
+/* NAV BAR */
+
+nav {
   display: flex;
   flex-direction: row;
 }
