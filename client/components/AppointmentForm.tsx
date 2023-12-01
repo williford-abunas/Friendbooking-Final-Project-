@@ -67,9 +67,9 @@ export default function AppointmentForm() {
               <strong>Title:</strong>
             </label>
             <input
-              type="text"
               id="title"
               name="title"
+              type="text"
               value={formData.title}
               onChange={handleChange}
               required
@@ -92,6 +92,7 @@ export default function AppointmentForm() {
             </label>
             <input
               name="startTime"
+              type="datetime-local"
               value={formData.startTime}
               onChange={handleChange}
               required
@@ -101,8 +102,9 @@ export default function AppointmentForm() {
               End Time:
             </label>
             <input
-              name="endTime"
               value={formData.endTime}
+              name="endTime"
+              type="datetime-local"
               onChange={handleChange}
               required
             />
