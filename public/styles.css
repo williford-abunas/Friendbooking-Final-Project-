@@ -321,4 +321,20 @@ nav {
     width: 100%;
     display: flex;
   }
+
+  .confirmation-container {
+    width: 80%;
+  }
+
+  .confirmation-title {
+    font-size: 1.3rem;
+  }
+
+  .confirmation-list {
+    font-size: 1rem;
+  }
+
+  .calendar-return {
+    font-size: 0.8rem;
+  }
 }
