@@ -1,7 +1,7 @@
 import { useAuth0 } from '@auth0/auth0-react'
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import { getISOWeek, addWeeks } from 'date-fns'
+import WeekPicker from './WeekPicker'
 
 const DaysOfWeek = [
   'Monday',
@@ -15,9 +15,6 @@ const DaysOfWeek = [
 
 export default function Users() {
   const { isAuthenticated, loginWithRedirect, isLoading } = useAuth0()
-  const [selectedWeek, setSelectedWeek] = useState<number>(
-    getISOWeek(new Date())
-  )
   const { user } = useAuth0()
 
   const [selectedDay, setSelectedDay] = useState<string | null>(null)
@@ -28,10 +25,6 @@ export default function Users() {
       loginWithRedirect()
     }
   }, [isLoading, isAuthenticated, loginWithRedirect])
-
-  const handleWeekChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedWeek(parseInt(event.target.value, 10))
-  }
 
   const handleDayClick = (day: string) => {
     setSelectedDay((prevDay) => (prevDay === day ? null : day))
@@ -60,20 +53,14 @@ export default function Users() {
       <div className="h1Headers">
         <h1>OWNER WEEKLY CALENDAR!</h1>
       </div>
-      <div>{user && <p>Signed in as: {user?.given_name}</p>}</div>
-      <div>
-        <label htmlFor="weekSelector">Select Week:</label>
-        <select
-          id="weekSelector"
-          onChange={handleWeekChange}
-          value={selectedWeek}
-        >
-          {/* You can generate the options dynamically based on your requirements */}
-          <option value={getISOWeek(new Date())}>Current Week</option>
-          <option value={getISOWeek(addWeeks(new Date(), 1))}>Next Week</option>
-          {/* Add more options as needed */}
-        </select>
+      <div className="userSignInDetail">
+        {user && (
+          <p>
+            <b>Signed in as:</b> {user?.given_name}
+          </p>
+        )}
       </div>
+      <WeekPicker />
       {DaysOfWeek.map((day, index) => (
         <div id="dayContainer" key={index}>
           <button id="userViewDays" onClick={() => handleDayClick(day)}>

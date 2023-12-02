@@ -66,6 +66,11 @@ export default function AppointmentForm() {
     }
   }
 
+  const handleReturnClick = (e: { preventDefault: () => void }) => {
+    e.preventDefault()
+    navigate('/user')
+  }
+
   return (
     <>
       <div className="h1Headers">
@@ -124,6 +129,9 @@ export default function AppointmentForm() {
           <button type="submit">Submit Appointment</button>
         </form>
       </div>
+      <button className="calendar-return" onClick={handleReturnClick}>
+        Return to Owner Calendar
+      </button>
     </>
   )
 }

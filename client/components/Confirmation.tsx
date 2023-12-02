@@ -40,7 +40,7 @@ export default function Confirmation() {
           </li>
         </ul>
         <button className="calendar-return" onClick={handleReturnClick}>
-          Return to Owner's Calendar
+          Return to Owner Calendar
         </button>
       </div>
     </>
