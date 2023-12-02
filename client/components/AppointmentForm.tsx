@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { useParams, useNavigate, useLocation } from 'react-router-dom'
+import { TimePicker } from '@mui/x-date-pickers'
+import dayjs from 'dayjs'
 
 export default function AppointmentForm() {
   const navigate = useNavigate()
@@ -9,20 +11,37 @@ export default function AppointmentForm() {
     location.state?.formData || {
       title: '',
       description: '',
-      startTime: '',
-      endTime: '',
     }
   )
+  const [selectedStartTime, setSelectedStartTime] = useState(null)
+  const [selectedEndTime, setSelectedEndTime] = useState(null)
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleTimeChange = (time, type) => {
+    // type can be 'start' or 'end'
+    const timeValue = dayjs(time) // Convert to Dayjs object
+    if (type === 'start') {
+      setSelectedStartTime(timeValue.isValid() ? timeValue : null)
+    } else {
+      setSelectedEndTime(timeValue.isValid() ? timeValue : null)
+    }
+  }
+
+  const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     })
   }
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
+
+    // Include selected start and end times in the request body
+    const requestBody = {
+      ...formData,
+      startTime: selectedStartTime ? selectedStartTime.format() : null,
+      endTime: selectedEndTime ? selectedEndTime.format() : null,
+    }
 
     try {
       const response = await fetch(
@@ -32,13 +51,13 @@ export default function AppointmentForm() {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify(formData),
+          body: JSON.stringify(requestBody),
         }
       )
 
       if (response.ok) {
-        navigate('/form/confirmation', { state: { formData } })
-        console.log(formData, 'Data passing correctly')
+        navigate('/form/confirmation', { state: { formData: requestBody } })
+        console.log(requestBody, 'Data passing correctly')
       } else {
         console.error('Failed to submit form data:', response.statusText)
       }
@@ -90,23 +109,16 @@ export default function AppointmentForm() {
             <label id="startTime" htmlFor="startTime">
               Start Time:
             </label>
-            <input
-              name="startTime"
-              type="datetime-local"
-              value={formData.startTime}
-              onChange={handleChange}
-              required
+            <TimePicker
+              value={selectedStartTime}
+              onChange={(time) => handleTimeChange(time, 'start')}
             />
-
             <label id="endTime" htmlFor="endTime">
               End Time:
             </label>
-            <input
-              value={formData.endTime}
-              name="endTime"
-              type="datetime-local"
-              onChange={handleChange}
-              required
+            <TimePicker
+              value={selectedEndTime}
+              onChange={(time) => handleTimeChange(time, 'end')}
             />
           </div>
           <button type="submit">Submit Appointment</button>
