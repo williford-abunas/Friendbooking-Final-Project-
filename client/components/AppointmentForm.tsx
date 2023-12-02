@@ -21,10 +21,30 @@ export default function AppointmentForm() {
     })
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    navigate('/form/confirmation', { state: { formData } })
-    console.log('Form submitted with data:', formData)
+
+    try {
+      const response = await fetch(
+        '/api/v1/friendbooking/:userId/appointment',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        }
+      )
+
+      if (response.ok) {
+        navigate('/form/confirmation', { state: { formData } })
+        console.log(formData, 'Data passing correctly')
+      } else {
+        console.error('Failed to submit form data:', response.statusText)
+      }
+    } catch (error) {
+      console.error('Error submitting form data:', error)
+    }
   }
 
   return (
@@ -47,9 +67,9 @@ export default function AppointmentForm() {
               <strong>Title:</strong>
             </label>
             <input
-              type="text"
               id="title"
               name="title"
+              type="text"
               value={formData.title}
               onChange={handleChange}
               required
@@ -72,6 +92,7 @@ export default function AppointmentForm() {
             </label>
             <input
               name="startTime"
+              type="datetime-local"
               value={formData.startTime}
               onChange={handleChange}
               required
@@ -81,8 +102,9 @@ export default function AppointmentForm() {
               End Time:
             </label>
             <input
-              name="endTime"
               value={formData.endTime}
+              name="endTime"
+              type="datetime-local"
               onChange={handleChange}
               required
             />
