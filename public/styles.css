@@ -2,7 +2,12 @@
 
 /* MAIN */
 html {
-  background-image: url('./img/background.png');
+  background-image: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.2) 0%,
+      rgba(0, 0, 0, 0.6) 50%
+    ),
+    url('./img/background.png');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -18,6 +23,7 @@ body {
 
 h1 {
   color: #fff;
+
   font-size: 70px;
   text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black,
     2px 2px 0 black;
@@ -57,6 +63,7 @@ button:hover {
 
 button {
   background-color: lightgray;
+  padding: 0.5rem;
   cursor: pointer;
 }
 
@@ -319,3 +326,101 @@ nav {
   text-shadow: -2px -2px 0 rgb(255, 255, 255), 2px -2px 0 rgb(255, 255, 255),
     -2px 2px 0 rgb(255, 255, 255), 2px 2px 0 rgb(255, 255, 255);
 }
+
+/* RESPONSIVENESS SECTION */
+@media screen and (max-width: 600px) {
+  h1 {
+    font-size: 2.7rem;
+  }
+
+  .styled-box {
+    width: 90%;
+  }
+
+  footer {
+    padding: 30px;
+    margin-top: 95%;
+  }
+
+  header {
+    padding: 15px;
+    height: auto;
+  }
+
+  nav {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  #logInButtons button {
+    display: flex;
+    margin: auto auto;
+    margin-top: 1rem;
+    font-size: 1rem;
+  }
+
+  #ownerLogInButton {
+    width: 105px;
+  }
+
+  .h1Headers {
+    margin: 20px;
+  }
+
+  .logInBox {
+    padding: 4rem;
+    font-size: 1.5rem;
+  }
+
+  #appointmentBox {
+    padding: 4rem;
+    width: 50%;
+    border: black solid 3px;
+  }
+
+  #titleDescription,
+  #dayTime,
+  #startEnd {
+    width: 100%;
+  }
+
+  #titleDescription input,
+  #titleDescription textarea,
+  #startEnd input {
+    width: 100%;
+  }
+
+  .appointmentForm button {
+    font-size: 14px;
+  }
+
+  #dayContainer {
+    margin: 0 auto;
+  }
+
+  #userViewDays {
+    width: 70%;
+  }
+
+  #timeSlotButton {
+    width: 100%;
+    display: flex;
+  }
+
+  .confirmation-container {
+    width: 80%;
+  }
+
+  .confirmation-title {
+    font-size: 1.3rem;
+  }
+
+  .confirmation-list {
+    font-size: 1rem;
+  }
+
+  .calendar-return {
+    font-size: 0.8rem;
+  }
+
+
