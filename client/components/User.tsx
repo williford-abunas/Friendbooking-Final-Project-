@@ -1,7 +1,6 @@
 import { useAuth0 } from '@auth0/auth0-react'
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import { getISOWeek, addWeeks } from 'date-fns'
 import WeekPicker from './WeekPicker'
 
 const DaysOfWeek = [

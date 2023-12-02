@@ -14,7 +14,7 @@ export default function UserDashboard() {
         <h1>THIS IS USER DASHBOARD!</h1>
       </div>
       <button className="calendar-return" onClick={handleReturnClick}>
-        Return to Owner's Calendar
+        Return to Owner Calendar
       </button>
     </>
   )
