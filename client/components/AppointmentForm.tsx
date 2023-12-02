@@ -39,8 +39,8 @@ export default function AppointmentForm() {
     // Include selected start and end times in the request body
     const requestBody = {
       ...formData,
-      startTime: selectedStartTime ? selectedStartTime.format() : null,
-      endTime: selectedEndTime ? selectedEndTime.format() : null,
+      startTime: selectedStartTime ? selectedStartTime.format('HH:mm') : null,
+      endTime: selectedEndTime ? selectedEndTime.format('HH:mm') : null,
     }
 
     try {

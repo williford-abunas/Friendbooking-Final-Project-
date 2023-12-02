@@ -33,6 +33,7 @@ export default function Confirmation() {
           </li>
           <li>
             <strong>Start Time:</strong> {formData.startTime}
+            {console.log(formData.startTime)}
           </li>
           <li>
             <strong>End Time:</strong> {formData.endTime}
