@@ -23,7 +23,10 @@ body {
 
 h1 {
   color: #fff;
-  font-size: 4rem;
+
+  font-size: 70px;
+  text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black,
+    2px 2px 0 black;
 }
 
 p {
@@ -67,17 +70,17 @@ button {
 /* Header  */
 header {
   background-color: #15fd40;
-  padding: 30px;
-  height: 60px;
   margin: -8px;
   display: flex;
+  padding: 15px;
+  height: 130px;
 }
 
 /* NAV BAR */
 
 nav {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-self: center;
   margin: 0 auto;
 }
@@ -121,6 +124,7 @@ nav {
   width: fit-content;
   margin: 0 auto;
   border: black solid 3px;
+  margin-bottom: 80px;
 }
 
 #dayTime {
@@ -214,6 +218,29 @@ nav {
   border-radius: 3px;
 }
 
+.userSignInDetail p {
+  font-size: 30px;
+  color: #fff;
+  background-color: aquamarine;
+  width: fit-content;
+  margin: 0 auto;
+  padding: 15px 30px;
+  border-radius: 10px;
+  text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black,
+    1px 1px 0 black;
+}
+
+/* USER SIGN OUT PAGE */
+
+.userAuthDiv {
+  display: flex;
+  flex-direction: column;
+}
+
+.userAuthDiv button {
+  margin-top: 15px;
+}
+
 /* CONFIRMATION PAGE */
 .confirmation-container {
   width: 600px;
@@ -240,6 +267,64 @@ nav {
 .calendar-return {
   padding: 1rem;
   font-size: 1rem;
+}
+
+/* Week Picker Component  */
+
+.rs-picker-date-menu .rs-calendar-table-cell-week-number {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.rs-picker-date-menu
+  .rs-calendar-table-row:not(.rs-calendar-table-header-row):hover
+  .rs-calendar-table-cell-content {
+  background-color: rgba(204, 233, 255, 0.5);
+  background-color: rgb(from #cce9ff r g b/50%);
+  background-color: var(--rs-listbox-option-hover-bg);
+  color: #1675e0;
+  color: var(--rs-listbox-option-hover-text);
+}
+
+.rs-picker-date-menu
+  .rs-calendar-table-row:not(.rs-calendar-table-header-row):has(.rs-calendar-table-cell-selected)
+  .rs-calendar-table-cell-content {
+  background-color: #3498ff;
+  background-color: var(--rs-bg-active);
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  color: #fff;
+  color: var(--rs-calendar-date-selected-text);
+}
+
+.rs-picker-toggle-wrapper {
+  width: 300px;
+  height: auto;
+  margin-bottom: 30px;
+}
+
+.weekPicker .weekInfos {
+  margin-bottom: 20px;
+}
+
+.weekPicker .weekInfos div {
+  margin-bottom: 20px;
+}
+
+.weekPicker .weekInfos .dateTitle {
+  font-size: 40px;
+  color: #fff;
+  text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black,
+    2px 2px 0 black;
+}
+
+.weekPicker .weekInfos .dateValue {
+  font-size: 30px;
+  color: black;
+  text-shadow: -2px -2px 0 rgb(255, 255, 255), 2px -2px 0 rgb(255, 255, 255),
+    -2px 2px 0 rgb(255, 255, 255), 2px 2px 0 rgb(255, 255, 255);
 }
 
 /* RESPONSIVENESS SECTION */
@@ -337,4 +422,5 @@ nav {
   .calendar-return {
     font-size: 0.8rem;
   }
-}
+
+
