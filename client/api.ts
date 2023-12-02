@@ -25,7 +25,7 @@ export async function addUserDb({ username, role }: User) {
 
 // Get all appointments
 export async function getAllAppointmentDb() {
-  const response = await request.get(`${URL}/appointment`)
+  const response = await request.get(`${URL}/user/dashboard`)
   console.log(response + 'Check function four')
   return response.body as Appointment[]
 }

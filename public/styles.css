@@ -327,6 +327,26 @@ nav {
     -2px 2px 0 rgb(255, 255, 255), 2px 2px 0 rgb(255, 255, 255);
 }
 
+/* USER DASHBOARD */
+.user-appointments {
+  color: white;
+  text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black,
+    1px 1px 0 black;
+  text-align: left;
+  width: 50%;
+  margin: auto auto;
+  margin-bottom: 3rem;
+}
+
+.individual-user-appointments {
+  border: 2px solid rgb(0, 0, 0);
+  background-color: aquamarine;
+  list-style: none;
+  margin-top: 1rem;
+  padding: 1rem;
+  font-size: 1.5rem;
+}
+
 /* RESPONSIVENESS SECTION */
 @media screen and (max-width: 600px) {
   h1 {
@@ -421,5 +441,19 @@ nav {
 
   .calendar-return {
     font-size: 0.8rem;
+  }
+
+  .user-appointments {
+    width: 80%;
+    margin-right: 4rem;
+  }
+
+  .individual-user-appointments {
+    font-size: 1rem;
+  }
+
+  .user-dashboard {
+    width: 50%;
+    margin: auto auto;
   }
 }
