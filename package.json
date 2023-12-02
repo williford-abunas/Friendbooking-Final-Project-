@@ -28,6 +28,11 @@
     ]
   },
   "dependencies": {
+
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.14.19",
+
     "@mui/x-date-pickers": "^7.0.0-alpha.2",
     "date-fns": "^2.30.0",
     "dayjs": "^1.11.10",
@@ -37,9 +42,11 @@
     "express-jwt-authz": "^2.4.1",
     "jwks-rsa": "^2.1.5",
     "knex": "^2.5.1",
+
     "moment": "^2.29.4",
     "react-datepicker": "^4.24.0",
     "rsuite": "^5.46.1",
+
     "sqlite3": "^5.1.6"
   },
   "devDependencies": {
