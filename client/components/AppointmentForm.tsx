@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useParams, useNavigate, useLocation } from 'react-router-dom'
 import { TimePicker } from '@mui/x-date-pickers'
-import dayjs from 'dayjs'
+import dayjs, { Dayjs } from 'dayjs'
 
 export default function AppointmentForm() {
   const navigate = useNavigate()
@@ -13,11 +13,10 @@ export default function AppointmentForm() {
       description: '',
     }
   )
-  const [selectedStartTime, setSelectedStartTime] = useState(null)
-  const [selectedEndTime, setSelectedEndTime] = useState(null)
+  const [selectedStartTime, setSelectedStartTime] = useState<Dayjs | null>(null)
+  const [selectedEndTime, setSelectedEndTime] = useState<Dayjs | null>(null)
 
-  const handleTimeChange = (time, type) => {
-    // type can be 'start' or 'end'
+  const handleTimeChange = (time: Date | string, type: 'start' | 'end') => {
     const timeValue = dayjs(time) // Convert to Dayjs object
     if (type === 'start') {
       setSelectedStartTime(timeValue.isValid() ? timeValue : null)

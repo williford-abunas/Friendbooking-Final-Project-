@@ -23,10 +23,16 @@ body {
 
 h1 {
   color: #fff;
-
   font-size: 70px;
   text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black,
     2px 2px 0 black;
+}
+
+h3 {
+  color: #fff;
+  font-size: 1.5em;
+  text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black,
+    1px 1px 0 black;
 }
 
 p {
