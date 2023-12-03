@@ -179,6 +179,10 @@ nav {
   font-weight: bolder;
 }
 
+.dropdownTimeAppointmentInput {
+  background-color: #fff;
+}
+
 /* USER PAGE */
 
 #dayContainer {
@@ -345,6 +349,27 @@ nav {
   margin-top: 1rem;
   padding: 1rem;
   font-size: 1.5rem;
+}
+
+/* OWNER PAGE  */
+#dropdownTimeOwner {
+  display: flex;
+  flex-direction: column;
+  padding: 3em;
+  background-color: #cce9ff;
+  border-radius: 5px;
+}
+
+#dropdownTimeOwner label {
+  font-size: 1.5em;
+  color: rgb(255, 255, 255);
+  text-shadow: -1px -1px 0 rgb(0, 0, 0), 1px -1px 0 rgb(0, 0, 0),
+    -1px 1px 0 rgb(0, 0, 0), 1px 1px 0 rgb(0, 0, 0);
+}
+
+#dropdownTimeOwner .dropdownTimeOwnerInput {
+  margin-bottom: 2em;
+  background-color: #fff;
 }
 
 /* RESPONSIVENESS SECTION */
