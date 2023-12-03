@@ -115,6 +115,7 @@ export default function AppointmentForm() {
               Start Time:
             </label>
             <TimePicker
+              className="dropdownTimeAppointmentInput"
               value={selectedStartTime}
               onChange={(time) => handleTimeChange(time, 'start')}
             />
@@ -122,6 +123,7 @@ export default function AppointmentForm() {
               End Time:
             </label>
             <TimePicker
+              className="dropdownTimeAppointmentInput"
               value={selectedEndTime}
               onChange={(time) => handleTimeChange(time, 'end')}
             />

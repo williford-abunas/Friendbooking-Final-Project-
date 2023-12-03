@@ -1,6 +1,7 @@
 import WeekPicker from './WeekPicker'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { TimePicker } from '@mui/x-date-pickers'
 
 const DaysOfWeek = [
   'Monday',
@@ -20,16 +21,42 @@ export default function Owner() {
   }
 
   function TimeSlotsFormDropdown() {
+    const [selectedStartTime, setSelectedStartTime] = useState(null)
+    const [selectedEndTime, setSelectedEndTime] = useState(null)
+
+    const handleTimeChange = (time, type) => {
+      // type can be 'start' or 'end'
+      const timeValue = dayjs(time) // Convert to Dayjs object
+      if (type === 'start') {
+        setSelectedStartTime(timeValue.isValid() ? timeValue : null)
+      } else {
+        setSelectedEndTime(timeValue.isValid() ? timeValue : null)
+      }
+    }
     return (
       <div>
-        <form>
+        <form id="dropdownTimeOwner">
+          <label id="startTimeOwner" htmlFor="startTime">
+            Start Time:
+          </label>
+          <TimePicker
+            className="dropdownTimeOwnerInput"
+            value={selectedStartTime}
+            onChange={(time) => handleTimeChange(time, 'start')}
+          />
+          <label id="endTimeOwner" htmlFor="endTime">
+            End Time:
+          </label>
+          <TimePicker
+            className="dropdownTimeOwnerInput"
+            value={selectedEndTime}
+            onChange={(time) => handleTimeChange(time, 'end')}
+          />
           <div>
-            <label>Start Time:</label>
-            <input name="startTime" type="datetime-local" />
-            <label>End Time:</label>
-            <input name="endTime" type="datetime-local" />
+            <button type="submit">
+              <Link to={'/owner/dashboard'}>Submit</Link>
+            </button>
           </div>
-          <button type="submit">Submit</button>
         </form>
       </div>
     )
@@ -38,7 +65,7 @@ export default function Owner() {
   return (
     <>
       <div className="h1Headers">
-        <h1>THIS IS OWNER PAGE!</h1>
+        <h1>MY CALENDAR!</h1>
       </div>
       <WeekPicker />
       {DaysOfWeek.map((day, index) => (
