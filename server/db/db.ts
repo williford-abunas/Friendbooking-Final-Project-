@@ -15,7 +15,14 @@ export async function getUserByIdDb(id: number): Promise<User> {
 
 //get all appointments
 export async function getAllAppointmentDb(): Promise<Appointment[]> {
-  return db('appointment').select('*')
+  return db('appointment').select(
+    'id',
+    'title',
+    'description',
+    'appointment_date as appointmentDate',
+    'start_time as startTime',
+    'end_time as endTime'
+  )
 }
 
 //get appointments by user id
@@ -27,6 +34,7 @@ export async function getAppointmentForUserDb(
       'id',
       'title',
       'description',
+      'appointment_date as appointmentDate',
       'start_time as startTime',
       'end_time as endTime'
     )
@@ -45,15 +53,24 @@ export async function addUserDb(user: User): Promise<User> {
 export async function addAppointment(
   appointment: Appointment
 ): Promise<Appointment> {
-  const { title, description, startTime, endTime } = appointment
+  const { title, description, appointmentDate, startTime, endTime } =
+    appointment
   const [result] = await db('appointment')
     .insert({
       title,
       description,
+      appointment_date: appointmentDate,
       start_time: startTime,
       end_time: endTime,
     })
-    .returning(['id', 'title', 'description', 'start_time', 'end_time'])
+    .returning([
+      'id',
+      'title',
+      'description',
+      'appointment_date',
+      'start_time',
+      'end_time',
+    ])
   return result
 }
 
