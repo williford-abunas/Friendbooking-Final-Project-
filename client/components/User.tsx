@@ -2,21 +2,23 @@ import { useAuth0 } from '@auth0/auth0-react'
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import WeekPicker from './WeekPicker'
+import moment from 'moment'
 
-const DaysOfWeek = [
-  'Monday',
-  'Tuesday',
-  'Wednesday',
-  'Thursday',
-  'Friday',
-  'Saturday',
-  'Sunday',
-]
+// const DaysOfWeek = [
+//   'Monday',
+//   'Tuesday',
+//   'Wednesday',
+//   'Thursday',
+//   'Friday',
+//   'Saturday',
+//   'Sunday',
+// ]
 
 export default function Users() {
   const { isAuthenticated, loginWithRedirect, isLoading } = useAuth0()
   const { user } = useAuth0()
 
+  const [selectedWeekData, setSelectedWeekData] = useState(null)
   const [selectedDay, setSelectedDay] = useState<string | null>(null)
 
   useEffect(() => {
@@ -26,6 +28,9 @@ export default function Users() {
     }
   }, [isLoading, isAuthenticated, loginWithRedirect])
 
+  const handleWeekChange = (weekData) => {
+    setSelectedWeekData(weekData)
+  }
   const handleDayClick = (day: string) => {
     setSelectedDay((prevDay) => (prevDay === day ? null : day))
   }
@@ -60,17 +65,26 @@ export default function Users() {
           </p>
         )}
       </div>
-      <WeekPicker />
-      {DaysOfWeek.map((day, index) => (
-        <div id="dayContainer" key={index}>
-          <button id="userViewDays" onClick={() => handleDayClick(day)}>
-            {day}
-          </button>
-          <div id="dropdownTimeSlot">
-            {selectedDay === day && <TimeSlotsDropdown />}
-          </div>
+      <WeekPicker onChange={handleWeekChange} />
+      {selectedWeekData && (
+        <div id="dayContainer">
+          {selectedWeekData.daysofWeek.map((day) => (
+            <>
+              <div key={day.date.toISOString()}>
+                <button
+                  id="userViewDays"
+                  onClick={() => handleDayClick(day.day)}
+                >
+                  {day.day}
+                </button>
+              </div>
+              <div id="dropdownTimeSlot">
+                {selectedDay === day.day && <TimeSlotsDropdown />}
+              </div>
+            </>
+          ))}
         </div>
-      ))}
+      )}
     </>
   )
 }

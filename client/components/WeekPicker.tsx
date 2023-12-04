@@ -1,9 +1,25 @@
+import { useThemeProps } from '@mui/material'
 import moment from 'moment'
 import { useState } from 'react'
 import { DatePicker } from 'rsuite'
 import 'rsuite/dist/rsuite-no-reset.min.css'
 
-export default function WeekPicker() {
+const getDaysOfWeek = (startDate) => {
+  const daysOfWeek = []
+  const currentDay = moment(startDate)
+
+  for (let i = 0; i < 7; i++) {
+    daysOfWeek.push({
+      date: currentDay.toDate(),
+      day: currentDay.format('dddd'),
+    })
+    currentDay.add(1, 'days')
+  }
+
+  return daysOfWeek
+}
+
+export default function WeekPicker({ onWeekChange }) {
   const [objWeek, setObjWeek] = useState({
     date: new Date(),
     dateFrom: new Date(),
@@ -11,7 +27,7 @@ export default function WeekPicker() {
     weekNumber: moment().isoWeek(),
   })
 
-  const onChange = (date: Date) => {
+  const onChange = (date) => {
     const weekNumber = moment(date).isoWeek()
     const dateFrom = moment(date).startOf('isoWeek').toDate()
     const dateTo = moment(date).endOf('isoWeek').toDate()
@@ -22,14 +38,25 @@ export default function WeekPicker() {
       dateTo,
       weekNumber,
     })
+
+    onWeekChange({
+      daysOfWeek: getDaysOfWeek(date),
+      selecedWeek: {
+        weekNumber,
+        dateFrom,
+        dateTo,
+      },
+    })
   }
 
-  const renderValue = (date: Date) => {
+  const renderValue = (date) => {
     const weekNumber = moment(date).isoWeek()
     const year = moment(date).year()
 
     return `Week: ${weekNumber}, Year: ${year}`
   }
+
+  const daysOfWeek = getDaysOfWeek(objWeek.date)
 
   return (
     <>
@@ -41,7 +68,10 @@ export default function WeekPicker() {
           isoWeek
           showWeekNumbers
           value={objWeek.date}
-          onChange={onChange}
+          onChange={(date) => {
+            onChange(date)
+            props.onChange(getDaysOfWeek(date))
+          }}
           renderValue={renderValue}
         />
         <div className="weekInfos">
@@ -64,6 +94,18 @@ export default function WeekPicker() {
               <b>End of Week : </b>
             </span>
             <span className="dateValue">{objWeek.dateTo?.toDateString()}</span>
+          </div>
+          <div>
+            <span className="dateTitle">
+              <b>Days of Week:</b>
+            </span>
+            <div id="dayContainer">
+              {daysOfWeek.map((day) => (
+                <button id="userViewDays" key={day.date.toISOString()}>
+                  {day.day}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       </div>
