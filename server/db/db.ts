@@ -15,7 +15,14 @@ export async function getUserByIdDb(id: number): Promise<User> {
 
 //get all appointments
 export async function getAllAppointmentDb(): Promise<Appointment[]> {
-  return db('appointment').select('*')
+  return db('appointment').select(
+    'id',
+    'title',
+    'description',
+    'appointment_date as appointmentDate',
+    'start_time as startTime',
+    'end_time as endTime'
+  )
 }
 
 //get appointments by user id

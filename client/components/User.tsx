@@ -2,6 +2,7 @@ import { useAuth0 } from '@auth0/auth0-react'
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import WeekPicker from './WeekPicker'
+import moment from 'moment'
 
 const DaysOfWeek = [
   'Monday',
@@ -18,6 +19,17 @@ export default function Users() {
   const { user } = useAuth0()
 
   const [selectedDay, setSelectedDay] = useState<string | null>(null)
+  const [selectedWeek, setSelectedWeek] = useState<{
+    dateFrom: Date
+    dateTo: Date
+  } | null>(null)
+
+  const dynamicDaysOfWeek = selectedWeek
+    ? Array.from({ length: 7 }, (_, i) =>
+        moment(selectedWeek.dateFrom).add(i, 'days').format('dddd')
+      )
+    : DaysOfWeek
+  // const [dynamicDaysOfWeek, setDynamicDaysOfWeek] = useState<string[]>([])
 
   useEffect(() => {
     // Check authentication status and redirect if not authenticated
@@ -26,8 +38,13 @@ export default function Users() {
     }
   }, [isLoading, isAuthenticated, loginWithRedirect])
 
-  const handleDayClick = (day: string) => {
+  const handleDayClick = (day: string, date: Date) => {
     setSelectedDay((prevDay) => (prevDay === day ? null : day))
+  }
+
+  const handleWeekSelect = (week, daysOfWeek) => {
+    setSelectedWeek(week)
+    setDynamicDaysOfWeek(daysOfWeek)
   }
 
   function TimeSlotsDropdown() {
@@ -60,12 +77,26 @@ export default function Users() {
           </p>
         )}
       </div>
-      <WeekPicker />
-      {DaysOfWeek.map((day, index) => (
+      <WeekPicker onSelectWeek={handleWeekSelect} />
+      {dynamicDaysOfWeek.map((day, index) => (
         <div id="dayContainer" key={index}>
-          <button id="userViewDays" onClick={() => handleDayClick(day)}>
-            {day}
-          </button>
+          <Link
+            to={`/form/${day}/${moment(selectedWeek?.dateFrom).format(
+              'YYYY-MM-DD'
+            )}`}
+          >
+            <button
+              id="userViewDays"
+              onClick={() =>
+                handleDayClick(
+                  day,
+                  moment(selectedWeek?.dateFrom).add(index, 'days').toDate()
+                )
+              }
+            >
+              {day}
+            </button>
+          </Link>
           <div id="dropdownTimeSlot">
             {selectedDay === day && <TimeSlotsDropdown />}
           </div>

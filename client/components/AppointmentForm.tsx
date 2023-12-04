@@ -7,6 +7,7 @@ export default function AppointmentForm() {
   const navigate = useNavigate()
   const location = useLocation()
   const { day, timeSlot } = useParams()
+  console.log(day)
   const [formData, setFormData] = useState(
     location.state?.formData || {
       title: '',
@@ -16,7 +17,10 @@ export default function AppointmentForm() {
   const [selectedStartTime, setSelectedStartTime] = useState(null)
   const [selectedEndTime, setSelectedEndTime] = useState(null)
 
-  const handleTimeChange = (time, type) => {
+  const handleTimeChange = (
+    time: string | number | Date | dayjs.Dayjs | null | undefined,
+    type: string
+  ) => {
     // type can be 'start' or 'end'
     const timeValue = dayjs(time) // Convert to Dayjs object
     if (type === 'start') {
@@ -78,6 +82,7 @@ export default function AppointmentForm() {
       </div>
       <div id="appointmentBox">
         <div id="dayTime">
+          <p>PlaceHolder for Appointment Date</p>
           <p>
             <strong>Day:</strong> {day}
           </p>

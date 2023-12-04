@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { DatePicker } from 'rsuite'
 import 'rsuite/dist/rsuite-no-reset.min.css'
 
-export default function WeekPicker() {
+export default function WeekPicker({ onSelectWeek }) {
   const [objWeek, setObjWeek] = useState({
     date: new Date(),
     dateFrom: new Date(),
@@ -11,10 +11,30 @@ export default function WeekPicker() {
     weekNumber: moment().isoWeek(),
   })
 
+  const getDaysOfWeek = (startDate: moment.MomentInput) => {
+    const daysOfWeek = []
+    const currentDay = moment(startDate)
+
+    for (let i = 0; i < 7; i++) {
+      daysOfWeek.push({
+        date: currentDay.toDate(),
+        day: currentDay.format('dddd'),
+      })
+      currentDay.add(1, 'days')
+    }
+
+    return daysOfWeek
+  }
+
   const onChange = (date: Date) => {
     const weekNumber = moment(date).isoWeek()
     const dateFrom = moment(date).startOf('isoWeek').toDate()
     const dateTo = moment(date).endOf('isoWeek').toDate()
+
+    const selectedWeek = {
+      dateFrom,
+      dateTo,
+    }
 
     setObjWeek({
       date,
@@ -22,6 +42,8 @@ export default function WeekPicker() {
       dateTo,
       weekNumber,
     })
+
+    onSelectWeek(selectedWeek, getDaysOfWeek(date))
   }
 
   const renderValue = (date: Date) => {

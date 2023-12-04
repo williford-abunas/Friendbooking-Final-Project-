@@ -1,7 +1,8 @@
 export interface Appointment {
   title: string
-  description?: string
-  startTime: Date
-  endTime: Date
+  description: string
+  appointmentDate: string
+  startTime: string
+  endTime: string
   userId?: number
 }
