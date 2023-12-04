@@ -14,13 +14,27 @@ export default function Users() {
     }
   }, [isLoading, isAuthenticated, loginWithRedirect])
 
+  if (!isAuthenticated || isLoading) {
+    return null
+  }
+
   const handleWeekChange = (selectedWeek: object) => {
     console.log('Selected Week Changed:', selectedWeek)
   }
 
-  if (!isAuthenticated || isLoading) {
-    return null
-  }
+  const renderDayButtons = (daysOfWeek: any[]) => (
+    <div id="dayContainer">
+      {daysOfWeek.map((day) => (
+        <button
+          id="userViewDays"
+          key={day.date.toISOString()}
+          title={day.formattedDate}
+        >
+          {day.day}
+        </button>
+      ))}
+    </div>
+  )
 
   return (
     <>
@@ -34,7 +48,10 @@ export default function Users() {
           </p>
         )}
       </div>
-      <WeekPicker onWeekChange={handleWeekChange} />
+      <WeekPicker
+        onWeekChange={handleWeekChange}
+        renderDayButtons={renderDayButtons}
+      />
     </>
   )
 }

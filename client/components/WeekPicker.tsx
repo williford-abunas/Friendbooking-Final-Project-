@@ -1,23 +1,17 @@
 import moment from 'moment'
 import { useState } from 'react'
 import { DatePicker } from 'rsuite'
+import { getDaysOfWeek } from '../helper'
 
-const getDaysOfWeek = (startDate: moment.MomentInput) => {
-  const daysOfWeek = []
-  const currentDay = moment(startDate)
-
-  for (let i = 0; i < 7; i++) {
-    daysOfWeek.push({
-      date: currentDay.toDate(),
-      day: currentDay.format('dddd'),
-    })
-    currentDay.add(1, 'days')
-  }
-
-  return daysOfWeek
+interface WeekPickerProps {
+  onWeekChange: (selectedWeek: object) => void
+  renderDayButtons: (daysOfWeek: any[]) => React.ReactNode
 }
 
-export default function WeekPicker({ onWeekChange }) {
+export default function WeekPicker({
+  onWeekChange,
+  renderDayButtons,
+}: WeekPickerProps) {
   const [objWeek, setObjWeek] = useState({
     date: new Date(),
     dateFrom: new Date(),
@@ -60,7 +54,6 @@ export default function WeekPicker({ onWeekChange }) {
     <>
       <div className="weekPicker">
         <h1>Pick a Week!</h1>
-
         <DatePicker
           placeholder="Week Picker"
           isoWeek
@@ -70,7 +63,7 @@ export default function WeekPicker({ onWeekChange }) {
             onChange(date as Date)
             onWeekChange({
               daysOfWeek: getDaysOfWeek(date),
-              selecedWeek: {
+              selectedWeek: {
                 weekNumber: moment(date).isoWeek(),
                 dateFrom: moment(date).startOf('isoWeek').toDate(),
                 dateTo: moment(date).endOf('isoWeek').toDate(),
@@ -104,13 +97,7 @@ export default function WeekPicker({ onWeekChange }) {
             <span className="dateTitle">
               <b>Days of Week:</b>
             </span>
-            <div id="dayContainer">
-              {daysOfWeek.map((day) => (
-                <button id="userViewDays" key={day.date.toISOString()}>
-                  {day.day}
-                </button>
-              ))}
-            </div>
+            {renderDayButtons(daysOfWeek)}
           </div>
         </div>
       </div>
