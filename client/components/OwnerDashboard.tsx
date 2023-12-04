@@ -49,7 +49,6 @@ export default function OwnerDashboard() {
       </div>
       <div>
         <ul id="ownerDashboardList">
-
           {timeslot.map((timeslot: Timeslot) => {
             return (
               <li key={timeslot.id}>
@@ -81,14 +80,14 @@ export default function OwnerDashboard() {
                 <div id="ownerDashboardDescription">
                   <div className="ownerDashboardDateBoxDescriptionBlock">
                     <div className="ownerDashboardDescriptionTitle">
-                      I am meeting with:{' '}
+                      Meeting with:{' '}
                     </div>
                     <div className="ownerDashboardDescriptionContent"></div>
                   </div>
 
                   <div className="ownerDashboardDateBoxDescriptionBlock">
                     <div className="ownerDashboardDescriptionTitle">
-                      Title of the Appointment:{' '}
+                      Appointment:{' '}
                     </div>
                     <div className="ownerDashboardDescriptionContent"></div>
                   </div>
@@ -106,7 +105,6 @@ export default function OwnerDashboard() {
               </li>
             )
           })}
-
         </ul>
       </div>
       <button className="calendar-return" onClick={handleReturnClick}>
