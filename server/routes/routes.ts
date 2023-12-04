@@ -42,7 +42,7 @@ router.post('/', async (req, res): Promise<void> => {
 router.post('/:userId/appointment', async (req, res): Promise<void> => {
   try {
     const appointment = req.body
-    const newAppointment = await db.addAppointment(appointment)
+    const newAppointment = await db.addAppointmentDb(appointment)
     res.json(newAppointment)
   } catch (error) {
     console.error(error)
@@ -73,4 +73,43 @@ router.get('/user/dashboard', async (req, res): Promise<void> => {
   }
 })
 
+//GET api/v1/friendbooking/owner/dashboard
+router.get('/owner/dashboard', async (req, res): Promise<void> => {
+  try {
+    const timeslotArray = await db.getAllTimeslotDb()
+    res.json(timeslotArray)
+  } catch (error) {
+    console.error(error)
+    res.status(500).send('Error getting timeslot array')
+  }
+})
+
+//POST api/v1/friendbooking/owner/dashboard
+router.post('/owner/dashboard', async (req, res): Promise<void> => {
+  try {
+    const timeslot = req.body
+    const newTimeslot = await db.addTimeslotDb(timeslot)
+    res.json(newTimeslot)
+  } catch (error) {
+    console.error(error)
+    res.status(500).send('Error adding timeslot')
+  }
+})
+
+//Delete api/v1/friendbooking/owner/dashboard
+router.delete('/owner/dashboard/:id', async (req, res): Promise<void> => {
+  const id = parseInt(req.params.id)
+  if (isNaN(id)) {
+    res.status(400).send('Bad Request: ID must be a number')
+    return
+  }
+
+  try {
+    await db.deleteTimeslotDb(id)
+    res.sendStatus(200)
+  } catch (err) {
+    console.log(err)
+    res.status(500).send('Could not delete timeslot!')
+  }
+})
 export default router

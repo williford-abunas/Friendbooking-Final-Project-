@@ -1,8 +1,8 @@
-import WeekPicker from './WeekPicker'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { TimePicker } from '@mui/x-date-pickers'
 import dayjs, { Dayjs } from 'dayjs'
+import OwnerWeekPicker from './OwnerWeekPicker'
 
 const DaysOfWeek = [
   'Monday',
@@ -71,7 +71,7 @@ export default function Owner() {
       <div className="h1Headers">
         <h1>MY CALENDAR!</h1>
       </div>
-      <WeekPicker />
+      <OwnerWeekPicker />
       {DaysOfWeek.map((day, index) => (
         <div id="dayContainer" key={index}>
           <button id="userViewDays" onClick={() => handleDayClick(day)}>
