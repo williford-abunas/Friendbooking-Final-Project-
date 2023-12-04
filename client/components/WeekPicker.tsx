@@ -1,7 +1,7 @@
 import moment from 'moment'
 import { useState } from 'react'
 import { DatePicker } from 'rsuite'
-import { getDaysOfWeek } from '../helper'
+import { getDaysOfWeek, getAvailableDays } from '../helper'
 
 interface WeekPickerProps {
   onWeekChange: (selectedWeek: object) => void
