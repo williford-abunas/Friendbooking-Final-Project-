@@ -61,6 +61,13 @@ export default function OwnerDashboard() {
                   </div>
 
                   <div className="ownerDashboardDateBoxDateBlock">
+                    <div className=" ownerDashboardDateBoxTitle">Day: </div>
+                    <div className="ownerDashboardDateBoxContent">
+                      {timeslot.day}
+                    </div>
+                  </div>
+
+                  <div className="ownerDashboardDateBoxDateBlock">
                     <div className="ownerDashboardDateBoxTitle">
                       Start Time:{' '}
                     </div>

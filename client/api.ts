@@ -71,12 +71,13 @@ export async function getAllTimeslotApi() {
 //Add Owner timeslot
 export async function addNewTimeslotApi({
   date,
+  day,
   startTime,
   endTime,
 }: Timeslot) {
   await request
     .post(`${URL}/owner/dashboard`)
-    .send({ date, startTime, endTime })
+    .send({ date, day, startTime, endTime })
 }
 
 //Delete Owner Dashboard Timeslot
