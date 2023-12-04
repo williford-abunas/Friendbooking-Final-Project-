@@ -378,6 +378,107 @@ nav {
   background-color: #fff;
 }
 
+/* OWNER DASHBOARD */
+
+#ownerDashboardList li {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  background-color: #cce9ff;
+  margin-bottom: 3em;
+  padding: 2em;
+  max-width: 50em;
+  border-radius: 5px;
+  border: #333 solid 3px;
+}
+
+#ownerDashboardList button {
+  width: fit-content;
+  margin-top: 2em;
+  margin: 0 auto;
+  padding: 0.5em;
+  font-size: 1.5em;
+  color: rgb(255, 255, 255);
+  text-shadow: -1px -1px 0 rgb(0, 0, 0), 1px -1px 0 rgb(0, 0, 0),
+    -1px 1px 0 rgb(0, 0, 0), 1px 1px 0 rgb(0, 0, 0);
+}
+
+#ownerDashboardDateBox {
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+}
+
+#ownerDashboardDateBox .ownerDashboardDateBoxDateBlock {
+  display: flex;
+  flex-direction: row;
+}
+
+.ownerDashboardDateBoxTitle {
+  display: flex;
+  flex-direction: row;
+  max-width: fit-content;
+  padding-top: 0.3em;
+  padding-bottom: 0.3em;
+  padding-left: 0.3em;
+  font-size: 1.3em;
+  color: rgb(255, 255, 255);
+  text-shadow: -1px -1px 0 rgb(0, 0, 0), 1px -1px 0 rgb(0, 0, 0),
+    -1px 1px 0 rgb(0, 0, 0), 1px 1px 0 rgb(0, 0, 0);
+}
+
+.ownerDashboardDateBoxContent {
+  display: flex;
+  flex-direction: row;
+  max-width: fit-content;
+  padding-top: 0.3em;
+  padding-bottom: 0.3em;
+  padding-left: 0.3em;
+  font-size: 1.2em;
+  margin-right: 2em;
+}
+
+#ownerDashboardDescription {
+  background-color: #fff;
+  border-radius: 5px;
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+#ownerDashboardDescription .ownerDashboardDateBoxDescriptionBlock {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 0.5em;
+}
+
+#ownerDashboardDescription .ownerDashboardDescriptionTitle {
+  display: flex;
+  flex-direction: row;
+  width: 15em;
+  padding-top: 0.3em;
+  padding-bottom: 0.3em;
+  padding-left: 0.3em;
+  font-size: 1em;
+  color: rgb(255, 255, 255);
+  text-shadow: -1px -1px 0 rgb(0, 0, 0), 1px -1px 0 rgb(0, 0, 0),
+    -1px 1px 0 rgb(0, 0, 0), 1px 1px 0 rgb(0, 0, 0);
+}
+
+.ownerDashboardDescriptionContent {
+  display: flex;
+  flex-direction: row;
+  padding-top: 0.3em;
+  padding-bottom: 0.3em;
+  padding-left: 0.3em;
+  font-size: 1em;
+  margin-right: 2em;
+}
+
+.ownerDashboardDescriptionContentDescription {
+  text-align: start;
+  max-width: 27em;
+}
+
 /* RESPONSIVENESS SECTION */
 @media screen and (max-width: 600px) {
   h1 {
