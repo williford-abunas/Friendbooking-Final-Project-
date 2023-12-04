@@ -30,14 +30,7 @@ export default function UserDashboard() {
   return (
     <>
       <div className="h1Headers">
-        <h1>User Upcoming Appointments!</h1>
-      </div>
-      <div className="userSignInDetail user-dashboard">
-        {user && (
-          <p>
-            <b className="word-styling">Signed in as:</b> {user?.given_name}
-          </p>
-        )}
+        {user && <h1>{user?.given_name} Upcoming Appointments!</h1>}
       </div>
       <div className="user-appointments">
         <ul>
@@ -47,15 +40,12 @@ export default function UserDashboard() {
                 className="individual-user-appointments"
                 key={appointment.userId}
               >
-                <b className="word-styling">Title:</b> {appointment.title}{' '}
+                Title: {appointment.title} <br />
+                Description: {appointment.description} <br />
+                Appointment Date: {appointment.appointmentDate}
                 <br />
-                <b className="word-styling">Description:</b>{' '}
-                {appointment.description} <br />
-                <b className="word-styling">Appointment Date:</b> Monday 04
-                December 2023 <br />
-                <b className="word-styling">Start Time:</b>{' '}
-                {appointment.startTime} <br />
-                <b className="word-styling">End Time:</b> {appointment.endTime}
+                Start Time: {appointment.startTime} <br />
+                End Time: {appointment.endTime}
               </li>
             )
           })}
