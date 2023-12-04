@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useParams, useNavigate, useLocation } from 'react-router-dom'
 import { TimePicker } from '@mui/x-date-pickers'
-import dayjs from 'dayjs'
+import dayjs, { Dayjs } from 'dayjs'
 
 export default function AppointmentForm() {
   const navigate = useNavigate()
@@ -13,11 +13,10 @@ export default function AppointmentForm() {
       description: '',
     }
   )
-  const [selectedStartTime, setSelectedStartTime] = useState(null)
-  const [selectedEndTime, setSelectedEndTime] = useState(null)
+  const [selectedStartTime, setSelectedStartTime] = useState<Dayjs | null>(null)
+  const [selectedEndTime, setSelectedEndTime] = useState<Dayjs | null>(null)
 
-  const handleTimeChange = (time, type) => {
-    // type can be 'start' or 'end'
+  const handleTimeChange = (time: Date | string, type: 'start' | 'end') => {
     const timeValue = dayjs(time) // Convert to Dayjs object
     if (type === 'start') {
       setSelectedStartTime(timeValue.isValid() ? timeValue : null)
@@ -26,14 +25,14 @@ export default function AppointmentForm() {
     }
   }
 
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     })
   }
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault()
 
     // Include selected start and end times in the request body
@@ -115,15 +114,17 @@ export default function AppointmentForm() {
               Start Time:
             </label>
             <TimePicker
+              className="dropdownTimeAppointmentInput"
               value={selectedStartTime}
-              onChange={(time) => handleTimeChange(time, 'start')}
+              onChange={(time: any) => handleTimeChange(time, 'start')}
             />
             <label id="endTime" htmlFor="endTime">
               End Time:
             </label>
             <TimePicker
+              className="dropdownTimeAppointmentInput"
               value={selectedEndTime}
-              onChange={(time) => handleTimeChange(time, 'end')}
+              onChange={(time: any) => handleTimeChange(time, 'end')}
             />
           </div>
           <button type="submit">Submit Appointment</button>

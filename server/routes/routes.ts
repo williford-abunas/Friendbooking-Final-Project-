@@ -63,7 +63,7 @@ router.get('/:userId/appointment', async (req, res): Promise<void> => {
 })
 
 //GET api/v1/friendbooking/appointment
-router.get('/appointment', async (req, res): Promise<void> => {
+router.get('/user/dashboard', async (req, res): Promise<void> => {
   try {
     const appointmentArray = await db.getAllAppointmentDb()
     res.json(appointmentArray)

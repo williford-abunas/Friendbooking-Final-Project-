@@ -1,6 +1,8 @@
 import WeekPicker from './WeekPicker'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { TimePicker } from '@mui/x-date-pickers'
+import dayjs, { Dayjs } from 'dayjs'
 
 const DaysOfWeek = [
   'Monday',
@@ -20,16 +22,45 @@ export default function Owner() {
   }
 
   function TimeSlotsFormDropdown() {
+    const [selectedStartTime, setSelectedStartTime] = useState<Dayjs | null>(
+      null
+    )
+    const [selectedEndTime, setSelectedEndTime] = useState<Dayjs | null>(null)
+
+    const handleTimeChange = (time: Date | string, type: 'start' | 'end') => {
+      const timeValue = dayjs(time) // Convert to Dayjs object
+      if (type === 'start') {
+        setSelectedStartTime(timeValue.isValid() ? timeValue : null)
+      } else {
+        setSelectedEndTime(timeValue.isValid() ? timeValue : null)
+      }
+    }
+
     return (
       <div>
-        <form>
+        <form id="dropdownTimeOwner">
+          <h3>Create a free timeslot!</h3>
+          <label id="startTimeOwner" htmlFor="startTime">
+            Start Time:
+          </label>
+          <TimePicker
+            className="dropdownTimeOwnerInput"
+            value={selectedStartTime || null}
+            onChange={(time: any) => handleTimeChange(time, 'start')}
+          />
+          <label id="endTimeOwner" htmlFor="endTime">
+            End Time:
+          </label>
+          <TimePicker
+            className="dropdownTimeOwnerInput"
+            value={selectedEndTime || null}
+            onChange={(time: any) => handleTimeChange(time, 'start')}
+          />
           <div>
-            <label>Start Time:</label>
-            <input name="startTime" type="datetime-local" />
-            <label>End Time:</label>
-            <input name="endTime" type="datetime-local" />
+            <button type="submit">
+              <Link to={'/owner/dashboard'}>Submit</Link>
+            </button>
           </div>
-          <button type="submit">Submit</button>
         </form>
       </div>
     )
@@ -38,7 +69,7 @@ export default function Owner() {
   return (
     <>
       <div className="h1Headers">
-        <h1>THIS IS OWNER PAGE!</h1>
+        <h1>MY CALENDAR!</h1>
       </div>
       <WeekPicker />
       {DaysOfWeek.map((day, index) => (

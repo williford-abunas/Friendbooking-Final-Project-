@@ -22,7 +22,7 @@ export default function UserSignOut() {
         <IfAuthenticated>
           {!isUserDashboardRoute && (
             <button>
-              <Link to={'/user/dashboard'}>User Dashoard</Link>
+              <Link to={'/user/dashboard'}>User Dashboard</Link>
             </button>
           )}
         </IfAuthenticated>
