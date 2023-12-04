@@ -42,7 +42,8 @@ export default function UserDashboard() {
               >
                 Title: {appointment.title} <br />
                 Description: {appointment.description} <br />
-                Appointment Date: {appointment.appointmentDate}<br />
+                Appointment Date: {appointment.appointmentDate}
+                <br />
                 Start Time: {appointment.startTime} <br />
                 End Time: {appointment.endTime}
               </li>
