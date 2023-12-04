@@ -16,17 +16,23 @@ export default function OwnerDashboard() {
           <li>
             <div id="ownerDashboardDateBox">
               <div className="ownerDashboardDateBoxDateBlock">
-                <div className=" ownerDashboardDateBoxTitle">Date: </div>
+                <div className=" ownerDashboardDateBoxTitle ">
+                  <b className="word-styling">Date:</b>{' '}
+                </div>
                 <div className="ownerDashboardDateBoxContent">14/11/2023</div>
               </div>
 
               <div className="ownerDashboardDateBoxDateBlock">
-                <div className="ownerDashboardDateBoxTitle">Start Time: </div>
+                <div className="ownerDashboardDateBoxTitle">
+                  <b className="word-styling">Start Time:</b>{' '}
+                </div>
                 <div className="ownerDashboardDateBoxContent">12.00pm</div>
               </div>
 
               <div className="ownerDashboardDateBoxDateBlock">
-                <div className="ownerDashboardDateBoxTitle">End Time: </div>
+                <div className="ownerDashboardDateBoxTitle">
+                  <b className="word-styling">End Time:</b>{' '}
+                </div>
                 <div className="ownerDashboardDateBoxContent">13.00pm</div>
               </div>
             </div>
@@ -34,14 +40,14 @@ export default function OwnerDashboard() {
             <div id="ownerDashboardDescription">
               <div className="ownerDashboardDateBoxDescriptionBlock">
                 <div className="ownerDashboardDescriptionTitle">
-                  I am meeting with:{' '}
+                  <b className="word-styling">Meeting:</b>{' '}
                 </div>
                 <div className="ownerDashboardDescriptionContent">Ming</div>
               </div>
 
               <div className="ownerDashboardDateBoxDescriptionBlock">
                 <div className="ownerDashboardDescriptionTitle">
-                  Title of the Appointment:{' '}
+                  <b className="word-styling">Appointment:</b>{' '}
                 </div>
                 <div className="ownerDashboardDescriptionContent">
                   Out For Lunch
@@ -50,7 +56,7 @@ export default function OwnerDashboard() {
 
               <div className="ownerDashboardDateBoxDescriptionBlock">
                 <div className="ownerDashboardDescriptionTitle">
-                  Description:{' '}
+                  <b className="word-styling">Description:</b>{' '}
                 </div>
                 <div className="ownerDashboardDescriptionContent ownerDashboardDescriptionContentDescription">
                   It has been a while since we catch up. sadlkja asda sdasd asda
@@ -59,22 +65,28 @@ export default function OwnerDashboard() {
                 </div>
               </div>
             </div>
-            <button>Delete</button>
+            <button className="delete-button">Delete</button>
           </li>
           <li>
             <div id="ownerDashboardDateBox">
               <div className="ownerDashboardDateBoxDateBlock">
-                <div className=" ownerDashboardDateBoxTitle">Date: </div>
+                <div className=" ownerDashboardDateBoxTitle">
+                  <b className="word-styling">Date:</b>{' '}
+                </div>
                 <div className="ownerDashboardDateBoxContent">14/11/2023</div>
               </div>
 
               <div className="ownerDashboardDateBoxDateBlock">
-                <div className="ownerDashboardDateBoxTitle">Start Time: </div>
+                <div className="ownerDashboardDateBoxTitle">
+                  <b className="word-styling">Start Time:</b>{' '}
+                </div>
                 <div className="ownerDashboardDateBoxContent">12.00pm</div>
               </div>
 
               <div className="ownerDashboardDateBoxDateBlock">
-                <div className="ownerDashboardDateBoxTitle">End Time: </div>
+                <div className="ownerDashboardDateBoxTitle">
+                  <b className="word-styling">End Time:</b>{' '}
+                </div>
                 <div className="ownerDashboardDateBoxContent">13.00pm</div>
               </div>
             </div>
@@ -82,14 +94,14 @@ export default function OwnerDashboard() {
             <div id="ownerDashboardDescription">
               <div className="ownerDashboardDateBoxDescriptionBlock">
                 <div className="ownerDashboardDescriptionTitle">
-                  I am meeting with:{' '}
+                  <b className="word-styling">Meeting:</b>{' '}
                 </div>
                 <div className="ownerDashboardDescriptionContent">Ming</div>
               </div>
 
               <div className="ownerDashboardDateBoxDescriptionBlock">
                 <div className="ownerDashboardDescriptionTitle">
-                  Title of the Appointment:{' '}
+                  <b className="word-styling">Appointment:</b>{' '}
                 </div>
                 <div className="ownerDashboardDescriptionContent">
                   Out For Lunch
@@ -98,7 +110,7 @@ export default function OwnerDashboard() {
 
               <div className="ownerDashboardDateBoxDescriptionBlock">
                 <div className="ownerDashboardDescriptionTitle">
-                  Description:{' '}
+                  <b className="word-styling">Description:</b>{' '}
                 </div>
                 <div className="ownerDashboardDescriptionContent ownerDashboardDescriptionContentDescription">
                   It has been a while since we catch up. sadlkja asda sdasd asda
@@ -107,22 +119,28 @@ export default function OwnerDashboard() {
                 </div>
               </div>
             </div>
-            <button>Delete</button>
+            <button className="delete-button">Delete</button>
           </li>
           <li>
             <div id="ownerDashboardDateBox">
               <div className="ownerDashboardDateBoxDateBlock">
-                <div className=" ownerDashboardDateBoxTitle">Date: </div>
+                <div className=" ownerDashboardDateBoxTitle">
+                  <b className="word-styling">Date:</b>{' '}
+                </div>
                 <div className="ownerDashboardDateBoxContent">14/11/2023</div>
               </div>
 
               <div className="ownerDashboardDateBoxDateBlock">
-                <div className="ownerDashboardDateBoxTitle">Start Time: </div>
+                <div className="ownerDashboardDateBoxTitle">
+                  <b className="word-styling">Start Time:</b>{' '}
+                </div>
                 <div className="ownerDashboardDateBoxContent">12.00pm</div>
               </div>
 
               <div className="ownerDashboardDateBoxDateBlock">
-                <div className="ownerDashboardDateBoxTitle">End Time: </div>
+                <div className="ownerDashboardDateBoxTitle">
+                  <b className="word-styling">End Time:</b>{' '}
+                </div>
                 <div className="ownerDashboardDateBoxContent">13.00pm</div>
               </div>
             </div>
@@ -130,14 +148,14 @@ export default function OwnerDashboard() {
             <div id="ownerDashboardDescription">
               <div className="ownerDashboardDateBoxDescriptionBlock">
                 <div className="ownerDashboardDescriptionTitle">
-                  I am meeting with:{' '}
+                  <b className="word-styling">Meeting:</b>{' '}
                 </div>
                 <div className="ownerDashboardDescriptionContent">Ming</div>
               </div>
 
               <div className="ownerDashboardDateBoxDescriptionBlock">
                 <div className="ownerDashboardDescriptionTitle">
-                  Title of the Appointment:{' '}
+                  <b className="word-styling">Appointment:</b>{' '}
                 </div>
                 <div className="ownerDashboardDescriptionContent">
                   Out For Lunch
@@ -146,7 +164,7 @@ export default function OwnerDashboard() {
 
               <div className="ownerDashboardDateBoxDescriptionBlock">
                 <div className="ownerDashboardDescriptionTitle">
-                  Description:{' '}
+                  <b className="word-styling">Description:</b>{' '}
                 </div>
                 <div className="ownerDashboardDescriptionContent ownerDashboardDescriptionContentDescription">
                   It has been a while since we catch up. sadlkja asda sdasd asda
@@ -155,22 +173,28 @@ export default function OwnerDashboard() {
                 </div>
               </div>
             </div>
-            <button>Delete</button>
+            <button className="delete-button">Delete</button>
           </li>
           <li>
             <div id="ownerDashboardDateBox">
               <div className="ownerDashboardDateBoxDateBlock">
-                <div className=" ownerDashboardDateBoxTitle">Date: </div>
+                <div className=" ownerDashboardDateBoxTitle">
+                  <b className="word-styling">Date:</b>{' '}
+                </div>
                 <div className="ownerDashboardDateBoxContent">14/11/2023</div>
               </div>
 
               <div className="ownerDashboardDateBoxDateBlock">
-                <div className="ownerDashboardDateBoxTitle">Start Time: </div>
+                <div className="ownerDashboardDateBoxTitle">
+                  <b className="word-styling">Start Time:</b>{' '}
+                </div>
                 <div className="ownerDashboardDateBoxContent">12.00pm</div>
               </div>
 
               <div className="ownerDashboardDateBoxDateBlock">
-                <div className="ownerDashboardDateBoxTitle">End Time: </div>
+                <div className="ownerDashboardDateBoxTitle">
+                  <b className="word-styling">End Time:</b>{' '}
+                </div>
                 <div className="ownerDashboardDateBoxContent">13.00pm</div>
               </div>
             </div>
@@ -178,14 +202,14 @@ export default function OwnerDashboard() {
             <div id="ownerDashboardDescription">
               <div className="ownerDashboardDateBoxDescriptionBlock">
                 <div className="ownerDashboardDescriptionTitle">
-                  I am meeting with:{' '}
+                  <b className="word-styling">Meeting:</b>{' '}
                 </div>
                 <div className="ownerDashboardDescriptionContent">Ming</div>
               </div>
 
               <div className="ownerDashboardDateBoxDescriptionBlock">
                 <div className="ownerDashboardDescriptionTitle">
-                  Title of the Appointment:{' '}
+                  <b className="word-styling">Appointment:</b>{' '}
                 </div>
                 <div className="ownerDashboardDescriptionContent">
                   Out For Lunch
@@ -194,7 +218,7 @@ export default function OwnerDashboard() {
 
               <div className="ownerDashboardDateBoxDescriptionBlock">
                 <div className="ownerDashboardDescriptionTitle">
-                  Description:{' '}
+                  <b className="word-styling">Description:</b>{' '}
                 </div>
                 <div className="ownerDashboardDescriptionContent ownerDashboardDescriptionContentDescription">
                   It has been a while since we catch up. sadlkja asda sdasd asda
@@ -203,7 +227,7 @@ export default function OwnerDashboard() {
                 </div>
               </div>
             </div>
-            <button>Delete</button>
+            <button className="delete-button">Delete</button>
           </li>
         </ul>
       </div>

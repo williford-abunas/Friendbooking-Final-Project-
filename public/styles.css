@@ -357,6 +357,11 @@ nav {
   font-size: 1.5rem;
 }
 
+.word-styling {
+  color: black;
+  text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white;
+}
+
 /* OWNER PAGE  */
 #dropdownTimeOwner {
   display: flex;
@@ -421,7 +426,7 @@ nav {
   padding-top: 0.3em;
   padding-bottom: 0.3em;
   padding-left: 0.3em;
-  font-size: 1.3em;
+  font-size: 1.2em;
   color: rgb(255, 255, 255);
   text-shadow: -1px -1px 0 rgb(0, 0, 0), 1px -1px 0 rgb(0, 0, 0),
     -1px 1px 0 rgb(0, 0, 0), 1px 1px 0 rgb(0, 0, 0);
@@ -517,6 +522,7 @@ nav {
 
   .h1Headers {
     margin: 4rem;
+    text-align: center;
   }
 
   .logInBox {
@@ -586,8 +592,57 @@ nav {
     font-size: 1rem;
   }
 
-  .user-dashboard {
-    width: 50%;
+  .user-dashboard p {
+    width: 70%;
     margin: auto auto;
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+  }
+
+  #dropdownTimeOwner {
+    width: 80%;
+    margin: auto auto;
+    font-size: 0.8em;
+  }
+
+  .weekPicker h1 {
+    font-size: 2.5rem;
+    max-width: 70%;
+    margin: auto auto;
+    margin-bottom: 1rem;
+  }
+
+  .dateTitle b {
+    font-size: 1.5rem;
+  }
+
+  #ownerDashboardList li {
+    max-width: 90%;
+    margin-right: 3rem;
+  }
+
+  #ownerDashboardList .delete-button {
+    font-size: 1em;
+  }
+
+  #ownerDashboardDateBox {
+    flex-direction: column;
+  }
+
+  .ownerDashboardDateBoxDateBlock {
+    font-size: 0.85em;
+  }
+
+  #ownerDashboardDescription {
+    flex-direction: column;
+  }
+
+  .ownerDashboardDateBoxDescriptionBlock {
+    font-size: 0.85em;
+  }
+
+  .ownerDashboardDescriptionContent,
+  .ownerDashboardDescriptionContentDescription {
+    width: 100%;
   }
 }
