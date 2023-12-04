@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom'
+import { Timeslot } from '../../models/Timeslot'
 
 export default function OwnerDashboard() {
   const navigate = useNavigate()

@@ -5,40 +5,40 @@ import { Appointment } from '../models/Appointment.ts'
 const URL = '/api/v1/friendbooking'
 
 // Get all users
-export async function getAllUserDb(): Promise<User[]> {
+export async function getAllUserApi(): Promise<User[]> {
   const response = await request.get(URL)
   console.log(response + 'Check function one')
   return response.body as User[]
 }
 
 // get user by ID
-export async function getUserByIdDb(id: number): Promise<User[]> {
+export async function getUserByIdApi(id: number): Promise<User[]> {
   const response = await request.get(`URL/${id}`)
   console.log(response + 'Check function two')
   return response.body
 }
 
 // Add user
-export async function addUserDb({ username, role }: User) {
+export async function addUserApi({ username, role }: User) {
   await request.post(URL).send({ username, role })
 }
 
 // Get all appointments
-export async function getAllAppointmentDb() {
+export async function getAllAppointmentApi() {
   const response = await request.get(`${URL}/user/dashboard`)
   console.log(response + 'Check function four')
   return response.body as Appointment[]
 }
 
 // Get appointment by user id
-export async function getAppointmentForUserDb({ userId }: Appointment) {
+export async function getAppointmentForUserApi({ userId }: Appointment) {
   const response = await request.get(`URL/${userId}/appointment`)
   console.log(response + 'Check function three')
   return response.body
 }
 
 // Add appointment
-export async function addAppointment({
+export async function addAppointmentApi({
   userId,
   title,
   description,
@@ -57,6 +57,6 @@ export async function addAppointment({
 // }
 
 // Delete Appointment
-export async function deleteAppointment({ userId }: Appointment) {
+export async function deleteAppointmentApi({ userId }: Appointment) {
   await request.delete(`URL/${userId}/appointment`)
 }
