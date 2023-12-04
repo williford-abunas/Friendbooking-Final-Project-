@@ -42,9 +42,6 @@ export default function UserDashboard() {
       <div className="user-appointments">
         <ul>
           {appointment.map((appointment: Appointment) => {
-            const startDate = new Date(appointment.startTime)
-            const endDate = new Date(appointment.endTime)
-
             return (
               <li
                 className="individual-user-appointments"
@@ -52,10 +49,9 @@ export default function UserDashboard() {
               >
                 Title: {appointment.title} <br />
                 Description: {appointment.description} <br />
-                Start Time: {startDate.toLocaleDateString()}
-                {startDate.toLocaleTimeString()} <br />
-                End Time: {endDate.toLocaleDateString()}
-                {endDate.toLocaleTimeString()}
+                Appointment Date: Monday 04 December 2023 <br />
+                Start Time: {appointment.startTime} <br />
+                End Time: {appointment.endTime}
               </li>
             )
           })}

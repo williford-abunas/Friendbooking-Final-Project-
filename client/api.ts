@@ -42,12 +42,13 @@ export async function addAppointment({
   userId,
   title,
   description,
+  appointmentDate,
   startTime,
   endTime,
 }: Appointment) {
   await request
     .post(`URL/${userId}/appointment`)
-    .send({ title, description, startTime, endTime })
+    .send({ title, description, appointmentDate, startTime, endTime })
 }
 
 // Edit appointment
