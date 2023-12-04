@@ -109,6 +109,6 @@ export async function addTimeslotDb(timeslot: Timeslot): Promise<Timeslot[]> {
 }
 
 //Delete time slot
-export async function deleteTimeslotDb(id: number) {
+export async function deleteTimeslotDb(id: number): Promise<number> {
   return db('timeslot').delete().where({ id: id })
 }

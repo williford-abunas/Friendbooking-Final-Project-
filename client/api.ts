@@ -1,6 +1,7 @@
 import request from 'superagent'
 import { User } from '../models/User.ts'
 import { Appointment } from '../models/Appointment.ts'
+import { Timeslot } from '../models/Timeslot.ts'
 
 const URL = '/api/v1/friendbooking'
 
@@ -59,4 +60,16 @@ export async function addAppointmentApi({
 // Delete Appointment
 export async function deleteAppointmentApi({ userId }: Appointment) {
   await request.delete(`URL/${userId}/appointment`)
+}
+
+//Get all owner dashboard Timeslot
+export async function getAllTimeslotApi() {
+  const response = await request.get(`${URL}/owner/dashboard`)
+  return response.body as Timeslot[]
+}
+
+//Delete Owner Dashboard Timeslot
+export async function deleteTimeslotApi(id: number) {
+  const timeslotResp = await request.delete(`${URL}/owner/dashboard/${id}`)
+  return timeslotResp.body
 }
