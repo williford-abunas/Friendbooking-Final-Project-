@@ -69,17 +69,25 @@ export default function WeekPicker({ onWeekChange }: WeekPickerProps) {
       return null
     }
 
-    const availableTimesForDay = timeSlot
-      .filter((entry: Timeslot) => entry.day === selectedDay)
-      .map((entry: Timeslot) => (
-        <div key={entry.id}>{`${entry.startTime} - ${entry.endTime}`}</div>
-      ))
+    const availableTimesForDay = timeSlot.filter(
+      (entry: Timeslot) => entry.day === selectedDay
+    )
+
+    console.log('Available Times for', selectedDay, availableTimesForDay)
 
     return (
       <div className="available-time-dropdown">
-        <h3>Available Times for {selectedDay}</h3>
         {availableTimesForDay.length > 0 ? (
-          availableTimesForDay
+          <>
+            <h3>
+              Available Times for {selectedDay} ({availableTimesForDay[0].date})
+            </h3>
+            {availableTimesForDay.map((entry: Timeslot) => (
+              <div key={entry.id}>
+                {`${entry.startTime} - ${entry.endTime}`}
+              </div>
+            ))}
+          </>
         ) : (
           <p>No available times for {selectedDay}</p>
         )}
