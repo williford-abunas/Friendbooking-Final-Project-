@@ -93,7 +93,7 @@ nav {
 .logInBox {
   background-color: #15fd40;
   padding: 20px 70px 40px 70px;
-  font-size: 20px;
+  font-size: 1.4rem;
   font-weight: bolder;
   width: max-content;
   margin: 0 auto;
@@ -330,7 +330,7 @@ nav {
 /* RESPONSIVENESS SECTION */
 @media screen and (max-width: 600px) {
   h1 {
-    font-size: 2.7rem;
+    font-size: 2.5rem;
   }
 
   .styled-box {
@@ -364,12 +364,14 @@ nav {
   }
 
   .h1Headers {
-    margin: 20px;
+    margin: 4rem;
   }
 
   .logInBox {
-    padding: 4rem;
-    font-size: 1.5rem;
+    margin-top: 5rem;
+    padding: 3rem;
+    font-size: 1.2rem;
+    max-width: 70%;
   }
 
   #appointmentBox {
@@ -421,5 +423,25 @@ nav {
 
   .calendar-return {
     font-size: 0.8rem;
+  }
+
+  .user-appointments {
+    width: 80%;
+    margin-right: 4rem;
+  }
+
+  .individual-user-appointments {
+    font-size: 1rem;
+  }
+
+  .user-dashboard {
+    width: 50%;
+    margin: auto auto;
+  }
+
+  #dropdownTimeOwner {
+    width: 80%;
+    margin: auto auto;
+    font-size: 0.8em;
   }
 }
