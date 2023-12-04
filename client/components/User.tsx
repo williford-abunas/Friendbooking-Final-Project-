@@ -1,18 +1,8 @@
 import { useAuth0 } from '@auth0/auth0-react'
 import { Link } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { SetStateAction, useEffect, useState } from 'react'
 import WeekPicker from './WeekPicker'
 import moment from 'moment'
-
-// const DaysOfWeek = [
-//   'Monday',
-//   'Tuesday',
-//   'Wednesday',
-//   'Thursday',
-//   'Friday',
-//   'Saturday',
-//   'Sunday',
-// ]
 
 export default function Users() {
   const { isAuthenticated, loginWithRedirect, isLoading } = useAuth0()
@@ -28,9 +18,14 @@ export default function Users() {
     }
   }, [isLoading, isAuthenticated, loginWithRedirect])
 
-  const handleWeekChange = (weekData) => {
+  const handleWeekChange = (weekData: SetStateAction<null>) => {
     setSelectedWeekData(weekData)
   }
+
+  useEffect(() => {
+    console.log(selectedWeekData)
+  }, [selectedWeekData])
+
   const handleDayClick = (day: string) => {
     setSelectedDay((prevDay) => (prevDay === day ? null : day))
   }
