@@ -86,31 +86,31 @@ Specifically to “discussions about your stress profiles, articulate your learn
 
 |**Will**    | Notes      |
 |------------|------------|
-|Good Vibes 	|            |
-|Bad Vibes  	|            |
-|Challenges 	|            |
-|Requests	   |            |
+|Good Vibes 	|Generally good           |
+|Bad Vibes  	|Doesn't know where his glasses are which is bugging him.            |
+|Challenges 	|No issues or challenges with the group or any of the work we are doing.            |
+|Requests	   |Using another screen            |
 
 |**Matt** | Notes      |
 |------------|------------|
-|Good Vibes 	|            |
-|Bad Vibes  	|            |
-|Challenges 	|            |
-|Requests	   |            |
+|Good Vibes 	| Pretty good. Happy with progress we've made and happy with the vibes.          |
+|Bad Vibes  	|Hitting a bit of a wall, things we are working on now is a bit more complicated.            |
+|Challenges 	|N/A            |
+|Requests	   |Keep communicating what everyone is doing. Shout out if you need help.            |
 
 |**Ming** | Notes      |
 |------------|------------|
-|Good Vibes 	|            |
-|Bad Vibes  	|            |
-|Challenges 	|            |
-|Requests	   |            |
+|Good Vibes 	|Good vibes and going in a good direction.            |
+|Bad Vibes  	|Not making as much progress as last week.            |
+|Challenges 	|Now we've achieved MVP, things are getting a little bit more complicated.            |
+|Requests	   |Just be patient with me.            |
 
 |**James** | Notes      |
 |------------|------------|
-|Good Vibes 	|            |
-|Bad Vibes  	|            |
-|Challenges 	|            |
-|Requests	   |            |
+|Good Vibes 	|Decent vibes.            |
+|Bad Vibes  	|Very tired today, not feeling to flash.            |
+|Challenges 	|THings are getting harder, put our heads down a bit more. And bloody Auth0.            |
+|Requests	   |N/A            |
 
 
 
