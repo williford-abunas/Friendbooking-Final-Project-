@@ -1,22 +1,13 @@
 import { useAuth0 } from '@auth0/auth0-react'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import WeekPicker from './WeekPicker'
-
-const DaysOfWeek = [
-  'Monday',
-  'Tuesday',
-  'Wednesday',
-  'Thursday',
-  'Friday',
-  'Saturday',
-  'Sunday',
-]
+import moment from 'moment'
 
 export default function Users() {
   const { isAuthenticated, loginWithRedirect, isLoading } = useAuth0()
   const { user } = useAuth0()
-
+  const navigate = useNavigate()
   const [selectedDay, setSelectedDay] = useState<string | null>(null)
 
   useEffect(() => {
@@ -26,27 +17,37 @@ export default function Users() {
     }
   }, [isLoading, isAuthenticated, loginWithRedirect])
 
-  const handleDayClick = (day: string) => {
-    setSelectedDay((prevDay) => (prevDay === day ? null : day))
-  }
-
-  function TimeSlotsDropdown() {
-    const timeSlots = ['10:00AM', '11:00AM', '12:00PM', '1:00PM', '2:00PM']
-
-    return (
-      <div>
-        {timeSlots.map((slot, index) => (
-          <Link key={index} to={`/form/${selectedDay}/${slot}`}>
-            <button id="timeSlotButton">{slot}</button>
-          </Link>
-        ))}
-      </div>
-    )
-  }
-
   if (!isAuthenticated || isLoading) {
     return null
   }
+
+  const handleWeekChange = (selectedWeek: object) => {
+    console.log('Selected Week Changed:', selectedWeek)
+  }
+
+  const handleDayButtonClick = (day: string, date: string) => {
+    // Redirect to AppointmentForm with selected day and date
+    const formattedDate = moment(date).format('YYYY-MM-DD')
+    navigate(`/form/${day}/${formattedDate}`)
+  }
+
+  const renderDayButtons = (daysOfWeek: any[]) => (
+    <div id="dayContainer">
+      {daysOfWeek.map((day) => (
+        <button
+          id="userViewDays"
+          key={day.date.toISOString()}
+          title={day.formattedDate}
+          onClick={() => {
+            setSelectedDay(day.day)
+            handleDayButtonClick(day.day, day.date)
+          }}
+        >
+          {day.day}
+        </button>
+      ))}
+    </div>
+  )
 
   return (
     <>
@@ -60,17 +61,10 @@ export default function Users() {
           </p>
         )}
       </div>
-      <WeekPicker />
-      {DaysOfWeek.map((day, index) => (
-        <div id="dayContainer" key={index}>
-          <button id="userViewDays" onClick={() => handleDayClick(day)}>
-            {day}
-          </button>
-          <div id="dropdownTimeSlot">
-            {selectedDay === day && <TimeSlotsDropdown />}
-          </div>
-        </div>
-      ))}
+      <WeekPicker
+        onWeekChange={handleWeekChange}
+        renderDayButtons={renderDayButtons}
+      />
     </>
   )
 }

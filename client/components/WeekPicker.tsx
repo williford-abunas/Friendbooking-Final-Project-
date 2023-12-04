@@ -1,9 +1,17 @@
 import moment from 'moment'
 import { useState } from 'react'
 import { DatePicker } from 'rsuite'
-import 'rsuite/dist/rsuite-no-reset.min.css'
+import { getDaysOfWeek } from '../helper'
 
-export default function WeekPicker() {
+interface WeekPickerProps {
+  onWeekChange: (selectedWeek: object) => void
+  renderDayButtons: (daysOfWeek: any[]) => React.ReactNode
+}
+
+export default function WeekPicker({
+  onWeekChange,
+  renderDayButtons,
+}: WeekPickerProps) {
   const [objWeek, setObjWeek] = useState({
     date: new Date(),
     dateFrom: new Date(),
@@ -22,6 +30,15 @@ export default function WeekPicker() {
       dateTo,
       weekNumber,
     })
+
+    onWeekChange({
+      daysOfWeek: getDaysOfWeek(date),
+      selectedWeek: {
+        weekNumber,
+        dateFrom,
+        dateTo,
+      },
+    })
   }
 
   const renderValue = (date: Date) => {
@@ -31,17 +48,28 @@ export default function WeekPicker() {
     return `Week: ${weekNumber}, Year: ${year}`
   }
 
+  const daysOfWeek = getDaysOfWeek(objWeek.date)
+
   return (
     <>
       <div className="weekPicker">
         <h1>Pick a Week!</h1>
-
         <DatePicker
           placeholder="Week Picker"
           isoWeek
           showWeekNumbers
           value={objWeek.date}
-          onChange={onChange}
+          onChange={(date) => {
+            onChange(date as Date)
+            onWeekChange({
+              daysOfWeek: getDaysOfWeek(date),
+              selectedWeek: {
+                weekNumber: moment(date).isoWeek(),
+                dateFrom: moment(date).startOf('isoWeek').toDate(),
+                dateTo: moment(date).endOf('isoWeek').toDate(),
+              },
+            })
+          }}
           renderValue={renderValue}
         />
         <div className="weekInfos">
@@ -64,6 +92,12 @@ export default function WeekPicker() {
               <b>End of Week : </b>
             </span>
             <span className="dateValue">{objWeek.dateTo?.toDateString()}</span>
+          </div>
+          <div>
+            <span className="dateTitle">
+              <b>Days of Week:</b>
+            </span>
+            {renderDayButtons(daysOfWeek)}
           </div>
         </div>
       </div>
