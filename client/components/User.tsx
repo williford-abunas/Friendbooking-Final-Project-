@@ -2,7 +2,6 @@ import { useAuth0 } from '@auth0/auth0-react'
 import { Link } from 'react-router-dom'
 import { SetStateAction, useEffect, useState } from 'react'
 import WeekPicker from './WeekPicker'
-import moment from 'moment'
 
 export default function Users() {
   const { isAuthenticated, loginWithRedirect, isLoading } = useAuth0()
@@ -18,8 +17,8 @@ export default function Users() {
     }
   }, [isLoading, isAuthenticated, loginWithRedirect])
 
-  const handleWeekChange = (weekData: SetStateAction<null>) => {
-    setSelectedWeekData(weekData)
+  const handleWeekChange = (selectedWeek) => {
+    console.log('Selected Week Changed:', selectedWeek)
   }
 
   useEffect(() => {
@@ -60,7 +59,7 @@ export default function Users() {
           </p>
         )}
       </div>
-      <WeekPicker onChange={handleWeekChange} />
+      <WeekPicker onWeekChange={handleWeekChange} />
       {selectedWeekData && (
         <div id="dayContainer">
           {selectedWeekData.daysofWeek.map((day) => (

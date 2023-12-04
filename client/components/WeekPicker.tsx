@@ -1,7 +1,6 @@
 import moment from 'moment'
 import { useState } from 'react'
 import { DatePicker } from 'rsuite'
-import 'rsuite/dist/rsuite-no-reset.min.css'
 
 const getDaysOfWeek = (startDate: moment.MomentInput) => {
   const daysOfWeek = []
@@ -40,7 +39,7 @@ export default function WeekPicker({ onWeekChange }) {
 
     onWeekChange({
       daysOfWeek: getDaysOfWeek(date),
-      selecedWeek: {
+      selectedWeek: {
         weekNumber,
         dateFrom,
         dateTo,
@@ -69,7 +68,14 @@ export default function WeekPicker({ onWeekChange }) {
           value={objWeek.date}
           onChange={(date) => {
             onChange(date as Date)
-            props.onChange(getDaysOfWeek(date))
+            onWeekChange({
+              daysOfWeek: getDaysOfWeek(date),
+              selecedWeek: {
+                weekNumber: moment(date).isoWeek(),
+                dateFrom: moment(date).startOf('isoWeek').toDate(),
+                dateTo: moment(date).endOf('isoWeek').toDate(),
+              },
+            })
           }}
           renderValue={renderValue}
         />
