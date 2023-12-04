@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import { useAuth0 } from '@auth0/auth0-react'
 import { useQuery } from '@tanstack/react-query'
 import { Appointment } from '../../models/Appointment'
-import { getAllAppointmentDb } from '../api'
+import { getAllAppointmentApi } from '../api'
 
 export default function UserDashboard() {
   const { user } = useAuth0()
@@ -11,7 +11,7 @@ export default function UserDashboard() {
     data: appointment,
     isLoading,
     isError,
-  } = useQuery({ queryKey: ['appointment'], queryFn: getAllAppointmentDb })
+  } = useQuery({ queryKey: ['appointment'], queryFn: getAllAppointmentApi })
   console.log(appointment, 'testing')
 
   if (isError) {

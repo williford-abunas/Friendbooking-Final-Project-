@@ -1,44 +1,45 @@
 import request from 'superagent'
 import { User } from '../models/User.ts'
 import { Appointment } from '../models/Appointment.ts'
+import { Timeslot } from '../models/Timeslot.ts'
 
 const URL = '/api/v1/friendbooking'
 
 // Get all users
-export async function getAllUserDb(): Promise<User[]> {
+export async function getAllUserApi(): Promise<User[]> {
   const response = await request.get(URL)
   console.log(response + 'Check function one')
   return response.body as User[]
 }
 
 // get user by ID
-export async function getUserByIdDb(id: number): Promise<User[]> {
+export async function getUserByIdApi(id: number): Promise<User[]> {
   const response = await request.get(`URL/${id}`)
   console.log(response + 'Check function two')
   return response.body
 }
 
 // Add user
-export async function addUserDb({ username, role }: User) {
+export async function addUserApi({ username, role }: User) {
   await request.post(URL).send({ username, role })
 }
 
 // Get all appointments
-export async function getAllAppointmentDb() {
+export async function getAllAppointmentApi() {
   const response = await request.get(`${URL}/user/dashboard`)
   console.log(response + 'Check function four')
   return response.body as Appointment[]
 }
 
 // Get appointment by user id
-export async function getAppointmentForUserDb({ userId }: Appointment) {
+export async function getAppointmentForUserApi({ userId }: Appointment) {
   const response = await request.get(`URL/${userId}/appointment`)
   console.log(response + 'Check function three')
   return response.body
 }
 
 // Add appointment
-export async function addAppointment({
+export async function addAppointmentApi({
   userId,
   title,
   description,
@@ -57,6 +58,29 @@ export async function addAppointment({
 // }
 
 // Delete Appointment
-export async function deleteAppointment({ userId }: Appointment) {
+export async function deleteAppointmentApi({ userId }: Appointment) {
   await request.delete(`URL/${userId}/appointment`)
+}
+
+//Get all owner dashboard Timeslot
+export async function getAllTimeslotApi() {
+  const response = await request.get(`${URL}/owner/dashboard`)
+  return response.body as Timeslot[]
+}
+
+//Add Owner timeslot
+export async function addNewTimeslotApi({
+  date,
+  startTime,
+  endTime,
+}: Timeslot) {
+  await request
+    .post(`${URL}/owner/dashboard`)
+    .send({ date, startTime, endTime })
+}
+
+//Delete Owner Dashboard Timeslot
+export async function deleteTimeslotApi(id: number) {
+  const timeslotResp = await request.delete(`${URL}/owner/dashboard/${id}`)
+  return timeslotResp.body
 }

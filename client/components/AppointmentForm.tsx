@@ -1,12 +1,15 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useParams, useNavigate, useLocation } from 'react-router-dom'
 import { TimePicker } from '@mui/x-date-pickers'
 import dayjs, { Dayjs } from 'dayjs'
+import moment from 'moment'
 
 export default function AppointmentForm() {
   const navigate = useNavigate()
   const location = useLocation()
-  const { day, timeSlot } = useParams()
+
+  const { day, date } = useParams()
+  const parsedDate = moment(date).format('YYYY-MM-DD')
   const [formData, setFormData] = useState(
     location.state?.formData || {
       title: '',
@@ -15,6 +18,13 @@ export default function AppointmentForm() {
   )
   const [selectedStartTime, setSelectedStartTime] = useState<Dayjs | null>(null)
   const [selectedEndTime, setSelectedEndTime] = useState<Dayjs | null>(null)
+
+  useEffect(() => {
+    if (day) {
+      // Do something with the selected day data
+      console.log('Selected Day:', day)
+    }
+  }, [day])
 
   const handleTimeChange = (time: Date | string, type: 'start' | 'end') => {
     const timeValue = dayjs(time) // Convert to Dayjs object
@@ -25,19 +35,20 @@ export default function AppointmentForm() {
     }
   }
 
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     })
   }
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault()
 
     // Include selected start and end times in the request body
     const requestBody = {
       ...formData,
+      appointmentDate: parsedDate,
       startTime: selectedStartTime ? selectedStartTime.format('HH:mm') : null,
       endTime: selectedEndTime ? selectedEndTime.format('HH:mm') : null,
     }
@@ -81,7 +92,7 @@ export default function AppointmentForm() {
             <strong>Day:</strong> {day}
           </p>
           <p>
-            <strong>Time Slot:</strong> {timeSlot}
+            <strong>Date:</strong> {parsedDate}
           </p>
         </div>
         <form className="appointmentForm" onSubmit={handleSubmit}>
@@ -116,7 +127,7 @@ export default function AppointmentForm() {
             <TimePicker
               className="dropdownTimeAppointmentInput"
               value={selectedStartTime}
-              onChange={(time) => handleTimeChange(time, 'start')}
+              onChange={(time: any) => handleTimeChange(time, 'start')}
             />
             <label id="endTime" htmlFor="endTime">
               End Time:
@@ -124,7 +135,7 @@ export default function AppointmentForm() {
             <TimePicker
               className="dropdownTimeAppointmentInput"
               value={selectedEndTime}
-              onChange={(time) => handleTimeChange(time, 'end')}
+              onChange={(time: any) => handleTimeChange(time, 'end')}
             />
           </div>
           <button type="submit">Submit Appointment</button>
