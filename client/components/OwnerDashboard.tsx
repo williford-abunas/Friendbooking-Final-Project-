@@ -49,6 +49,7 @@ export default function OwnerDashboard() {
       </div>
       <div>
         <ul id="ownerDashboardList">
+
           {timeslot.map((timeslot: Timeslot) => {
             return (
               <li key={timeslot.id}>
@@ -105,6 +106,7 @@ export default function OwnerDashboard() {
               </li>
             )
           })}
+
         </ul>
       </div>
       <button className="calendar-return" onClick={handleReturnClick}>

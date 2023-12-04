@@ -53,10 +53,10 @@ export default function Users() {
       <div className="h1Headers">
         <h1>OWNER WEEKLY CALENDAR!</h1>
       </div>
-      <div className="userSignInDetail">
+      <div className="userSignInDetail user-dashboard">
         {user && (
           <p>
-            <b>Signed in as:</b> {user?.given_name}
+            <b className="word-styling">Signed in as:</b> {user?.given_name}
           </p>
         )}
       </div>
