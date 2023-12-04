@@ -1,11 +1,47 @@
 import { useNavigate } from 'react-router-dom'
+import { Timeslot } from '../../models/Timeslot'
+import { useQueryClient, useMutation } from '@tanstack/react-query'
+import { deleteTimeslotApi, getAllTimeslotApi } from '../api'
+import { useQuery } from '@tanstack/react-query'
 
 export default function OwnerDashboard() {
   const navigate = useNavigate()
+  const queryClient = useQueryClient()
+  const deleteMutation = useMutation(
+    {
+      mutationFn: deleteTimeslotApi,
+      onSuccess: () => {
+        queryClient.invalidateQueries({
+          queryKey: ['timeslot'],
+        })
+      },
+    },
+    []
+  )
+
+  const handleDeleteClick = (id: any) => {
+    deleteMutation.mutate(id)
+  }
+
+  const {
+    data: timeslot,
+    isLoading,
+    isError,
+  } = useQuery({ queryKey: ['timeslot'], queryFn: getAllTimeslotApi })
+
+  if (isError) {
+    return <p>Having trouble locating the information...</p>
+  }
+
+  if (!timeslot || isLoading) {
+    return <p>Trying to load the data...</p>
+  }
+
   const handleReturnClick = (e: { preventDefault: () => void }) => {
     e.preventDefault()
     navigate('/owner')
   }
+
   return (
     <>
       <div className="h1Headers">
@@ -13,198 +49,64 @@ export default function OwnerDashboard() {
       </div>
       <div>
         <ul id="ownerDashboardList">
-          <li>
-            <div id="ownerDashboardDateBox">
-              <div className="ownerDashboardDateBoxDateBlock">
-                <div className=" ownerDashboardDateBoxTitle">Date: </div>
-                <div className="ownerDashboardDateBoxContent">14/11/2023</div>
-              </div>
 
-              <div className="ownerDashboardDateBoxDateBlock">
-                <div className="ownerDashboardDateBoxTitle">Start Time: </div>
-                <div className="ownerDashboardDateBoxContent">12.00pm</div>
-              </div>
+          {timeslot.map((timeslot: Timeslot) => {
+            return (
+              <li key={timeslot.id}>
+                <div id="ownerDashboardDateBox">
+                  <div className="ownerDashboardDateBoxDateBlock">
+                    <div className=" ownerDashboardDateBoxTitle">Date: </div>
+                    <div className="ownerDashboardDateBoxContent">
+                      {timeslot.date}
+                    </div>
+                  </div>
 
-              <div className="ownerDashboardDateBoxDateBlock">
-                <div className="ownerDashboardDateBoxTitle">End Time: </div>
-                <div className="ownerDashboardDateBoxContent">13.00pm</div>
-              </div>
-            </div>
+                  <div className="ownerDashboardDateBoxDateBlock">
+                    <div className="ownerDashboardDateBoxTitle">
+                      Start Time:{' '}
+                    </div>
+                    <div className="ownerDashboardDateBoxContent">
+                      {timeslot.startTime}
+                    </div>
+                  </div>
 
-            <div id="ownerDashboardDescription">
-              <div className="ownerDashboardDateBoxDescriptionBlock">
-                <div className="ownerDashboardDescriptionTitle">
-                  I am meeting with:{' '}
+                  <div className="ownerDashboardDateBoxDateBlock">
+                    <div className="ownerDashboardDateBoxTitle">End Time: </div>
+                    <div className="ownerDashboardDateBoxContent">
+                      {timeslot.endTime}
+                    </div>
+                  </div>
                 </div>
-                <div className="ownerDashboardDescriptionContent">Ming</div>
-              </div>
 
-              <div className="ownerDashboardDateBoxDescriptionBlock">
-                <div className="ownerDashboardDescriptionTitle">
-                  Title of the Appointment:{' '}
-                </div>
-                <div className="ownerDashboardDescriptionContent">
-                  Out For Lunch
-                </div>
-              </div>
+                <div id="ownerDashboardDescription">
+                  <div className="ownerDashboardDateBoxDescriptionBlock">
+                    <div className="ownerDashboardDescriptionTitle">
+                      I am meeting with:{' '}
+                    </div>
+                    <div className="ownerDashboardDescriptionContent"></div>
+                  </div>
 
-              <div className="ownerDashboardDateBoxDescriptionBlock">
-                <div className="ownerDashboardDescriptionTitle">
-                  Description:{' '}
-                </div>
-                <div className="ownerDashboardDescriptionContent ownerDashboardDescriptionContentDescription">
-                  It has been a while since we catch up. sadlkja asda sdasd asda
-                  dsad asd asda sdasdasd asdasd asda dsa asdasd asdasda asd
-                  asdasd asd jkh kjh kjh kjhkjhkjh kjh kjh kjh kjh kjhkjh
-                </div>
-              </div>
-            </div>
-            <button>Delete</button>
-          </li>
-          <li>
-            <div id="ownerDashboardDateBox">
-              <div className="ownerDashboardDateBoxDateBlock">
-                <div className=" ownerDashboardDateBoxTitle">Date: </div>
-                <div className="ownerDashboardDateBoxContent">14/11/2023</div>
-              </div>
+                  <div className="ownerDashboardDateBoxDescriptionBlock">
+                    <div className="ownerDashboardDescriptionTitle">
+                      Title of the Appointment:{' '}
+                    </div>
+                    <div className="ownerDashboardDescriptionContent"></div>
+                  </div>
 
-              <div className="ownerDashboardDateBoxDateBlock">
-                <div className="ownerDashboardDateBoxTitle">Start Time: </div>
-                <div className="ownerDashboardDateBoxContent">12.00pm</div>
-              </div>
+                  <div className="ownerDashboardDateBoxDescriptionBlock">
+                    <div className="ownerDashboardDescriptionTitle">
+                      Description:{' '}
+                    </div>
+                    <div className="ownerDashboardDescriptionContent ownerDashboardDescriptionContentDescription"></div>
+                  </div>
+                </div>
+                <button onClick={() => handleDeleteClick(timeslot.id)}>
+                  Delete
+                </button>
+              </li>
+            )
+          })}
 
-              <div className="ownerDashboardDateBoxDateBlock">
-                <div className="ownerDashboardDateBoxTitle">End Time: </div>
-                <div className="ownerDashboardDateBoxContent">13.00pm</div>
-              </div>
-            </div>
-
-            <div id="ownerDashboardDescription">
-              <div className="ownerDashboardDateBoxDescriptionBlock">
-                <div className="ownerDashboardDescriptionTitle">
-                  I am meeting with:{' '}
-                </div>
-                <div className="ownerDashboardDescriptionContent">Ming</div>
-              </div>
-
-              <div className="ownerDashboardDateBoxDescriptionBlock">
-                <div className="ownerDashboardDescriptionTitle">
-                  Title of the Appointment:{' '}
-                </div>
-                <div className="ownerDashboardDescriptionContent">
-                  Out For Lunch
-                </div>
-              </div>
-
-              <div className="ownerDashboardDateBoxDescriptionBlock">
-                <div className="ownerDashboardDescriptionTitle">
-                  Description:{' '}
-                </div>
-                <div className="ownerDashboardDescriptionContent ownerDashboardDescriptionContentDescription">
-                  It has been a while since we catch up. sadlkja asda sdasd asda
-                  dsad asd asda sdasdasd asdasd asda dsa asdasd asdasda asd
-                  asdasd asd jkh kjh kjh kjhkjhkjh kjh kjh kjh kjh kjhkjh
-                </div>
-              </div>
-            </div>
-            <button>Delete</button>
-          </li>
-          <li>
-            <div id="ownerDashboardDateBox">
-              <div className="ownerDashboardDateBoxDateBlock">
-                <div className=" ownerDashboardDateBoxTitle">Date: </div>
-                <div className="ownerDashboardDateBoxContent">14/11/2023</div>
-              </div>
-
-              <div className="ownerDashboardDateBoxDateBlock">
-                <div className="ownerDashboardDateBoxTitle">Start Time: </div>
-                <div className="ownerDashboardDateBoxContent">12.00pm</div>
-              </div>
-
-              <div className="ownerDashboardDateBoxDateBlock">
-                <div className="ownerDashboardDateBoxTitle">End Time: </div>
-                <div className="ownerDashboardDateBoxContent">13.00pm</div>
-              </div>
-            </div>
-
-            <div id="ownerDashboardDescription">
-              <div className="ownerDashboardDateBoxDescriptionBlock">
-                <div className="ownerDashboardDescriptionTitle">
-                  I am meeting with:{' '}
-                </div>
-                <div className="ownerDashboardDescriptionContent">Ming</div>
-              </div>
-
-              <div className="ownerDashboardDateBoxDescriptionBlock">
-                <div className="ownerDashboardDescriptionTitle">
-                  Title of the Appointment:{' '}
-                </div>
-                <div className="ownerDashboardDescriptionContent">
-                  Out For Lunch
-                </div>
-              </div>
-
-              <div className="ownerDashboardDateBoxDescriptionBlock">
-                <div className="ownerDashboardDescriptionTitle">
-                  Description:{' '}
-                </div>
-                <div className="ownerDashboardDescriptionContent ownerDashboardDescriptionContentDescription">
-                  It has been a while since we catch up. sadlkja asda sdasd asda
-                  dsad asd asda sdasdasd asdasd asda dsa asdasd asdasda asd
-                  asdasd asd jkh kjh kjh kjhkjhkjh kjh kjh kjh kjh kjhkjh
-                </div>
-              </div>
-            </div>
-            <button>Delete</button>
-          </li>
-          <li>
-            <div id="ownerDashboardDateBox">
-              <div className="ownerDashboardDateBoxDateBlock">
-                <div className=" ownerDashboardDateBoxTitle">Date: </div>
-                <div className="ownerDashboardDateBoxContent">14/11/2023</div>
-              </div>
-
-              <div className="ownerDashboardDateBoxDateBlock">
-                <div className="ownerDashboardDateBoxTitle">Start Time: </div>
-                <div className="ownerDashboardDateBoxContent">12.00pm</div>
-              </div>
-
-              <div className="ownerDashboardDateBoxDateBlock">
-                <div className="ownerDashboardDateBoxTitle">End Time: </div>
-                <div className="ownerDashboardDateBoxContent">13.00pm</div>
-              </div>
-            </div>
-
-            <div id="ownerDashboardDescription">
-              <div className="ownerDashboardDateBoxDescriptionBlock">
-                <div className="ownerDashboardDescriptionTitle">
-                  I am meeting with:{' '}
-                </div>
-                <div className="ownerDashboardDescriptionContent">Ming</div>
-              </div>
-
-              <div className="ownerDashboardDateBoxDescriptionBlock">
-                <div className="ownerDashboardDescriptionTitle">
-                  Title of the Appointment:{' '}
-                </div>
-                <div className="ownerDashboardDescriptionContent">
-                  Out For Lunch
-                </div>
-              </div>
-
-              <div className="ownerDashboardDateBoxDescriptionBlock">
-                <div className="ownerDashboardDescriptionTitle">
-                  Description:{' '}
-                </div>
-                <div className="ownerDashboardDescriptionContent ownerDashboardDescriptionContentDescription">
-                  It has been a while since we catch up. sadlkja asda sdasd asda
-                  dsad asd asda sdasdasd asdasd asda dsa asdasd asdasda asd
-                  asdasd asd jkh kjh kjh kjhkjhkjh kjh kjh kjh kjh kjhkjh
-                </div>
-              </div>
-            </div>
-            <button>Delete</button>
-          </li>
         </ul>
       </div>
       <button className="calendar-return" onClick={handleReturnClick}>

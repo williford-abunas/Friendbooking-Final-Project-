@@ -2,6 +2,7 @@ import connection from './connection'
 const db = connection
 import { User } from '../../models/User'
 import { Appointment } from '../../models/Appointment'
+import { Timeslot } from '../../models/Timeslot'
 
 //get all users
 export async function getAllUserDb(): Promise<User[]> {
@@ -50,7 +51,7 @@ export async function addUserDb(user: User): Promise<User> {
 }
 
 //add appointment
-export async function addAppointment(
+export async function addAppointmentDb(
   appointment: Appointment
 ): Promise<Appointment> {
   const { title, description, appointmentDate, startTime, endTime } =
@@ -75,7 +76,7 @@ export async function addAppointment(
 }
 
 //update or edit appointment
-export async function editAppointment(
+export async function editAppointmentDb(
   id: number,
   appointment: Appointment
 ): Promise<Appointment[]> {
@@ -83,6 +84,31 @@ export async function editAppointment(
 }
 
 //delete appointment
-export async function deleteAppointment(id: number) {
+export async function deleteAppointmentDb(id: number) {
   return db('appointment').delete().where('id', id)
+}
+
+//Get all timeslots
+export async function getAllTimeslotDb(): Promise<Timeslot[]> {
+  return db('timeslot').select(
+    'id',
+    'date',
+    'start_time as startTime',
+    'end_time as endTime'
+  )
+}
+
+//Add new time slot
+export async function addTimeslotDb(timeslot: Timeslot): Promise<Timeslot[]> {
+  const { date, startTime, endTime } = timeslot
+  const result = await db('timeslot')
+    .insert({ date, start_time: startTime, end_time: endTime })
+    .select('date', 'start_time as startTime', 'end_time as endTime')
+    .returning('*')
+  return result
+}
+
+//Delete time slot
+export async function deleteTimeslotDb(id: number): Promise<number> {
+  return db('timeslot').delete().where({ id: id })
 }
