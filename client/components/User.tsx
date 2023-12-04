@@ -1,11 +1,14 @@
 import { useAuth0 } from '@auth0/auth0-react'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import WeekPicker from './WeekPicker'
+import moment from 'moment'
 
 export default function Users() {
   const { isAuthenticated, loginWithRedirect, isLoading } = useAuth0()
   const { user } = useAuth0()
+  const navigate = useNavigate()
+  const [selectedDay, setSelectedDay] = useState<string | null>(null)
 
   useEffect(() => {
     // Check authentication status and redirect if not authenticated
@@ -22,6 +25,12 @@ export default function Users() {
     console.log('Selected Week Changed:', selectedWeek)
   }
 
+  const handleDayButtonClick = (day: string, date: string) => {
+    // Redirect to AppointmentForm with selected day and date
+    const formattedDate = moment(date).format('YYYY-MM-DD')
+    navigate(`/form/${day}/${formattedDate}`)
+  }
+
   const renderDayButtons = (daysOfWeek: any[]) => (
     <div id="dayContainer">
       {daysOfWeek.map((day) => (
@@ -29,6 +38,10 @@ export default function Users() {
           id="userViewDays"
           key={day.date.toISOString()}
           title={day.formattedDate}
+          onClick={() => {
+            setSelectedDay(day.day)
+            handleDayButtonClick(day.day, day.date)
+          }}
         >
           {day.day}
         </button>
