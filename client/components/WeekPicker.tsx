@@ -18,7 +18,9 @@ export default function WeekPicker({ onWeekChange }: WeekPickerProps) {
 
   const handleMakeAppointmentClick = () => {
     // Show the appointment form when the button is clicked
-    setShowAppointmentForm(true)
+    setShowAppointmentForm(
+      (prevShowAppointmentForm) => !prevShowAppointmentForm
+    )
   }
 
   const initialDate = new Date()
@@ -135,12 +137,14 @@ export default function WeekPicker({ onWeekChange }: WeekPickerProps) {
         {objWeek.weekNumber && (
           <div className="weekInfos">
             <div>
-              {availableDays.map((day) => (
-                <div key={day} className="day-container">
-                  <b className="dateTitle">{day}:</b>
-                  {renderAvailableTimes(day)}
-                </div>
-              ))}
+              {availableDays.length > 0
+                ? availableDays.map((day) => <>{renderAvailableTimes(day)}</>)
+                : showAppointmentForm && (
+                    <p>
+                      Sorry, the owner is busy on these days. Please pick
+                      another week.
+                    </p>
+                  )}
             </div>
           </div>
         )}
