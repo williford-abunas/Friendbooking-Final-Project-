@@ -82,17 +82,17 @@ export default function WeekPicker({ onWeekChange }: WeekPickerProps) {
 
   const renderAvailableTimes = (day: string) => {
     const availableTimesForDay = timeSlot.filter(
-      (entry: Timeslot) => entry.day === day
+      (entry: Timeslot) =>
+        entry.day === day && moment(entry.date).isoWeek() === objWeek.weekNumber
     )
 
     return (
       <>
         <h3>
-          Available Times for {day} (
+          Available Times for {day}
           {availableTimesForDay.length > 0
             ? moment(availableTimesForDay[0].date).format('YYYY-MM-DD')
             : ''}
-          )
         </h3>
         {availableTimesForDay.length > 0 ? (
           <div>
