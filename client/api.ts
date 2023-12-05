@@ -1,7 +1,7 @@
 import request from 'superagent'
 import { User } from '../models/User.ts'
 import { Appointment } from '../models/Appointment.ts'
-import { Timeslot } from '../models/Timeslot.ts'
+import { Timeslot, TimeslotAppointment } from '../models/Timeslot.ts'
 
 const URL = '/api/v1/friendbooking'
 
@@ -65,7 +65,7 @@ export async function deleteAppointmentApi({ userId }: Appointment) {
 //Get all owner dashboard Timeslot
 export async function getAllTimeslotApi() {
   const response = await request.get(`${URL}/owner/dashboard`)
-  return response.body as Timeslot[]
+  return response.body as TimeslotAppointment[]
 }
 
 //Add Owner timeslot

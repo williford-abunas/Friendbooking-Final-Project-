@@ -5,3 +5,14 @@ export interface Timeslot {
   startTime: string
   endTime: string
 }
+
+export interface TimeslotAppointment {
+  timeslotId: number
+  day: string
+  appointmentDate: string
+  startTime: string
+  endTime: string
+  appointmentId: number
+  title: string
+  description: string
+}

@@ -2,7 +2,8 @@ import { useNavigate } from 'react-router-dom'
 import { useAuth0 } from '@auth0/auth0-react'
 import { useQuery } from '@tanstack/react-query'
 import { Appointment } from '../../models/Appointment'
-import { getAllAppointmentApi } from '../api'
+import { getAllAppointmentApi, getAllTimeslotApi } from '../api'
+import { TimeslotAppointment } from '../../models/Timeslot'
 
 export default function UserDashboard() {
   const { user } = useAuth0()
@@ -11,7 +12,7 @@ export default function UserDashboard() {
     data: appointment,
     isLoading,
     isError,
-  } = useQuery({ queryKey: ['appointment'], queryFn: getAllAppointmentApi })
+  } = useQuery({ queryKey: ['appointment'], queryFn: getAllTimeslotApi })
   console.log(appointment, 'testing')
 
   if (isError) {
@@ -34,11 +35,11 @@ export default function UserDashboard() {
       </div>
       <div className="user-appointments">
         <ul>
-          {appointment.map((appointment: Appointment) => {
+          {appointment.map((appointment: TimeslotAppointment) => {
             return (
               <li
                 className="individual-user-appointments"
-                key={appointment.userId}
+                key={appointment.appointmentId}
               >
                 <b>Title:</b> {appointment.title} <br />
                 <b>Description: </b>

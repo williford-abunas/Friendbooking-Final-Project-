@@ -1,13 +1,15 @@
 import { useNavigate } from 'react-router-dom'
-import { Timeslot } from '../../models/Timeslot'
+import { Timeslot, TimeslotAppointment } from '../../models/Timeslot'
 import { useQueryClient, useMutation } from '@tanstack/react-query'
 import { deleteTimeslotApi, getAllTimeslotApi } from '../api'
 import { useQuery } from '@tanstack/react-query'
 import moment from 'moment'
+import { useAuth0 } from '@auth0/auth0-react'
 
 export default function OwnerDashboard() {
   const navigate = useNavigate()
   const queryClient = useQueryClient()
+  const { user } = useAuth0()
   const deleteMutation = useMutation(
     {
       mutationFn: deleteTimeslotApi,
@@ -20,7 +22,7 @@ export default function OwnerDashboard() {
     []
   )
 
-  const handleDeleteClick = (id) => {
+  const handleDeleteClick = (id: any) => {
     deleteMutation.mutate(id)
   }
 
@@ -50,14 +52,14 @@ export default function OwnerDashboard() {
       </div>
       <div>
         <ul id="ownerDashboardList">
-          {timeslot.map((timeslot: Timeslot) => {
+          {timeslot.map((timeslot: TimeslotAppointment) => {
             return (
-              <li key={timeslot.id}>
+              <li key={timeslot.timeslotId}>
                 <div id="ownerDashboardDateBox">
                   <div className="ownerDashboardDateBoxDateBlock">
                     <div className=" ownerDashboardDateBoxTitle">Date: </div>
                     <div className="ownerDashboardDateBoxContent">
-                      {moment(timeslot.date).format('MMMM DD, YYYY')}
+                      {moment(timeslot.appointmentDate).format('MMMM DD, YYYY')}
                     </div>
                   </div>
 
@@ -88,14 +90,15 @@ export default function OwnerDashboard() {
                 <div id="ownerDashboardDescription">
                   <div className="ownerDashboardDateBoxDescriptionBlock">
                     <div className="ownerDashboardDescriptionTitle">
-                      <b>Meeting: </b>
+                      <b>Meeting with: </b>
+                      <p>{user?.given_name}</p>
                     </div>
                     <div className="ownerDashboardDescriptionContent"></div>
                   </div>
 
                   <div className="ownerDashboardDateBoxDescriptionBlock">
                     <div className="ownerDashboardDescriptionTitle">
-                      <b>Appointment: </b>
+                      <b>Appointment: </b> {timeslot.title}
                     </div>
                     <div className="ownerDashboardDescriptionContent"></div>
                   </div>
@@ -103,13 +106,14 @@ export default function OwnerDashboard() {
                   <div className="ownerDashboardDateBoxDescriptionBlock">
                     <div className="ownerDashboardDescriptionTitle">
                       <b>Description: </b>
+                      {timeslot.description}
                     </div>
                     <div className="ownerDashboardDescriptionContent ownerDashboardDescriptionContentDescription"></div>
                   </div>
                 </div>
                 <button
                   className="delete-button"
-                  onClick={() => handleDeleteClick(timeslot.id)}
+                  onClick={() => handleDeleteClick(timeslot.appointmentId)}
                 >
                   Delete
                 </button>

@@ -12,6 +12,7 @@ export async function seed(knex) {
       day: 'Monday',
       start_time: '09:00',
       end_time: '11:00',
+      appointment_id: 1,
     },
     {
       id: 2,
@@ -19,6 +20,7 @@ export async function seed(knex) {
       day: 'Wednesday',
       start_time: '09:00',
       end_time: '13:00',
+      appointment_id: 2,
     },
     {
       id: 3,
@@ -26,6 +28,7 @@ export async function seed(knex) {
       day: 'Friday',
       start_time: '06:00',
       end_time: '07:00',
+      appointment_id: 3,
     },
   ])
 }

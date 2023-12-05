@@ -7,10 +7,6 @@ export function up(knex) {
     table.increments('id')
     table.string('title').notNullable()
     table.text('description')
-    table.date('appointment_date')
-    table.time('start_time').notNullable()
-    table.time('end_time').notNullable()
-    table.integer('user_id')
   })
 }
 
