@@ -3,6 +3,7 @@ import { Timeslot } from '../../models/Timeslot'
 import { useQueryClient, useMutation } from '@tanstack/react-query'
 import { deleteTimeslotApi, getAllTimeslotApi } from '../api'
 import { useQuery } from '@tanstack/react-query'
+import moment from 'moment'
 
 export default function OwnerDashboard() {
   const navigate = useNavigate()
@@ -56,7 +57,7 @@ export default function OwnerDashboard() {
                   <div className="ownerDashboardDateBoxDateBlock">
                     <div className=" ownerDashboardDateBoxTitle">Date: </div>
                     <div className="ownerDashboardDateBoxContent">
-                      {timeslot.date}
+                      {moment(timeslot.date).format('MMMM DD, YYYY')}
                     </div>
                   </div>
 
