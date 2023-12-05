@@ -248,7 +248,7 @@ nav {
   border-radius: 3px;
 }
 
-.userSignInDetail p {
+.userSignInDetail h2 {
   font-size: 30px;
   color: #000000;
   background-color: #FFDFBA;
@@ -430,10 +430,8 @@ nav {
   margin-top: 2em;
   margin: 0 auto;
   padding: 0.5em;
-  font-size: 1.5em;
+  font-size: 1.2em;
   color: rgb(0,0,0);
-  /* text-shadow: -1px -1px 0 rgb(0, 0, 0), 1px -1px 0 rgb(0, 0, 0),
-    -1px 1px 0 rgb(0, 0, 0), 1px 1px 0 rgb(0, 0, 0); */
 }
 
 #ownerDashboardDateBox {
@@ -466,6 +464,9 @@ nav {
 }
 
 #ownerDashboardDescription {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
   background-color: #fff;
   border-radius: 5px;
   margin-top: 2em;
@@ -473,21 +474,16 @@ nav {
 }
 
 #ownerDashboardDescription .ownerDashboardDateBoxDescriptionBlock {
-  display: flex;
-  flex-direction: row;
   margin-bottom: 0.5em;
 }
 
 #ownerDashboardDescription .ownerDashboardDescriptionTitle {
-  display: flex;
-  flex-direction: row;
-  width: 15em;
+  text-align: left;
   padding-top: 0.3em;
   padding-bottom: 0.3em;
   padding-left: 0.3em;
   font-size: 1em;
   color: rgb(0,0,0);
-
 }
 
 .ownerDashboardDescriptionContent {
@@ -508,7 +504,8 @@ nav {
 /* RESPONSIVENESS SECTION */
 @media screen and (max-width: 600px) {
   h1 {
-    font-size: 2.5rem;
+    font-size: 2.6rem;
+    
   }
 
   .styled-box {
@@ -613,7 +610,7 @@ nav {
     font-size: 1rem;
   }
 
-  .user-dashboard p {
+  .user-dashboard h2 {
     width: 70%;
     margin: auto auto;
     margin-bottom: 2rem;
@@ -627,7 +624,7 @@ nav {
   }
 
   .weekPicker h1 {
-    font-size: 2.5rem;02
+    font-size: 2.5rem;
     max-width: 70%;
     margin: auto auto;
     margin-bottom: 1rem;
@@ -647,7 +644,7 @@ nav {
   }
 
   #ownerDashboardList .delete-button {
-    font-size: 1em;
+    font-size: 0.85em;
   }
 
   #ownerDashboardDateBox {
@@ -674,5 +671,4 @@ nav {
   #startTime, #endTime { 
     font-size: 0.8rem;
   }
-
 }
