@@ -1,57 +1,54 @@
 import { useEffect, useState } from 'react'
-import { useParams, useNavigate, useLocation } from 'react-router-dom'
-import { TimePicker } from '@mui/x-date-pickers'
-import dayjs, { Dayjs } from 'dayjs'
+import { useNavigate, useLocation } from 'react-router-dom'
 import moment from 'moment'
 
-export default function AppointmentForm() {
+export default function AppointmentForm({
+  day,
+  date,
+  startTime,
+  endTime,
+  handleWeekPickerSubmit,
+}: any) {
   const navigate = useNavigate()
   const location = useLocation()
 
-  const { day, date } = useParams()
-  const parsedDate = moment(date).format('YYYY-MM-DD')
-  const [formData, setFormData] = useState(
-    location.state?.formData || {
-      title: '',
-      description: '',
-    }
-  )
-  const [selectedStartTime, setSelectedStartTime] = useState<Dayjs | null>(null)
-  const [selectedEndTime, setSelectedEndTime] = useState<Dayjs | null>(null)
+  const [formData, setFormData] = useState({
+    title: '',
+    description: '',
+    appointmentDate: location.state?.formData?.appointmentDate || new Date(),
+  })
 
   useEffect(() => {
-    if (day) {
-      // Do something with the selected day data
-      console.log('Selected Day:', day)
-    }
-  }, [day])
+    if (location.state?.formData) {
+      const { day, date } = location.state.formData
+      const formattedDate = moment(date).format('YYYY-MM-DD')
 
-  const handleTimeChange = (time: Date | string, type: 'start' | 'end') => {
-    const timeValue = dayjs(time) // Convert to Dayjs object
-    if (type === 'start') {
-      setSelectedStartTime(timeValue.isValid() ? timeValue : null)
-    } else {
-      setSelectedEndTime(timeValue.isValid() ? timeValue : null)
+      setFormData({
+        title: '',
+        description: '',
+        appointmentDate: formattedDate,
+      })
     }
-  }
+  }, [location.state?.formData])
 
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     })
   }
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault()
 
-    // Include selected start and end times in the request body
     const requestBody = {
       ...formData,
-      appointmentDate: parsedDate,
-      startTime: selectedStartTime ? selectedStartTime.format('HH:mm') : null,
-      endTime: selectedEndTime ? selectedEndTime.format('HH:mm') : null,
+      appointmentDate: date,
+      startTime,
+      endTime,
     }
+
+    handleWeekPickerSubmit(requestBody)
 
     try {
       const response = await fetch(
@@ -92,7 +89,13 @@ export default function AppointmentForm() {
             <strong>Day:</strong> {day}
           </p>
           <p>
-            <strong>Date:</strong> {parsedDate}
+            <strong>Date:</strong> {moment(date).format('YYYY-MM-DD')}
+          </p>
+          <p>
+            <strong>Start Time:</strong> {startTime}
+          </p>
+          <p>
+            <strong>End Time:</strong> {endTime}
           </p>
         </div>
         <form className="appointmentForm" onSubmit={handleSubmit}>
@@ -118,24 +121,6 @@ export default function AppointmentForm() {
               value={formData.description}
               onChange={handleChange}
               required
-            />
-          </div>
-          <div id="startEnd">
-            <div id="startTime" htmlFor="startTime">
-              Start Time:
-            </div>
-            <TimePicker
-              className="dropdownTimeAppointmentInput"
-              value={selectedStartTime}
-              onChange={(time) => handleTimeChange(time, 'start')}
-            />
-            <div id="endTime" htmlFor="endTime">
-              End Time:
-            </div>
-            <TimePicker
-              className="dropdownTimeAppointmentInput"
-              value={selectedEndTime}
-              onChange={(time) => handleTimeChange(time, 'end')}
             />
           </div>
           <button type="submit">Submit Appointment</button>
