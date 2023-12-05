@@ -1,5 +1,5 @@
 import moment from 'moment'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { DatePicker } from 'rsuite'
 import { getAllTimeslotApi } from '../api'
 import { Timeslot } from '../../models/Timeslot'
@@ -20,20 +20,29 @@ export default function WeekPicker({ onWeekChange }: WeekPickerProps) {
   const [availableDays, setAvailableDays] = useState<string[]>([])
   const [selectedDay, setSelectedDay] = useState<string | null>(null)
 
-  const fetchAvailableDays = async (weekNumber: number) => {
-    try {
-      const ownerSchedule = await getAllTimeslotApi()
-      const availableDaysForWeek = ownerSchedule
-        .filter(
-          (entry: Timeslot) => moment(entry.date).isoWeek() === weekNumber
-        )
-        .map((entry: Timeslot) => entry.day)
-      setAvailableDays(availableDaysForWeek)
-    } catch (error) {
-      console.error('Error fetching owner schedule:', error)
-      setAvailableDays([])
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const schedule = await getAllTimeslotApi()
+        console.log('Fetched schedule:', schedule)
+        setTimeSlot(schedule)
+      } catch (error) {
+        console.error('Error fetching owner schedule:', error)
+      }
     }
-  }
+
+    fetchData()
+  }, [objWeek.weekNumber])
+
+  useEffect(() => {
+    const availableDaysForWeek = timeSlot
+      .filter(
+        (entry: Timeslot) => moment(entry.date).isoWeek() === objWeek.weekNumber
+      )
+      .map((entry: Timeslot) => entry.day)
+
+    setAvailableDays(availableDaysForWeek)
+  }, [timeSlot, objWeek.weekNumber])
 
   const onChange = async (date: Date) => {
     const weekNumber = moment(date).isoWeek()
@@ -54,8 +63,6 @@ export default function WeekPicker({ onWeekChange }: WeekPickerProps) {
         dateTo,
       },
     })
-
-    await fetchAvailableDays(weekNumber)
   }
 
   const renderValue = () => null
@@ -69,6 +76,8 @@ export default function WeekPicker({ onWeekChange }: WeekPickerProps) {
       (entry: Timeslot) => entry.day === selectedDay
     )
 
+    console.log('Available Times for', selectedDay, availableTimesForDay)
+
     return (
       <div className="available-time-dropdown">
         {availableTimesForDay.length > 0 ? (
@@ -78,7 +87,7 @@ export default function WeekPicker({ onWeekChange }: WeekPickerProps) {
             </h3>
             {availableTimesForDay.map((entry: Timeslot) => (
               <div key={entry.id}>
-                {`${entry.startTime} - ${entry.endTime}`}
+                <button>{`${entry.startTime} - ${entry.endTime}`}</button>
               </div>
             ))}
           </>
@@ -102,7 +111,7 @@ export default function WeekPicker({ onWeekChange }: WeekPickerProps) {
           onChange={(date) => onChange(date as Date)}
           renderValue={renderValue}
         />
-        {/* Available Days UI - Render only if a week is selected */}
+        {/* Available Days UI */}
         {objWeek.weekNumber && (
           <div className="weekInfos">
             <div>
