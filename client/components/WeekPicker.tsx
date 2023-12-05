@@ -11,8 +11,6 @@ interface WeekPickerProps {
 
 export default function WeekPicker({ onWeekChange }: WeekPickerProps) {
   const handleSubmit = async (formData: any) => {
-    // Handle submission logic for the WeekPicker form data
-    // For example, you can submit the data to the server or perform any other actions
     console.log('WeekPicker Form Data:', formData)
   }
 
@@ -125,7 +123,6 @@ export default function WeekPicker({ onWeekChange }: WeekPickerProps) {
           onChange={(date) => onChange(date as Date)}
           renderValue={renderValue}
         />
-        {/* Available Days UI */}
         {objWeek.weekNumber && (
           <div className="weekInfos">
             <div>

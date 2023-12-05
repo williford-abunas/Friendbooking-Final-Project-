@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useParams, useNavigate, useLocation } from 'react-router-dom'
-import { TimePicker } from '@mui/x-date-pickers'
-import dayjs, { Dayjs } from 'dayjs'
+import { useNavigate, useLocation } from 'react-router-dom'
 import moment from 'moment'
 
 export default function AppointmentForm({
@@ -19,19 +17,12 @@ export default function AppointmentForm({
     description: '',
     appointmentDate: location.state?.formData?.appointmentDate || new Date(),
   })
-  // const [selectedStartTime, setSelectedStartTime] = useState<Dayjs | null>(null)
-  // const [selectedEndTime, setSelectedEndTime] = useState<Dayjs | null>(null)
 
   useEffect(() => {
     if (location.state?.formData) {
-      const { day, date, startTime, endTime } = location.state.formData
-      // Do something with the selected day data
-      console.log('Selected Day:', day)
-
-      // Format the date using moment
+      const { day, date } = location.state.formData
       const formattedDate = moment(date).format('YYYY-MM-DD')
 
-      // Update the state with the received data
       setFormData({
         title: '',
         description: '',
@@ -40,34 +31,23 @@ export default function AppointmentForm({
     }
   }, [location.state?.formData])
 
-  // const handleTimeChange = (time: Date | string, type: 'start' | 'end') => {
-  //   const timeValue = dayjs(time) // Convert to Dayjs object
-  //   if (type === 'start') {
-  //     setSelectedStartTime(timeValue.isValid() ? timeValue : null)
-  //   } else {
-  //     setSelectedEndTime(timeValue.isValid() ? timeValue : null)
-  //   }
-  // }
-
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     })
   }
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault()
 
-    // Include selected start and end times in the request body
     const requestBody = {
       ...formData,
-      appointmentDate: date, // Use the date provided by WeekPicker
+      appointmentDate: date,
       startTime,
       endTime,
     }
 
-    // Pass the data to the WeekPicker component's handleSubmit function
     handleWeekPickerSubmit(requestBody)
 
     try {
