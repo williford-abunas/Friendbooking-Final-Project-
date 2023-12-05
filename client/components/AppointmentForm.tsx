@@ -49,14 +49,14 @@ export default function AppointmentForm({
   //   }
   // }
 
-  const handleChange = (e: any) => {
+  const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     })
   }
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
 
     // Include selected start and end times in the request body

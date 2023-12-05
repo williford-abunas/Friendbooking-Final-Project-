@@ -31,7 +31,7 @@ export default function Users() {
     navigate(`/form/${day}/${formattedDate}`)
   }
 
-  const renderDayButtons = (daysOfWeek: any[]) => (
+  const renderDayButtons = (daysOfWeek: []) => (
     <div id="dayContainer">
       {daysOfWeek.map((day) => (
         <button
@@ -56,9 +56,9 @@ export default function Users() {
       </div>
       <div className="userSignInDetail user-dashboard">
         {user && (
-          <p>
+          <h2>
             <b className="word-styling">Signed in as:</b> {user?.given_name}
-          </p>
+          </h2>
         )}
       </div>
       <WeekPicker

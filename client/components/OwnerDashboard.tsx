@@ -3,6 +3,7 @@ import { Timeslot } from '../../models/Timeslot'
 import { useQueryClient, useMutation } from '@tanstack/react-query'
 import { deleteTimeslotApi, getAllTimeslotApi } from '../api'
 import { useQuery } from '@tanstack/react-query'
+import moment from 'moment'
 
 export default function OwnerDashboard() {
   const navigate = useNavigate()
@@ -19,7 +20,7 @@ export default function OwnerDashboard() {
     []
   )
 
-  const handleDeleteClick = (id: any) => {
+  const handleDeleteClick = (id) => {
     deleteMutation.mutate(id)
   }
 
@@ -56,7 +57,7 @@ export default function OwnerDashboard() {
                   <div className="ownerDashboardDateBoxDateBlock">
                     <div className=" ownerDashboardDateBoxTitle">Date: </div>
                     <div className="ownerDashboardDateBoxContent">
-                      {timeslot.date}
+                      {moment(timeslot.date).format('MMMM DD, YYYY')}
                     </div>
                   </div>
 
@@ -87,26 +88,29 @@ export default function OwnerDashboard() {
                 <div id="ownerDashboardDescription">
                   <div className="ownerDashboardDateBoxDescriptionBlock">
                     <div className="ownerDashboardDescriptionTitle">
-                      Meeting with:{' '}
+                      <b>Meeting: </b>
                     </div>
                     <div className="ownerDashboardDescriptionContent"></div>
                   </div>
 
                   <div className="ownerDashboardDateBoxDescriptionBlock">
                     <div className="ownerDashboardDescriptionTitle">
-                      Appointment:{' '}
+                      <b>Appointment: </b>
                     </div>
                     <div className="ownerDashboardDescriptionContent"></div>
                   </div>
 
                   <div className="ownerDashboardDateBoxDescriptionBlock">
                     <div className="ownerDashboardDescriptionTitle">
-                      Description:{' '}
+                      <b>Description: </b>
                     </div>
                     <div className="ownerDashboardDescriptionContent ownerDashboardDescriptionContentDescription"></div>
                   </div>
                 </div>
-                <button onClick={() => handleDeleteClick(timeslot.id)}>
+                <button
+                  className="delete-button"
+                  onClick={() => handleDeleteClick(timeslot.id)}
+                >
                   Delete
                 </button>
               </li>
