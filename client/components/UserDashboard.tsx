@@ -40,12 +40,13 @@ export default function UserDashboard() {
                 className="individual-user-appointments"
                 key={appointment.userId}
               >
-                Title: {appointment.title} <br />
-                Description: {appointment.description} <br />
-                Appointment Date: {appointment.appointmentDate}
+                <b>Title:</b> {appointment.title} <br />
+                <b>Description: </b>
+                {appointment.description} <br />
+                <b>Appointment Date:</b> {appointment.appointmentDate}
                 <br />
-                Start Time: {appointment.startTime} <br />
-                End Time: {appointment.endTime}
+                <b>Start Time:</b> {appointment.startTime} <br />
+                <b>End Time:</b> {appointment.endTime}
               </li>
             )
           })}
