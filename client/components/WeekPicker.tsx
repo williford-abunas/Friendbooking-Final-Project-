@@ -1,7 +1,6 @@
 import moment from 'moment'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { DatePicker } from 'rsuite'
-import { getDaysOfWeek, getAvailableDays } from '../helper'
 import { getAllTimeslotApi } from '../api'
 import { Timeslot } from '../../models/Timeslot'
 
@@ -10,33 +9,33 @@ interface WeekPickerProps {
 }
 
 export default function WeekPicker({ onWeekChange }: WeekPickerProps) {
+  const initialDate = new Date()
   const [objWeek, setObjWeek] = useState({
-    date: new Date(),
-    dateFrom: new Date(),
-    dateTo: new Date(),
+    date: initialDate,
+    dateFrom: moment(initialDate).startOf('isoWeek').toDate(),
+    dateTo: moment(initialDate).endOf('isoWeek').toDate(),
     weekNumber: moment().isoWeek(),
   })
   const [timeSlot, setTimeSlot] = useState<Timeslot[]>([])
   const [availableDays, setAvailableDays] = useState<string[]>([])
   const [selectedDay, setSelectedDay] = useState<string | null>(null)
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const schedule = await getAllTimeslotApi()
-        console.log('Fetched schedule:', schedule)
-        setTimeSlot(schedule)
-        const days = schedule.map((entry: Timeslot) => entry.day)
-        setAvailableDays(days)
-      } catch (error) {
-        console.error('Error fetching owner schedule:', error)
-      }
+  const fetchAvailableDays = async (weekNumber: number) => {
+    try {
+      const ownerSchedule = await getAllTimeslotApi()
+      const availableDaysForWeek = ownerSchedule
+        .filter(
+          (entry: Timeslot) => moment(entry.date).isoWeek() === weekNumber
+        )
+        .map((entry: Timeslot) => entry.day)
+      setAvailableDays(availableDaysForWeek)
+    } catch (error) {
+      console.error('Error fetching owner schedule:', error)
+      setAvailableDays([])
     }
+  }
 
-    fetchData()
-  }, [])
-
-  const onChange = (date: Date) => {
+  const onChange = async (date: Date) => {
     const weekNumber = moment(date).isoWeek()
     const dateFrom = moment(date).startOf('isoWeek').toDate()
     const dateTo = moment(date).endOf('isoWeek').toDate()
@@ -55,14 +54,11 @@ export default function WeekPicker({ onWeekChange }: WeekPickerProps) {
         dateTo,
       },
     })
+
+    await fetchAvailableDays(weekNumber)
   }
 
-  const renderValue = (date: Date) => {
-    const weekNumber = moment(date).isoWeek()
-    const year = moment(date).year()
-
-    return `Week: ${weekNumber}, Year: ${year}`
-  }
+  const renderValue = () => null
 
   const renderAvailableTimeDropdown = (selectedDay: string | null) => {
     if (!selectedDay) {
@@ -72,8 +68,6 @@ export default function WeekPicker({ onWeekChange }: WeekPickerProps) {
     const availableTimesForDay = timeSlot.filter(
       (entry: Timeslot) => entry.day === selectedDay
     )
-
-    console.log('Available Times for', selectedDay, availableTimesForDay)
 
     return (
       <div className="available-time-dropdown">
@@ -103,33 +97,34 @@ export default function WeekPicker({ onWeekChange }: WeekPickerProps) {
           placeholder="Week Picker"
           isoWeek
           showWeekNumbers
-          value={objWeek.date}
-          onChange={(date) => {
-            onChange(date as Date)
-          }}
+          value={null}
+          defaultValue={objWeek.date}
+          onChange={(date) => onChange(date as Date)}
           renderValue={renderValue}
         />
-        {/* Available Days UI */}
-        <div className="weekInfos">
-          <div>
-            <span className="dateTitle">
-              <b>Available Days:</b>
-            </span>
-            {availableDays.map((day) => (
-              <div key={day} className="day-button-container">
-                <button
-                  onClick={() => {
-                    setSelectedDay(day)
-                  }}
-                >
-                  {day}
-                </button>
-                {selectedDay === day &&
-                  renderAvailableTimeDropdown(selectedDay)}
-              </div>
-            ))}
+        {/* Available Days UI - Render only if a week is selected */}
+        {objWeek.weekNumber && (
+          <div className="weekInfos">
+            <div>
+              <span className="dateTitle">
+                <b>Available Days:</b>
+              </span>
+              {availableDays.map((day) => (
+                <div key={day} className="day-button-container">
+                  <button
+                    onClick={() => {
+                      setSelectedDay(day)
+                    }}
+                  >
+                    {day}
+                  </button>
+                  {selectedDay === day &&
+                    renderAvailableTimeDropdown(selectedDay)}
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </>
   )
