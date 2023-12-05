@@ -409,8 +409,8 @@ nav {
 
 #dropdownTimeOwner .dropdownTimeOwnerInput {
   margin-bottom: 2em;
-  background-color: #fff;
 }
+
 
 /* OWNER DASHBOARD */
 #ownerDashboardList li {
@@ -574,10 +574,6 @@ nav {
 
   #dayContainer {
     margin: 0 auto;
-  }
-
-  #userViewDays {
-    width: 70%;
   }
 
   #timeSlotButton {
