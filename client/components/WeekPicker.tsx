@@ -5,7 +5,7 @@ import { getDaysOfWeek } from '../helper'
 
 interface WeekPickerProps {
   onWeekChange: (selectedWeek: object) => void
-  renderDayButtons: (daysOfWeek: []) => React.ReactNode
+  renderDayButtons: (daysOfWeek: Date[]) => React.ReactNode
 }
 
 export default function WeekPicker({
