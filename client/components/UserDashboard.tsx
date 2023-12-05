@@ -15,11 +15,15 @@ export default function UserDashboard() {
   console.log(appointment, 'testing')
 
   if (isError) {
-    return <p>Having trouble locating the information...</p>
+    return (
+      <p className="data-messages">
+        Having trouble locating the information...
+      </p>
+    )
   }
 
   if (!appointment || isLoading) {
-    return <p>Trying to load the data...</p>
+    return <p className="data-messages">Trying to load the data...</p>
   }
 
   const handleReturnClick = (e: { preventDefault: () => void }) => {

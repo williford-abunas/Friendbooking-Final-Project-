@@ -488,6 +488,11 @@ nav {
   max-width: 27em;
 }
 
+.data-messages { 
+  color: #FFFFFF;
+  font-size: 1.5rem;
+}
+
 /* RESPONSIVENESS SECTION */
 @media screen and (max-width: 600px) {
   h1 {
@@ -652,5 +657,9 @@ nav {
 
   #startTime, #endTime { 
     font-size: 0.8rem;
+  }
+
+  .data-messages { 
+    font-size: 1rem;
   }
 }
