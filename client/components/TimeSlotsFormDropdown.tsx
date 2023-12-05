@@ -63,7 +63,7 @@ export default function TimeSlotsFormDropdown({ onTimeslotWeekChange }) {
 
     const updatedFormData = {
       ...formData,
-      date: objWeek.date,
+      date: moment(objWeek.date).format('YYYY-MM-DD'),
       day: objWeek.day,
       startTime: selectedStartTime ? selectedStartTime.format('HH:mm') : null,
       endTime: selectedEndTime ? selectedEndTime.format('HH:mm') : null,

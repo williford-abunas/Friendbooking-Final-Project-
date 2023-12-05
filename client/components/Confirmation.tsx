@@ -10,6 +10,7 @@ export default function Confirmation() {
     navigate('/user')
     console.log('Form submitted with data:')
   }
+  console.log('formData:', formData)
 
   if (!formData) {
     return (
@@ -36,7 +37,6 @@ export default function Confirmation() {
           </li>
           <li>
             <strong>Start Time:</strong> {formData.startTime}
-            {console.log(formData.startTime)}
           </li>
           <li>
             <strong>End Time:</strong> {formData.endTime}
