@@ -25,6 +25,15 @@ export default function TimeSlotsFormDropdown({ onTimeslotWeekChange }) {
     const day = moment(date).format('dddd')
     const formattedDate = date.toLocaleDateString()
 
+    onTimeslotWeekChange({
+      daysOfWeek: getDaysOfWeek(date),
+      selectedWeek: {
+        weekNumber,
+        day,
+        formattedDate,
+      },
+    })
+
     setObjWeek({
       date,
       day,

@@ -102,18 +102,6 @@ export default function WeekPicker({
           </div>
           <div>
             <span className="dateTitle">
-              <b>Date : </b>
-            </span>
-            <span className="dateValue">{objWeek.date?.toDateString()}</span>
-          </div>
-          <div>
-            <span className="dateTitle">
-              <b>Day : </b>
-            </span>
-            <span className="dateValue">{objWeek.day}</span>
-          </div>
-          <div>
-            <span className="dateTitle">
               <b>Days of Week:</b>
             </span>
             {renderDayButtons(daysOfWeek)}
