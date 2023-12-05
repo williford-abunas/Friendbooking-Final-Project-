@@ -35,14 +35,14 @@ export default function AppointmentForm() {
     }
   }
 
-  const handleChange = (e: any) => {
+  const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     })
   }
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
 
     // Include selected start and end times in the request body
@@ -127,7 +127,7 @@ export default function AppointmentForm() {
             <TimePicker
               className="dropdownTimeAppointmentInput"
               value={selectedStartTime}
-              onChange={(time: any) => handleTimeChange(time, 'start')}
+              onChange={(time) => handleTimeChange(time, 'start')}
             />
             <div id="endTime" htmlFor="endTime">
               End Time:
@@ -135,7 +135,7 @@ export default function AppointmentForm() {
             <TimePicker
               className="dropdownTimeAppointmentInput"
               value={selectedEndTime}
-              onChange={(time: any) => handleTimeChange(time, 'end')}
+              onChange={(time) => handleTimeChange(time, 'end')}
             />
           </div>
           <button type="submit">Submit Appointment</button>

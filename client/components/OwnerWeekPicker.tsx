@@ -6,7 +6,7 @@ import 'rsuite/dist/rsuite-no-reset.min.css'
 
 interface WeekPickerProps {
   onWeekChange: (selectedWeek: object) => void
-  renderDayButtons: (daysOfWeek: any[]) => React.ReactNode
+  renderDayButtons: (daysOfWeek: []) => React.ReactNode
 }
 
 export default function WeekPicker({
@@ -99,18 +99,6 @@ export default function WeekPicker({
               <b>End of Week : </b>
             </span>
             <span className="dateValue">{objWeek.dateTo?.toDateString()}</span>
-          </div>
-          <div>
-            <span className="dateTitle">
-              <b>Date : </b>
-            </span>
-            <span className="dateValue">{objWeek.date?.toDateString()}</span>
-          </div>
-          <div>
-            <span className="dateTitle">
-              <b>Day : </b>
-            </span>
-            <span className="dateValue">{objWeek.day}</span>
           </div>
           <div>
             <span className="dateTitle">
