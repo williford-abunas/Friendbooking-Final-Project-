@@ -31,7 +31,7 @@ export default function Users() {
     navigate(`/form/${day}/${formattedDate}`)
   }
 
-  const renderDayButtons = (daysOfWeek: any[]) => (
+  const renderDayButtons = (daysOfWeek: []) => (
     <div id="dayContainer">
       {daysOfWeek.map((day) => (
         <button

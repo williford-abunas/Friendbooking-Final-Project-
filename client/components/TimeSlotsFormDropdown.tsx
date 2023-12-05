@@ -58,7 +58,7 @@ export default function TimeSlotsFormDropdown({ onTimeslotWeekChange }) {
     }
   }
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
 
     const updatedFormData = {
@@ -125,7 +125,7 @@ export default function TimeSlotsFormDropdown({ onTimeslotWeekChange }) {
         <TimePicker
           className="dropdownTimeOwnerInput"
           value={selectedStartTime || null}
-          onChange={(time: any) => handleTimeChange(time, 'start')}
+          onChange={(time) => handleTimeChange(time, 'start')}
         />
         <label id="endTimeOwner" htmlFor="endTime">
           End Time:
@@ -133,7 +133,7 @@ export default function TimeSlotsFormDropdown({ onTimeslotWeekChange }) {
         <TimePicker
           className="dropdownTimeOwnerInput"
           value={selectedEndTime || null}
-          onChange={(time: any) => handleTimeChange(time, 'end')}
+          onChange={(time) => handleTimeChange(time, 'end')}
         />
         <div>
           <button type="submit">Submit</button>

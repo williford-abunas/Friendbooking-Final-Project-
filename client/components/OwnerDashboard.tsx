@@ -20,7 +20,7 @@ export default function OwnerDashboard() {
     []
   )
 
-  const handleDeleteClick = (id: any) => {
+  const handleDeleteClick = (id) => {
     deleteMutation.mutate(id)
   }
 

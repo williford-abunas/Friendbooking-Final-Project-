@@ -9,11 +9,11 @@ export default function Owner() {
     setSelectedDay((prevDay) => (prevDay === day ? null : day))
   }
 
-  const handleWeekChange = (selectedWeek: any) => {
+  const handleWeekChange = (selectedWeek) => {
     console.log('Selected Week:', selectedWeek)
   }
 
-  const renderDayButtons = (daysOfWeek: any[]) => (
+  const renderDayButtons = (daysOfWeek: []) => (
     <div id="dayContainer">
       {daysOfWeek.map((day) => (
         <div key={day.date.toISOString()}>
