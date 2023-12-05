@@ -4,36 +4,50 @@ import { TimePicker } from '@mui/x-date-pickers'
 import dayjs, { Dayjs } from 'dayjs'
 import moment from 'moment'
 
-export default function AppointmentForm() {
+export default function AppointmentForm({
+  day,
+  date,
+  startTime,
+  endTime,
+  handleWeekPickerSubmit,
+}: any) {
   const navigate = useNavigate()
   const location = useLocation()
 
-  const { day, date } = useParams()
-  const parsedDate = moment(date).format('YYYY-MM-DD')
-  const [formData, setFormData] = useState(
-    location.state?.formData || {
-      title: '',
-      description: '',
-    }
-  )
-  const [selectedStartTime, setSelectedStartTime] = useState<Dayjs | null>(null)
-  const [selectedEndTime, setSelectedEndTime] = useState<Dayjs | null>(null)
+  const [formData, setFormData] = useState({
+    title: '',
+    description: '',
+    appointmentDate: location.state?.formData?.appointmentDate || new Date(),
+  })
+  // const [selectedStartTime, setSelectedStartTime] = useState<Dayjs | null>(null)
+  // const [selectedEndTime, setSelectedEndTime] = useState<Dayjs | null>(null)
 
   useEffect(() => {
-    if (day) {
+    if (location.state?.formData) {
+      const { day, date, startTime, endTime } = location.state.formData
       // Do something with the selected day data
       console.log('Selected Day:', day)
-    }
-  }, [day])
 
-  const handleTimeChange = (time: Date | string, type: 'start' | 'end') => {
-    const timeValue = dayjs(time) // Convert to Dayjs object
-    if (type === 'start') {
-      setSelectedStartTime(timeValue.isValid() ? timeValue : null)
-    } else {
-      setSelectedEndTime(timeValue.isValid() ? timeValue : null)
+      // Format the date using moment
+      const formattedDate = moment(date).format('YYYY-MM-DD')
+
+      // Update the state with the received data
+      setFormData({
+        title: '',
+        description: '',
+        appointmentDate: formattedDate,
+      })
     }
-  }
+  }, [location.state?.formData])
+
+  // const handleTimeChange = (time: Date | string, type: 'start' | 'end') => {
+  //   const timeValue = dayjs(time) // Convert to Dayjs object
+  //   if (type === 'start') {
+  //     setSelectedStartTime(timeValue.isValid() ? timeValue : null)
+  //   } else {
+  //     setSelectedEndTime(timeValue.isValid() ? timeValue : null)
+  //   }
+  // }
 
   const handleChange = (e: any) => {
     setFormData({
@@ -48,10 +62,13 @@ export default function AppointmentForm() {
     // Include selected start and end times in the request body
     const requestBody = {
       ...formData,
-      appointmentDate: parsedDate,
-      startTime: selectedStartTime ? selectedStartTime.format('HH:mm') : null,
-      endTime: selectedEndTime ? selectedEndTime.format('HH:mm') : null,
+      appointmentDate: date, // Use the date provided by WeekPicker
+      startTime,
+      endTime,
     }
+
+    // Pass the data to the WeekPicker component's handleSubmit function
+    handleWeekPickerSubmit(requestBody)
 
     try {
       const response = await fetch(
@@ -92,7 +109,13 @@ export default function AppointmentForm() {
             <strong>Day:</strong> {day}
           </p>
           <p>
-            <strong>Date:</strong> {parsedDate}
+            <strong>Date:</strong> {moment(date).format('YYYY-MM-DD')}
+          </p>
+          <p>
+            <strong>Start Time:</strong> {startTime}
+          </p>
+          <p>
+            <strong>End Time:</strong> {endTime}
           </p>
         </div>
         <form className="appointmentForm" onSubmit={handleSubmit}>
@@ -118,24 +141,6 @@ export default function AppointmentForm() {
               value={formData.description}
               onChange={handleChange}
               required
-            />
-          </div>
-          <div id="startEnd">
-            <label id="startTime" htmlFor="startTime">
-              Start Time:
-            </label>
-            <TimePicker
-              className="dropdownTimeAppointmentInput"
-              value={selectedStartTime}
-              onChange={(time: any) => handleTimeChange(time, 'start')}
-            />
-            <label id="endTime" htmlFor="endTime">
-              End Time:
-            </label>
-            <TimePicker
-              className="dropdownTimeAppointmentInput"
-              value={selectedEndTime}
-              onChange={(time: any) => handleTimeChange(time, 'end')}
             />
           </div>
           <button type="submit">Submit Appointment</button>

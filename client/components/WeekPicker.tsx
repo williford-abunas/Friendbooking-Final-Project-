@@ -3,12 +3,19 @@ import { useState, useEffect } from 'react'
 import { DatePicker } from 'rsuite'
 import { getAllTimeslotApi } from '../api'
 import { Timeslot } from '../../models/Timeslot'
+import AppointmentForm from './AppointmentForm'
 
 interface WeekPickerProps {
   onWeekChange: (selectedWeek: object) => void
 }
 
 export default function WeekPicker({ onWeekChange }: WeekPickerProps) {
+  const handleSubmit = async (formData: any) => {
+    // Handle submission logic for the WeekPicker form data
+    // For example, you can submit the data to the server or perform any other actions
+    console.log('WeekPicker Form Data:', formData)
+  }
+
   const initialDate = new Date()
   const [objWeek, setObjWeek] = useState({
     date: initialDate,
@@ -94,6 +101,13 @@ export default function WeekPicker({ onWeekChange }: WeekPickerProps) {
         ) : (
           <p>No available times for {selectedDay}</p>
         )}
+        <AppointmentForm
+          day={selectedDay}
+          date={availableTimesForDay[0].date}
+          startTime={availableTimesForDay[0]?.startTime || null}
+          endTime={availableTimesForDay[0]?.endTime || null}
+          handleWeekPickerSubmit={handleSubmit}
+        />
       </div>
     )
   }
