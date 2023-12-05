@@ -2,7 +2,8 @@ import { Link } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 
 export default function Homepage() {
-  const { getAccessTokenSilently } = useAuth0();
+  const { getAccessTokenSilently, isAuthenticated, user } = useAuth0();
+    console.log(user);
 
   const handleLogin = async (role) => {
     try {
@@ -16,6 +17,13 @@ export default function Homepage() {
     }
   };
 
+  // Check if the user is logged in and has the 'Owner' role
+  const isOwner =
+    isAuthenticated &&
+    user &&
+    user['_roles'] &&
+    user['_roles'].includes('Owner');
+
   return (
     <>
       <div className="h1Headers">
@@ -25,11 +33,13 @@ export default function Homepage() {
         <h2>Log in as:</h2>
         <div>
           <div id="logInButtons">
-            <Link to={'/owner'}>
-              <button id="ownerLogInButton" onClick={() => handleLogin('Owner')}>
-                Owner
-              </button>
-            </Link>
+            {isOwner && (
+              <Link to={'/owner'}>
+                <button id="ownerLogInButton" onClick={() => handleLogin('Owner')}>
+                  Owner
+                </button>
+              </Link>
+            )}
             <Link to={'/user'}>
               <button id="userLogInButton" onClick={() => handleLogin('User')}>
                 User
