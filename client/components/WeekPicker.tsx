@@ -1,4 +1,5 @@
 import moment from 'moment'
+
 import { useState, useEffect } from 'react'
 import { DatePicker } from 'rsuite'
 import { getAllTimeslotApi } from '../api'
@@ -10,8 +11,14 @@ interface WeekPickerProps {
 }
 
 export default function WeekPicker({ onWeekChange }: WeekPickerProps) {
+  const [showAppointmentForm, setShowAppointmentForm] = useState(false)
   const handleSubmit = async (formData: any) => {
     console.log('WeekPicker Form Data:', formData)
+  }
+
+  const handleMakeAppointmentClick = () => {
+    // Show the appointment form when the button is clicked
+    setShowAppointmentForm(true)
   }
 
   const initialDate = new Date()
@@ -23,7 +30,6 @@ export default function WeekPicker({ onWeekChange }: WeekPickerProps) {
   })
   const [timeSlot, setTimeSlot] = useState<Timeslot[]>([])
   const [availableDays, setAvailableDays] = useState<string[]>([])
-  const [selectedDay, setSelectedDay] = useState<string | null>(null)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -72,41 +78,44 @@ export default function WeekPicker({ onWeekChange }: WeekPickerProps) {
 
   const renderValue = () => null
 
-  const renderAvailableTimeDropdown = (selectedDay: string | null) => {
-    if (!selectedDay) {
-      return null
-    }
-
+  const renderAvailableTimes = (day: string) => {
     const availableTimesForDay = timeSlot.filter(
-      (entry: Timeslot) => entry.day === selectedDay
+      (entry: Timeslot) => entry.day === day
     )
 
-    console.log('Available Times for', selectedDay, availableTimesForDay)
-
     return (
-      <div className="available-time-dropdown">
+      <>
+        <h3>
+          Available Times for {day} (
+          {availableTimesForDay.length > 0
+            ? moment(availableTimesForDay[0].date).format('YYYY-MM-DD')
+            : ''}
+          )
+        </h3>
         {availableTimesForDay.length > 0 ? (
-          <>
-            <h3>
-              Available Times for {selectedDay} ({availableTimesForDay[0].date})
-            </h3>
-            {availableTimesForDay.map((entry: Timeslot) => (
-              <div key={entry.id}>
+          <div>
+            {availableTimesForDay.map((entry: Timeslot, index) => (
+              <div key={index}>
                 <button>{`${entry.startTime} - ${entry.endTime}`}</button>
+                <button onClick={handleMakeAppointmentClick}>
+                  Make Appointment
+                </button>
               </div>
             ))}
-          </>
+          </div>
         ) : (
-          <p>No available times for {selectedDay}</p>
+          <p>No available times for {day}</p>
         )}
-        <AppointmentForm
-          day={selectedDay}
-          date={availableTimesForDay[0].date}
-          startTime={availableTimesForDay[0]?.startTime || null}
-          endTime={availableTimesForDay[0]?.endTime || null}
-          handleWeekPickerSubmit={handleSubmit}
-        />
-      </div>
+        {showAppointmentForm && availableTimesForDay.length > 0 && (
+          <AppointmentForm
+            day={day}
+            date={availableTimesForDay[0].date}
+            startTime={availableTimesForDay[0]?.startTime || null}
+            endTime={availableTimesForDay[0]?.endTime || null}
+            handleWeekPickerSubmit={handleSubmit}
+          />
+        )}
+      </>
     )
   }
 
@@ -126,20 +135,10 @@ export default function WeekPicker({ onWeekChange }: WeekPickerProps) {
         {objWeek.weekNumber && (
           <div className="weekInfos">
             <div>
-              <span className="dateTitle">
-                <b>Available Days:</b>
-              </span>
               {availableDays.map((day) => (
-                <div key={day} className="day-button-container">
-                  <button
-                    onClick={() => {
-                      setSelectedDay(day)
-                    }}
-                  >
-                    {day}
-                  </button>
-                  {selectedDay === day &&
-                    renderAvailableTimeDropdown(selectedDay)}
+                <div key={day} className="day-container">
+                  <b className="dateTitle">{day}:</b>
+                  {renderAvailableTimes(day)}
                 </div>
               ))}
             </div>
