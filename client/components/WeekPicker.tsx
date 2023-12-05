@@ -45,7 +45,7 @@ export default function WeekPicker({ onWeekChange }: WeekPickerProps) {
     }
 
     fetchData()
-  }, [objWeek.weekNumber])
+  }, [])
 
   useEffect(() => {
     const availableDaysForWeek = timeSlot
@@ -78,8 +78,6 @@ export default function WeekPicker({ onWeekChange }: WeekPickerProps) {
     })
   }
 
-  const renderValue = () => null
-
   const renderAvailableTimes = (day: string) => {
     const availableTimesForDay = timeSlot.filter(
       (entry: Timeslot) =>
@@ -88,26 +86,33 @@ export default function WeekPicker({ onWeekChange }: WeekPickerProps) {
 
     return (
       <>
-        <h3>
-          Available Times for {day}
-          {availableTimesForDay.length > 0
-            ? moment(availableTimesForDay[0].date).format('YYYY-MM-DD')
-            : ''}
-        </h3>
-        {availableTimesForDay.length > 0 ? (
-          <div>
-            {availableTimesForDay.map((entry: Timeslot, index) => (
-              <div key={index}>
-                <button>{`${entry.startTime} - ${entry.endTime}`}</button>
-                <button onClick={handleMakeAppointmentClick}>
-                  Make Appointment
-                </button>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <p>No available times for {day}</p>
-        )}
+        <div className="availableDayContainer">
+          <h3>
+            Available Times for {day}
+            {availableTimesForDay.length > 0 ? (
+              <>
+                {' '}
+                ({moment(availableTimesForDay[0].date).format('YYYY-MM-DD')})
+              </>
+            ) : (
+              ''
+            )}
+          </h3>
+          {availableTimesForDay.length > 0 ? (
+            <div>
+              {availableTimesForDay.map((entry: Timeslot, index) => (
+                <div key={index}>
+                  <button>{`${entry.startTime} - ${entry.endTime}`}</button>
+                  <button onClick={handleMakeAppointmentClick}>
+                    Make Appointment
+                  </button>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p>No available times for {day}</p>
+          )}
+        </div>
         {showAppointmentForm && availableTimesForDay.length > 0 && (
           <AppointmentForm
             day={day}
@@ -130,21 +135,20 @@ export default function WeekPicker({ onWeekChange }: WeekPickerProps) {
           isoWeek
           showWeekNumbers
           value={null}
-          defaultValue={objWeek.date}
+          defaultValue={null}
           onChange={(date) => onChange(date as Date)}
-          renderValue={renderValue}
         />
         {objWeek.weekNumber && (
           <div className="weekInfos">
             <div>
-              {availableDays.length > 0
-                ? availableDays.map((day) => <>{renderAvailableTimes(day)}</>)
-                : showAppointmentForm && (
-                    <p>
-                      Sorry, the owner is busy on these days. Please pick
-                      another week.
-                    </p>
-                  )}
+              {availableDays.length > 0 && objWeek.weekNumber ? (
+                availableDays.map((day) => <>{renderAvailableTimes(day)}</>)
+              ) : (
+                <p>
+                  Sorry, the owner is busy on these days. Please pick another
+                  week.
+                </p>
+              )}
             </div>
           </div>
         )}
