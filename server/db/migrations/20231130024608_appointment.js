@@ -7,6 +7,7 @@ export function up(knex) {
     table.increments('id')
     table.string('title').notNullable()
     table.text('description')
+    table.integer('user_id')
   })
 }
 

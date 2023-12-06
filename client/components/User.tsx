@@ -11,7 +11,6 @@ export default function Users() {
   const [selectedDay, setSelectedDay] = useState<string | null>(null)
 
   useEffect(() => {
-    // Check authentication status and redirect if not authenticated
     if (!isLoading && !isAuthenticated) {
       loginWithRedirect()
     }
@@ -26,7 +25,6 @@ export default function Users() {
   }
 
   const handleDayButtonClick = (day: string, date: string) => {
-    // Redirect to AppointmentForm with selected day and date
     const formattedDate = moment(date).format('YYYY-MM-DD')
     navigate(`/form/${day}/${formattedDate}`)
   }

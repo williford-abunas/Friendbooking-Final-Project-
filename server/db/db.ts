@@ -1,7 +1,7 @@
 import connection from './connection'
 const db = connection
 import { User } from '../../models/User'
-import { Appointment } from '../../models/Appointment'
+import { Appointment, AppointmentInsert } from '../../models/Appointment'
 import { Timeslot, TimeslotAppointment } from '../../models/Timeslot'
 
 //get all users
@@ -45,26 +45,15 @@ export async function addUserDb(user: User): Promise<User> {
 
 //add appointment
 export async function addAppointmentDb(
-  appointment: Appointment
-): Promise<Appointment> {
-  const { title, description, appointmentDate, startTime, endTime } =
-    appointment
+  appointment: AppointmentInsert
+): Promise<AppointmentInsert[]> {
+  const { title, description } = appointment
   const [result] = await db('appointment')
     .insert({
       title,
       description,
-      appointment_date: appointmentDate,
-      start_time: startTime,
-      end_time: endTime,
     })
-    .returning([
-      'id',
-      'title',
-      'description',
-      'appointment_date',
-      'start_time',
-      'end_time',
-    ])
+    .returning(['id', 'title', 'description'])
   return result
 }
 

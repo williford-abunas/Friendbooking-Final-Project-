@@ -1,6 +1,6 @@
 import request from 'superagent'
 import { User } from '../models/User.ts'
-import { Appointment } from '../models/Appointment.ts'
+import { Appointment, AppointmentInsert } from '../models/Appointment.ts'
 import { Timeslot, TimeslotAppointment } from '../models/Timeslot.ts'
 
 const URL = '/api/v1/friendbooking'
@@ -40,16 +40,10 @@ export async function getAppointmentForUserApi({ userId }: Appointment) {
 
 // Add appointment
 export async function addAppointmentApi({
-  userId,
   title,
   description,
-  appointmentDate,
-  startTime,
-  endTime,
-}: Appointment) {
-  await request
-    .post(`URL/${userId}/appointment`)
-    .send({ title, description, appointmentDate, startTime, endTime })
+}: AppointmentInsert) {
+  await request.post(`URL/appointment`).send({ title, description })
 }
 
 // Edit appointment

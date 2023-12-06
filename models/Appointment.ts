@@ -7,6 +7,11 @@ export interface Appointment {
   userId?: number
 }
 
+export interface AppointmentInsert {
+  title: string
+  description?: string
+}
+
 export interface AppointmentDashboard {
   timeslotId: number
   day: string

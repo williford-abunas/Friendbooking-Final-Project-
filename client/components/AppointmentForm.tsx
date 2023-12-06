@@ -43,7 +43,6 @@ export default function AppointmentForm({
 
     const requestBody = {
       ...formData,
-      appointmentDate: date,
       startTime,
       endTime,
     }
