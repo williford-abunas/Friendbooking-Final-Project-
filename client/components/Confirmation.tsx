@@ -15,7 +15,7 @@ export default function Confirmation() {
   if (!formData) {
     return (
       <div>
-        <p>No form data found for confirmation!</p>
+        <p className="data-messages">No form data found for confirmation!</p>
       </div>
     )
   }

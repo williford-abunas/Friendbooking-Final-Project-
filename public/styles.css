@@ -104,7 +104,7 @@ nav {
 .logInBox {
   background-color: #ffdfba;
   padding: 20px 70px 40px 70px;
-  border-radius: 25%;
+  border-radius: 5%;
   font-size: 1.4rem;
   font-weight: bolder;
   width: max-content;
@@ -367,7 +367,8 @@ nav {
 
 .individual-user-appointments {
   border: 2px solid rgb(0, 0, 0);
-  background-color: #ffdfba;
+  border-radius: 2%;
+  background-color: #FFDFBA;
   list-style: none;
   margin-top: 1rem;
   padding: 1rem;
@@ -485,6 +486,20 @@ nav {
 .ownerDashboardDescriptionContentDescription {
   text-align: start;
   max-width: 27em;
+}
+
+.data-messages { 
+  color: #FFFFFF;
+  font-size: 1.5rem;
+}
+
+.data-message { 
+  color: #000000;
+  background-color: #ffdfba;
+  max-width: max-content;
+  margin: auto auto;
+  margin-bottom: 2rem;
+  font-size: 2rem;
 }
 
 /* RESPONSIVENESS SECTION */
@@ -652,5 +667,13 @@ nav {
   #startTime,
   #endTime {
     font-size: 0.8rem;
+  }
+
+  .data-messages, .data-message { 
+    font-size: 1rem;
+  }
+
+  .data-message { 
+    width: 50%;
   }
 }

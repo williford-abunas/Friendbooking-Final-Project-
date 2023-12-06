@@ -31,11 +31,15 @@ export default function OwnerDashboard() {
   } = useQuery({ queryKey: ['timeslot'], queryFn: getAllTimeslotApi })
 
   if (isError) {
-    return <p>Having trouble locating the information...</p>
+    return (
+      <p className="data-messages">
+        Having trouble locating the information...
+      </p>
+    )
   }
 
   if (!timeslot || isLoading) {
-    return <p>Trying to load the data...</p>
+    return <p className="data-messages">Trying to load the data...</p>
   }
 
   const handleReturnClick = (e: { preventDefault: () => void }) => {
