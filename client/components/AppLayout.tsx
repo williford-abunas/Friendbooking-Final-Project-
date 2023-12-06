@@ -1,13 +1,14 @@
 import { Outlet } from 'react-router-dom'
-
-import Nav from './Nav.tsx'
+import Footer from './Footer.tsx'
+import Header from './Header.tsx'
 
 export default function AppLayout() {
   return (
     <>
-      <Nav />
       <main>
+        <Header />
         <Outlet />
+        <Footer />
       </main>
     </>
   )

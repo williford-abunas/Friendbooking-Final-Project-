@@ -50,31 +50,31 @@ Specifically to “discussions about your stress profiles, articulate your learn
 
 |**Will**    | Notes      |
 |------------|------------|
-|Good Vibes 	|            |
-|Bad Vibes  	|            |
-|Challenges 	|            |
-|Requests	   |            |
+|Good Vibes 	|Really nice to go out together for lunch. Happy to become more integrated into NZ :D            |
+|Bad Vibes  	|N/A            |
+|Challenges 	|Thinks we will start to be dealing with more complex coding challenges.            |
+|Requests	   |After we setup MVP, look at how we will be passing the data and how it looks like. Help us clarify if we need more tables etc.            |
 
 |**Matt** | Notes      |
 |------------|------------|
-|Good Vibes 	|            |
-|Bad Vibes  	|            |
-|Challenges 	|            |
-|Requests	   |            |
+|Good Vibes 	|Really good vibes. Feels we are in a really good spot. Was nice to go out for lunch with everyone and celebrate an MVP. Have enjoyed working with everyone.            |
+|Bad Vibes  	|N/A            |
+|Challenges 	|Same as Will.            |
+|Requests	   |Continue communication.            |
 
 |**Ming** | Notes      |
 |------------|------------|
-|Good Vibes 	|            |
-|Bad Vibes  	|            |
-|Challenges 	|            |
-|Requests	   |            |
+|Good Vibes 	|Good vibes, no need to elaborate anymore.            |
+|Bad Vibes  	|NO bad vibes            |
+|Challenges 	|Never in my dictionary            |
+|Requests	   |Lets push it hard till the end of this.            |
 
 |**James** | Notes      |
 |------------|------------|
-|Good Vibes 	|            |
-|Bad Vibes  	|            |
-|Challenges 	|            |
-|Requests	   |            |
+|Good Vibes 	|Very good vibes. Enjoyed goung out for lunch. Enjoying working with the team. Happy to have done the Auth.            |
+|Bad Vibes  	|N/A            |
+|Challenges 	|No challenges - flying high            |
+|Requests	   |Keep working hard, keep the communication up. When you merge into Git tell everyone so everyone can pull at the same time.            |
 
 
 
@@ -86,31 +86,31 @@ Specifically to “discussions about your stress profiles, articulate your learn
 
 |**Will**    | Notes      |
 |------------|------------|
-|Good Vibes 	|            |
-|Bad Vibes  	|            |
-|Challenges 	|            |
-|Requests	   |            |
+|Good Vibes 	|Generally good           |
+|Bad Vibes  	|Doesn't know where his glasses are which is bugging him.            |
+|Challenges 	|No issues or challenges with the group or any of the work we are doing.            |
+|Requests	   |Using another screen            |
 
 |**Matt** | Notes      |
 |------------|------------|
-|Good Vibes 	|            |
-|Bad Vibes  	|            |
-|Challenges 	|            |
-|Requests	   |            |
+|Good Vibes 	| Pretty good. Happy with progress we've made and happy with the vibes.          |
+|Bad Vibes  	|Hitting a bit of a wall, things we are working on now is a bit more complicated.            |
+|Challenges 	|N/A            |
+|Requests	   |Keep communicating what everyone is doing. Shout out if you need help.            |
 
 |**Ming** | Notes      |
 |------------|------------|
-|Good Vibes 	|            |
-|Bad Vibes  	|            |
-|Challenges 	|            |
-|Requests	   |            |
+|Good Vibes 	|Good vibes and going in a good direction.            |
+|Bad Vibes  	|Not making as much progress as last week.            |
+|Challenges 	|Now we've achieved MVP, things are getting a little bit more complicated.            |
+|Requests	   |Just be patient with me.            |
 
 |**James** | Notes      |
 |------------|------------|
-|Good Vibes 	|            |
-|Bad Vibes  	|            |
-|Challenges 	|            |
-|Requests	   |            |
+|Good Vibes 	|Decent vibes.            |
+|Bad Vibes  	|Very tired today, not feeling to flash.            |
+|Challenges 	|THings are getting harder, put our heads down a bit more. And bloody Auth0.            |
+|Requests	   |N/A            |
 
 
 
