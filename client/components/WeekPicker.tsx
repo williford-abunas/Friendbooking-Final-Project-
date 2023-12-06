@@ -87,7 +87,7 @@ export default function WeekPicker({ onWeekChange }: WeekPickerProps) {
     return (
       <>
         <div className="availableDayContainer">
-          <h3>
+          <h3 className="data-message">
             Available Times for {day}
             {availableTimesForDay.length > 0 ? (
               <>
@@ -110,7 +110,7 @@ export default function WeekPicker({ onWeekChange }: WeekPickerProps) {
               ))}
             </div>
           ) : (
-            <p>No available times for {day}</p>
+            <p className="data-message">No available times for {day}</p>
           )}
         </div>
         {showAppointmentForm && availableTimesForDay.length > 0 && (
@@ -144,7 +144,7 @@ export default function WeekPicker({ onWeekChange }: WeekPickerProps) {
               {availableDays.length > 0 && objWeek.weekNumber ? (
                 availableDays.map((day) => <>{renderAvailableTimes(day)}</>)
               ) : (
-                <p>
+                <p className="data-message">
                   Sorry, the owner is busy on these days. Please pick another
                   week.
                 </p>

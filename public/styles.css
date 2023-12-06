@@ -367,12 +367,8 @@ nav {
 
 .individual-user-appointments {
   border: 2px solid rgb(0, 0, 0);
-<<<<<<< HEAD
   border-radius: 2%;
   background-color: #FFDFBA;
-=======
-  background-color: #ffdfba;
->>>>>>> 9b437c7cb385d445d60178f9ccdcc25b40d305d7
   list-style: none;
   margin-top: 1rem;
   padding: 1rem;
@@ -495,6 +491,15 @@ nav {
 .data-messages { 
   color: #FFFFFF;
   font-size: 1.5rem;
+}
+
+.data-message { 
+  color: #000000;
+  background-color: #ffdfba;
+  max-width: max-content;
+  margin: auto auto;
+  margin-bottom: 2rem;
+  font-size: 2rem;
 }
 
 /* RESPONSIVENESS SECTION */
@@ -664,7 +669,11 @@ nav {
     font-size: 0.8rem;
   }
 
-  .data-messages { 
+  .data-messages, .data-message { 
     font-size: 1rem;
+  }
+
+  .data-message { 
+    width: 50%;
   }
 }
