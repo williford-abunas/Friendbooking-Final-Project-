@@ -1,7 +1,12 @@
 export default function Footer() {
   return (
     <>
-      <footer>THIS IS FOOTER!</footer>
+      <footer>
+        {' '}
+        <span>Copyright information</span>
+        <br />
+        <span>Developed by James, Matt, Ming, & Will</span>
+      </footer>
     </>
   )
 }

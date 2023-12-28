@@ -1,0 +1,340 @@
+/* styles.css */
+
+/* MAIN */
+html {
+  background-image: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.2) 0%,
+      rgba(0, 0, 0, 0.6) 50%
+    ),
+    url('./img/background.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-color: rgba(255, 255, 255, 0.5);
+  height: 100%;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  color: #333;
+}
+
+h1 {
+  color: #fff;
+  font-size: 4rem;
+}
+
+p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+.styled-box {
+  width: 300px;
+  margin: 0 auto;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+
+footer {
+  background-color: #15fd40;
+  padding: 30px;
+  margin-top: 25%;
+  margin-left: -8px;
+  margin-right: -8px;
+  margin-bottom: -8px;
+}
+
+button:hover {
+  background-color: gray;
+}
+
+button {
+  background-color: lightgray;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+/* Header  */
+header {
+  background-color: #15fd40;
+  padding: 30px;
+  height: 60px;
+  margin: -8px;
+  display: flex;
+}
+
+/* NAV BAR */
+
+nav {
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+  margin: 0 auto;
+}
+
+/* HOMEPAGE */
+.h1Headers {
+  margin: 100px;
+}
+
+.logInBox {
+  background-color: #15fd40;
+  padding: 20px 70px 40px 70px;
+  font-size: 20px;
+  font-weight: bolder;
+  width: max-content;
+  margin: 0 auto;
+}
+
+.logInBox h2 {
+  display: flex;
+  align-items: flex-start;
+}
+
+#logInButtons button {
+  margin-top: 20px;
+  padding: 10px 30px;
+  font-size: 20px;
+  font-weight: bolder;
+  max-width: fit-content;
+}
+
+#ownerLogInButton {
+  margin-right: 50px;
+}
+
+/* APPOINTMENT FORM */
+
+#appointmentBox {
+  background-color: #15fd40;
+  padding: 60px 100px;
+  width: fit-content;
+  margin: 0 auto;
+  border: black solid 3px;
+}
+
+#dayTime {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+
+#dayTime p {
+  margin: 0;
+}
+
+#titleDescription {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  margin: 0 auto;
+}
+
+#titleDescription input {
+  margin-bottom: 15px;
+}
+
+#titleDescription textarea {
+  margin-bottom: 15px;
+}
+
+#description {
+  width: 500px;
+  min-height: 150px;
+  resize: vertical;
+}
+
+#startEnd {
+  display: flex;
+  flex-direction: row;
+  width: 500px;
+}
+
+#startEnd input {
+  width: 150px;
+}
+
+#endTime {
+  margin-left: 14px;
+}
+
+.appointmentForm button {
+  margin-top: 30px;
+  padding: 10px;
+  font-size: 15px;
+  font-weight: bolder;
+}
+
+/* USER PAGE */
+
+#dayContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 0px auto;
+  align-items: center;
+}
+
+#userViewDays {
+  width: 300px;
+  background-color: #28c1c1;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 39px;
+  letter-spacing: 0em;
+  margin-bottom: 15px;
+  padding: 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#userViewDays:hover {
+  background-color: lightblue;
+}
+
+#dropdownTimeSlot {
+  margin-bottom: 15px;
+}
+
+#timeSlotButton {
+  margin: 10px;
+  font-size: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 3px;
+}
+
+/* CONFIRMATION PAGE */
+.confirmation-container {
+  width: 600px;
+  margin: 0 auto;
+  margin-top: 10rem;
+  padding: 10px;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  background-color: #15fd40;
+  border: 1px solid #ddd;
+}
+
+.confirmation-title {
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.confirmation-list {
+  list-style-type: none;
+  text-align: left;
+  font-size: 1.1rem;
+}
+
+.calendar-return {
+  padding: 1rem;
+  font-size: 1rem;
+}
+
+/* RESPONSIVENESS SECTION */
+@media screen and (max-width: 600px) {
+  h1 {
+    font-size: 2.7rem;
+  }
+
+  .styled-box {
+    width: 90%;
+  }
+
+  footer {
+    padding: 30px;
+    margin-top: 95%;
+  }
+
+  header {
+    padding: 15px;
+    height: auto;
+  }
+
+  nav {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  #logInButtons button {
+    display: flex;
+    margin: auto auto;
+    margin-top: 1rem;
+    font-size: 1rem;
+  }
+
+  #ownerLogInButton {
+    width: 105px;
+  }
+
+  .h1Headers {
+    margin: 20px;
+  }
+
+  .logInBox {
+    padding: 4rem;
+    font-size: 1.5rem;
+  }
+
+  #appointmentBox {
+    padding: 4rem;
+    width: 50%;
+    border: black solid 3px;
+  }
+
+  #titleDescription,
+  #dayTime,
+  #startEnd {
+    width: 100%;
+  }
+
+  #titleDescription input,
+  #titleDescription textarea,
+  #startEnd input {
+    width: 100%;
+  }
+
+  .appointmentForm button {
+    font-size: 14px;
+  }
+
+  #dayContainer {
+    margin: 0 auto;
+  }
+
+  #userViewDays {
+    width: 70%;
+  }
+
+  #timeSlotButton {
+    width: 100%;
+    display: flex;
+  }
+
+  .confirmation-container {
+    width: 80%;
+  }
+
+  .confirmation-title {
+    font-size: 1.3rem;
+  }
+
+  .confirmation-list {
+    font-size: 1rem;
+  }
+
+  .calendar-return {
+    font-size: 0.8rem;
+  }
+}

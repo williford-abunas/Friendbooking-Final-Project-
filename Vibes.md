@@ -50,31 +50,31 @@ Specifically to “discussions about your stress profiles, articulate your learn
 
 |**Will**    | Notes      |
 |------------|------------|
-|Good Vibes 	|            |
-|Bad Vibes  	|            |
-|Challenges 	|            |
-|Requests	   |            |
+|Good Vibes 	|Really nice to go out together for lunch. Happy to become more integrated into NZ :D            |
+|Bad Vibes  	|N/A            |
+|Challenges 	|Thinks we will start to be dealing with more complex coding challenges.            |
+|Requests	   |After we setup MVP, look at how we will be passing the data and how it looks like. Help us clarify if we need more tables etc.            |
 
 |**Matt** | Notes      |
 |------------|------------|
-|Good Vibes 	|            |
-|Bad Vibes  	|            |
-|Challenges 	|            |
-|Requests	   |            |
+|Good Vibes 	|Really good vibes. Feels we are in a really good spot. Was nice to go out for lunch with everyone and celebrate an MVP. Have enjoyed working with everyone.            |
+|Bad Vibes  	|N/A            |
+|Challenges 	|Same as Will.            |
+|Requests	   |Continue communication.            |
 
 |**Ming** | Notes      |
 |------------|------------|
-|Good Vibes 	|            |
-|Bad Vibes  	|            |
-|Challenges 	|            |
-|Requests	   |            |
+|Good Vibes 	|Good vibes, no need to elaborate anymore.            |
+|Bad Vibes  	|NO bad vibes            |
+|Challenges 	|Never in my dictionary            |
+|Requests	   |Lets push it hard till the end of this.            |
 
 |**James** | Notes      |
 |------------|------------|
-|Good Vibes 	|            |
-|Bad Vibes  	|            |
-|Challenges 	|            |
-|Requests	   |            |
+|Good Vibes 	|Very good vibes. Enjoyed goung out for lunch. Enjoying working with the team. Happy to have done the Auth.            |
+|Bad Vibes  	|N/A            |
+|Challenges 	|No challenges - flying high            |
+|Requests	   |Keep working hard, keep the communication up. When you merge into Git tell everyone so everyone can pull at the same time.            |
 
 
 
