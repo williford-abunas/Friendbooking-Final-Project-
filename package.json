@@ -40,7 +40,9 @@
     "express-jwt-authz": "^2.4.1",
     "jwks-rsa": "^2.1.5",
     "knex": "^2.5.1",
+    "moment": "^2.29.4",
     "react-datepicker": "^4.24.0",
+    "rsuite": "^5.46.1",
     "sqlite3": "^5.1.6"
   },
   "devDependencies": {

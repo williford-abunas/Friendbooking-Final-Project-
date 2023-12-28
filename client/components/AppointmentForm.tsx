@@ -1,23 +1,32 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useParams, useNavigate, useLocation } from 'react-router-dom'
 import { TimePicker } from '@mui/x-date-pickers'
-import dayjs from 'dayjs'
+import dayjs, { Dayjs } from 'dayjs'
+import moment from 'moment'
 
 export default function AppointmentForm() {
   const navigate = useNavigate()
   const location = useLocation()
-  const { day, timeSlot } = useParams()
+
+  const { day, date } = useParams()
+  const parsedDate = moment(date).format('YYYY-MM-DD')
   const [formData, setFormData] = useState(
     location.state?.formData || {
       title: '',
       description: '',
     }
   )
-  const [selectedStartTime, setSelectedStartTime] = useState(null)
-  const [selectedEndTime, setSelectedEndTime] = useState(null)
+  const [selectedStartTime, setSelectedStartTime] = useState<Dayjs | null>(null)
+  const [selectedEndTime, setSelectedEndTime] = useState<Dayjs | null>(null)
 
-  const handleTimeChange = (time, type) => {
-    // type can be 'start' or 'end'
+  useEffect(() => {
+    if (day) {
+      // Do something with the selected day data
+      console.log('Selected Day:', day)
+    }
+  }, [day])
+
+  const handleTimeChange = (time: Date | string, type: 'start' | 'end') => {
     const timeValue = dayjs(time) // Convert to Dayjs object
     if (type === 'start') {
       setSelectedStartTime(timeValue.isValid() ? timeValue : null)
@@ -26,19 +35,20 @@ export default function AppointmentForm() {
     }
   }
 
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     })
   }
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault()
 
     // Include selected start and end times in the request body
     const requestBody = {
       ...formData,
+      appointmentDate: parsedDate,
       startTime: selectedStartTime ? selectedStartTime.format('HH:mm') : null,
       endTime: selectedEndTime ? selectedEndTime.format('HH:mm') : null,
     }
@@ -66,6 +76,11 @@ export default function AppointmentForm() {
     }
   }
 
+  const handleReturnClick = (e: { preventDefault: () => void }) => {
+    e.preventDefault()
+    navigate('/user')
+  }
+
   return (
     <>
       <div className="h1Headers">
@@ -77,7 +92,7 @@ export default function AppointmentForm() {
             <strong>Day:</strong> {day}
           </p>
           <p>
-            <strong>Time Slot:</strong> {timeSlot}
+            <strong>Date:</strong> {parsedDate}
           </p>
         </div>
         <form className="appointmentForm" onSubmit={handleSubmit}>
@@ -110,20 +125,25 @@ export default function AppointmentForm() {
               Start Time:
             </label>
             <TimePicker
+              className="dropdownTimeAppointmentInput"
               value={selectedStartTime}
-              onChange={(time) => handleTimeChange(time, 'start')}
+              onChange={(time: any) => handleTimeChange(time, 'start')}
             />
             <label id="endTime" htmlFor="endTime">
               End Time:
             </label>
             <TimePicker
+              className="dropdownTimeAppointmentInput"
               value={selectedEndTime}
-              onChange={(time) => handleTimeChange(time, 'end')}
+              onChange={(time: any) => handleTimeChange(time, 'end')}
             />
           </div>
           <button type="submit">Submit Appointment</button>
         </form>
       </div>
+      <button className="calendar-return" onClick={handleReturnClick}>
+        Return to Owner Calendar
+      </button>
     </>
   )
 }

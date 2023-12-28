@@ -3,14 +3,11 @@
  * @returns { Promise<void> }
  */
 export function up(knex) {
-  return knex.schema.createTable('appointment', function (table) {
-    table.increments('id')
-    table.string('title').notNullable()
-    table.text('description')
-    table.date('appointment_date')
+  return knex.schema.createTable('timeslot', function (table) {
+    table.increments('id').primary()
+    table.date('date')
     table.time('start_time').notNullable()
     table.time('end_time').notNullable()
-    table.integer('user_id')
   })
 }
 
@@ -19,5 +16,5 @@ export function up(knex) {
  * @returns { Promise<void> }
  */
 export function down(knex) {
-  return knex.schema.dropTable('appointment')
+  return knex.schema.dropTable('timeslot')
 }

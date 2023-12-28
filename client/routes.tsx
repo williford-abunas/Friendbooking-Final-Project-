@@ -16,7 +16,7 @@ export const routes = createRoutesFromElements(
     <Route path="user/dashboard" element={<UserDashboard />} />
     <Route path="owner" element={<Owner />} />
     <Route path="owner/dashboard" element={<OwnerDashboard />} />
-    <Route path="form/:day/:timeSlot" element={<AppointmentForm />} />
+    <Route path="form/:day/:date" element={<AppointmentForm />} />
     <Route path="form/confirmation" element={<Confirmation />} />
   </Route>
 )

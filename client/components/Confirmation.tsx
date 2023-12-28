@@ -32,6 +32,9 @@ export default function Confirmation() {
             <strong>Description:</strong> {formData.description}
           </li>
           <li>
+            <strong>Appointment Date:</strong> {formData.appointmentDate}
+          </li>
+          <li>
             <strong>Start Time:</strong> {formData.startTime}
             {console.log(formData.startTime)}
           </li>
@@ -40,7 +43,7 @@ export default function Confirmation() {
           </li>
         </ul>
         <button className="calendar-return" onClick={handleReturnClick}>
-          Return to Owner's Calendar
+          Return to Owner Calendar
         </button>
       </div>
     </>
