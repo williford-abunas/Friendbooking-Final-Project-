@@ -15,11 +15,15 @@ export default function UserDashboard() {
   console.log(appointment, 'testing')
 
   if (isError) {
-    return <p>Having trouble locating the information...</p>
+    return (
+      <p className="data-messages">
+        Having trouble locating the information...
+      </p>
+    )
   }
 
   if (!appointment || isLoading) {
-    return <p>Trying to load the data...</p>
+    return <p className="data-messages">Trying to load the data...</p>
   }
 
   const handleReturnClick = (e: { preventDefault: () => void }) => {
@@ -40,12 +44,13 @@ export default function UserDashboard() {
                 className="individual-user-appointments"
                 key={appointment.userId}
               >
-                Title: {appointment.title} <br />
-                Description: {appointment.description} <br />
-                Appointment Date: {appointment.appointmentDate}
+                <b>Title:</b> {appointment.title} <br />
+                <b>Description: </b>
+                {appointment.description} <br />
+                <b>Appointment Date:</b> {appointment.appointmentDate}
                 <br />
-                Start Time: {appointment.startTime} <br />
-                End Time: {appointment.endTime}
+                <b>Start Time:</b> {appointment.startTime} <br />
+                <b>End Time:</b> {appointment.endTime}
               </li>
             )
           })}

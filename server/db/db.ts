@@ -92,6 +92,7 @@ export async function deleteAppointmentDb(id: number) {
 export async function getAllTimeslotDb(): Promise<Timeslot[]> {
   return db('timeslot').select(
     'id',
+    'day',
     'date',
     'start_time as startTime',
     'end_time as endTime'
@@ -100,10 +101,10 @@ export async function getAllTimeslotDb(): Promise<Timeslot[]> {
 
 //Add new time slot
 export async function addTimeslotDb(timeslot: Timeslot): Promise<Timeslot[]> {
-  const { date, startTime, endTime } = timeslot
+  const { date, day, startTime, endTime } = timeslot
   const result = await db('timeslot')
-    .insert({ date, start_time: startTime, end_time: endTime })
-    .select('date', 'start_time as startTime', 'end_time as endTime')
+    .insert({ date, day, start_time: startTime, end_time: endTime })
+    .select('date', 'day', 'start_time as startTime', 'end_time as endTime')
     .returning('*')
   return result
 }

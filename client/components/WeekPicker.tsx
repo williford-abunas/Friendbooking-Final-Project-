@@ -1,25 +1,63 @@
 import moment from 'moment'
-import { useState } from 'react'
+
+import { useState, useEffect } from 'react'
 import { DatePicker } from 'rsuite'
-import { getDaysOfWeek } from '../helper'
+import { getAllTimeslotApi } from '../api'
+import { Timeslot } from '../../models/Timeslot'
+import AppointmentForm from './AppointmentForm'
 
 interface WeekPickerProps {
   onWeekChange: (selectedWeek: object) => void
-  renderDayButtons: (daysOfWeek: any[]) => React.ReactNode
 }
 
-export default function WeekPicker({
-  onWeekChange,
-  renderDayButtons,
-}: WeekPickerProps) {
+export default function WeekPicker({ onWeekChange }: WeekPickerProps) {
+  const [showAppointmentForm, setShowAppointmentForm] = useState(false)
+  const handleSubmit = async (formData: any) => {
+    console.log('WeekPicker Form Data:', formData)
+  }
+
+  const handleMakeAppointmentClick = () => {
+    // Show the appointment form when the button is clicked
+    setShowAppointmentForm(
+      (prevShowAppointmentForm) => !prevShowAppointmentForm
+    )
+  }
+
+  const initialDate = new Date()
   const [objWeek, setObjWeek] = useState({
-    date: new Date(),
-    dateFrom: new Date(),
-    dateTo: new Date(),
+    date: initialDate,
+    dateFrom: moment(initialDate).startOf('isoWeek').toDate(),
+    dateTo: moment(initialDate).endOf('isoWeek').toDate(),
     weekNumber: moment().isoWeek(),
   })
+  const [timeSlot, setTimeSlot] = useState<Timeslot[]>([])
+  const [availableDays, setAvailableDays] = useState<string[]>([])
 
-  const onChange = (date: Date) => {
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const schedule = await getAllTimeslotApi()
+        console.log('Fetched schedule:', schedule)
+        setTimeSlot(schedule)
+      } catch (error) {
+        console.error('Error fetching owner schedule:', error)
+      }
+    }
+
+    fetchData()
+  }, [])
+
+  useEffect(() => {
+    const availableDaysForWeek = timeSlot
+      .filter(
+        (entry: Timeslot) => moment(entry.date).isoWeek() === objWeek.weekNumber
+      )
+      .map((entry: Timeslot) => entry.day)
+
+    setAvailableDays(availableDaysForWeek)
+  }, [timeSlot, objWeek.weekNumber])
+
+  const onChange = async (date: Date) => {
     const weekNumber = moment(date).isoWeek()
     const dateFrom = moment(date).startOf('isoWeek').toDate()
     const dateTo = moment(date).endOf('isoWeek').toDate()
@@ -32,7 +70,6 @@ export default function WeekPicker({
     })
 
     onWeekChange({
-      daysOfWeek: getDaysOfWeek(date),
       selectedWeek: {
         weekNumber,
         dateFrom,
@@ -41,14 +78,53 @@ export default function WeekPicker({
     })
   }
 
-  const renderValue = (date: Date) => {
-    const weekNumber = moment(date).isoWeek()
-    const year = moment(date).year()
+  const renderAvailableTimes = (day: string) => {
+    const availableTimesForDay = timeSlot.filter(
+      (entry: Timeslot) =>
+        entry.day === day && moment(entry.date).isoWeek() === objWeek.weekNumber
+    )
 
-    return `Week: ${weekNumber}, Year: ${year}`
+    return (
+      <>
+        <div className="availableDayContainer">
+          <h3 className="data-message">
+            Available Times for {day}
+            {availableTimesForDay.length > 0 ? (
+              <>
+                {' '}
+                ({moment(availableTimesForDay[0].date).format('YYYY-MM-DD')})
+              </>
+            ) : (
+              ''
+            )}
+          </h3>
+          {availableTimesForDay.length > 0 ? (
+            <div>
+              {availableTimesForDay.map((entry: Timeslot, index) => (
+                <div key={index}>
+                  <button>{`${entry.startTime} - ${entry.endTime}`}</button>
+                  <button onClick={handleMakeAppointmentClick}>
+                    Make Appointment
+                  </button>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p className="data-message">No available times for {day}</p>
+          )}
+        </div>
+        {showAppointmentForm && availableTimesForDay.length > 0 && (
+          <AppointmentForm
+            day={day}
+            date={availableTimesForDay[0].date}
+            startTime={availableTimesForDay[0]?.startTime || null}
+            endTime={availableTimesForDay[0]?.endTime || null}
+            handleWeekPickerSubmit={handleSubmit}
+          />
+        )}
+      </>
+    )
   }
-
-  const daysOfWeek = getDaysOfWeek(objWeek.date)
 
   return (
     <>
@@ -58,48 +134,24 @@ export default function WeekPicker({
           placeholder="Week Picker"
           isoWeek
           showWeekNumbers
-          value={objWeek.date}
-          onChange={(date) => {
-            onChange(date as Date)
-            onWeekChange({
-              daysOfWeek: getDaysOfWeek(date),
-              selectedWeek: {
-                weekNumber: moment(date).isoWeek(),
-                dateFrom: moment(date).startOf('isoWeek').toDate(),
-                dateTo: moment(date).endOf('isoWeek').toDate(),
-              },
-            })
-          }}
-          renderValue={renderValue}
+          value={null}
+          defaultValue={null}
+          onChange={(date) => onChange(date as Date)}
         />
-        <div className="weekInfos">
-          <div>
-            <span className="dateTitle">
-              <b>Week Number : </b>
-            </span>
-            <span className="dateValue">{objWeek.weekNumber}</span>
+        {objWeek.weekNumber && (
+          <div className="weekInfos">
+            <div>
+              {availableDays.length > 0 && objWeek.weekNumber ? (
+                availableDays.map((day) => <>{renderAvailableTimes(day)}</>)
+              ) : (
+                <p className="data-message">
+                  Sorry, the owner is busy on these days. Please pick another
+                  week.
+                </p>
+              )}
+            </div>
           </div>
-          <div>
-            <span className="dateTitle">
-              <b>Start of Week : </b>
-            </span>
-            <span className="dateValue">
-              {objWeek.dateFrom?.toDateString()}
-            </span>
-          </div>
-          <div>
-            <span className="dateTitle">
-              <b>End of Week : </b>
-            </span>
-            <span className="dateValue">{objWeek.dateTo?.toDateString()}</span>
-          </div>
-          <div>
-            <span className="dateTitle">
-              <b>Days of Week:</b>
-            </span>
-            {renderDayButtons(daysOfWeek)}
-          </div>
-        </div>
+        )}
       </div>
     </>
   )

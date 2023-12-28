@@ -6,6 +6,7 @@ export function up(knex) {
   return knex.schema.createTable('timeslot', function (table) {
     table.increments('id').primary()
     table.date('date')
+    table.date('day')
     table.time('start_time').notNullable()
     table.time('end_time').notNullable()
   })

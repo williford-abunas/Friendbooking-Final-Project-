@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 import UserSignOut from './UserSignOut.tsx'
-import OwnerSignOut from './OwnerSignOut.tsx'
 
 export default function Nav() {
   return (
@@ -10,7 +9,6 @@ export default function Nav() {
           <Link to={'/'}>Home</Link>
         </button>
         <UserSignOut />
-        {/* <OwnerSignOut /> */}
       </nav>
     </>
   )
